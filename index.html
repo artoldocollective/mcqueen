@@ -119,84 +119,40 @@ document.querySelectorAll('img').forEach((img) => {
 
 <a-entity text="value:McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="22 22 22"></a-entity>
 
-<a-plane gui-interactable id="01" onclick="openCustomWindow('#');" width="3.168" height="4" position="-8 2.5 -9" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
+<a-plane gui-interactable id="01" onclick="openNewWindow('#');" width="3.168" height="4" position="-8 2.5 -9" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
 </a-plane>
 
-<a-plane gui-interactable id="02" onclick="openCustomWindow('#');" width="3.168" height="4" position="8 2.5 -9" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
+<a-plane gui-interactable id="02" onclick="openNewWindow('#');" width="3.168" height="4" position="8 2.5 -9" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
 </a-plane>
 
-<a-plane gui-interactable id="03" onclick="openCustomWindow('#');" width="3.168" height="4" position="-8.5 2.5 -3.25" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
+<a-plane gui-interactable id="03" onclick="openNewWindow('#');" width="3.168" height="4" position="-8.5 2.5 -3.25" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
 </a-plane>
 
-<a-plane gui-interactable id="04" onclick="openCustomWindow('#');" width="3.168" height="4" position="8.5 2.5 -3.25" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
+<a-plane gui-interactable id="04" onclick="openNewWindow('#');" width="3.168" height="4" position="8.5 2.5 -3.25" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
 </a-plane>
 
-<a-plane gui-interactable id="05" onclick="openCustomWindow('https://artoldo.github.io/zoroaster/bowie/');" width="3.168" height="4" position="-9 2.5 1.5" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
+<a-plane gui-interactable id="05" onclick="openNewWindow('https://artoldo.github.io/zoroaster/bowie/');" width="3.168" height="4" position="-9 2.5 1.5" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
 </a-plane>
 
-<a-plane gui-interactable id="06" onclick="openCustomWindow('#');" width="3.168" height="4" position="9 2.5 1.5" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
+<a-plane gui-interactable id="06" onclick="openNewWindow('#');" width="3.168" height="4" position="9 2.5 1.5" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
 </a-plane>
 
-<!-- Custom Window JavaScript -->
+<!-- Simple JavaScript to open a new window -->
 <script>
-    function openCustomWindow(url) {
-        const newWindow = window.open('', '_blank', 'width=500,height=500,toolbar=no,scrollbars=no,resizable=no');
-
-        // Inject custom content into the new window
-        newWindow.document.write(`
-            <html>
-                <head>
-                    <style>
-                        body {
-                            margin: 0;
-                            padding: 0;
-                            background-color: #fff;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            height: 100vh;
-                            font-family: Arial, sans-serif;
-                        }
-                        .close-btn {
-                            position: absolute;
-                            top: 10px;
-                            right: 10px;
-                            background: red;
-                            color: white;
-                            border: none;
-                            padding: 10px;
-                            font-size: 16px;
-                            cursor: pointer;
-                            border-radius: 50%;
-                        }
-                        iframe {
-                            width: 100%;
-                            height: 100%;
-                            border: none;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <button class="close-btn" onclick="window.close();">X</button>
-                    <iframe src="${url}" allowfullscreen></iframe>
-                </body>
-            </html>
-        `);
-
-        // Make sure the window closes properly
-        newWindow.document.close();
+    function openNewWindow(url) {
+        window.open(url, '_blank', 'width=600,height=400');
     }
 </script>
 
