@@ -62,7 +62,6 @@
      }
   
     </style>
-  </head>
 
 <script>
 // Wait for window load
@@ -77,6 +76,14 @@ document.querySelectorAll('img').forEach((img) => {
     img.addEventListener('dragstart', (e) => e.preventDefault());
 });
 </script>
+
+<script>
+      function openLink(url) {
+        window.open(url, '_blank');
+      }
+</script>
+
+</head>
 
 <body style="background-color:red">
 
@@ -119,35 +126,67 @@ document.querySelectorAll('img').forEach((img) => {
 
 <a-entity text="value:McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="22 22 22"></a-entity>
 
-<a-plane gui-interactable id="01" onclick="openNewTab('#');" width="3.168" height="4" position="-8 2.5 -9" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
-</a-plane>
+ <a-entity text="value: McQueen feat. Witkin; color: #ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align: center;" position="0 8.8 -13.5" scale="22 22 22"></a-entity>
 
-<a-plane gui-interactable id="02" onclick="openNewTab('#');" width="3.168" height="4" position="8 2.5 -9" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
-</a-plane>
+      <a-plane gui-interactable id="01" 
+               onclick="openLink('#');" 
+               width="3.168" height="4" 
+               position="-8 2.5 -9" 
+               material="src: images/mcqueen.webp; transparent: true" 
+               rotation="0 50 0" 
+               animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+               animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
+      </a-plane>
 
-<a-plane gui-interactable id="03" onclick="openNewTab('#');" width="3.168" height="4" position="-8.5 2.5 -3.25" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
-</a-plane>
+      <a-plane gui-interactable id="02" 
+               onclick="openLink('#');" 
+               width="3.168" height="4" 
+               position="8 2.5 -9" 
+               material="src: images/witkin.webp; transparent: true" 
+               rotation="0 -50 0" 
+               animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+               animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
+      </a-plane>
 
-<a-plane gui-interactable id="04" onclick="openNewTab('#');" width="3.168" height="4" position="8.5 2.5 -3.25" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
-</a-plane>
+      <a-plane gui-interactable id="03" 
+               onclick="openLink('#');" 
+               width="3.168" height="4" 
+               position="-8.5 2.5 -3.25" 
+               material="src: images/mcgirr.webp; transparent: true" 
+               rotation="0 90 0" 
+               animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+               animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
+      </a-plane>
 
-<a-plane gui-interactable id="05" onclick="openNewTab('https://artoldo.github.io/zoroaster/bowie/');" width="3.168" height="4" position="-9 2.5 1.5" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
-</a-plane>
+      <a-plane gui-interactable id="04" 
+               onclick="openLink('#');" 
+               width="3.168" height="4" 
+               position="8.5 2.5 -3.25" 
+               material="src: images/dantemask.webp; transparent: true" 
+               rotation="0 -90 0" 
+               animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+               animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
+      </a-plane>
 
-<a-plane gui-interactable id="06" onclick="openNewTab('#');" width="3.168" height="4" position="9 2.5 1.5" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
-</a-plane>
+      <a-plane gui-interactable id="05" 
+               onclick="openLink('https://artoldo.github.io/zoroaster/bowie/');" 
+               width="3.168" height="4" 
+               position="-9 2.5 1.5" 
+               material="src: images/bowie.webp; transparent: true" 
+               rotation="0 90 0" 
+               animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+               animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
+      </a-plane>
+
+      <a-plane gui-interactable id="06" 
+               onclick="openLink('#');" 
+               width="3.168" height="4" 
+               position="9 2.5 1.5" 
+               material="src: images/west.webp; transparent: true" 
+               rotation="0 -90 0" 
+               animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+               animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
+      </a-plane>
 
 <!-- Simple JavaScript to open a new tab -->
 <script>
