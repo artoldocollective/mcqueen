@@ -158,20 +158,20 @@ document.querySelectorAll('img').forEach((img) => {
 <a-asset-item id="model2" src="./images/modelwalking2.glb"></a-asset-item>
 </a-assets>
 
-<a-entity position="0 1.2 -20" animation="property:position; to: -3 1.5 30; loop: true; dur: 25000">
+<a-entity position="0 0 -30" animation="property:position; to: -3 1.5 30; loop: true; dur: 40000">
         <a-entity 
           gltf-model="#model1" 
           animation-mixer 
           scale="2. 2.5 2.5"
           rotation="0 0 0"  
-          position="0 1.2 -2">
+          position="0 1.2 0">
         </a-entity>
         <a-entity 
           gltf-model="#model2" 
           animation-mixer 
           scale="2. 2.5 2.5"
           rotation="0 0 0"  
-          position="0 1.2 -4">
+          position="0 1.2 -10">
         </a-entity>
 </a-entity>
 
