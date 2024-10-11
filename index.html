@@ -31,8 +31,8 @@
 
       .mask {
       z-index: 99;
-      width: 338px;
-      height: 282px;
+      width: 250px;
+      height: 209px;
       position: absolute;
   
       top: 50%;
@@ -84,7 +84,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Mask -->
 
-<img src="images/mask.png" class="mask" draggable="false"/>
+<img src="images/mask.webp" class="mask" draggable="false"/>
 
 <!-- Mask -->
 
@@ -151,6 +151,22 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Stage End -->
 
+<!-- Models -->
+
+<a-assets>
+          <!-- Link to your GLB model -->
+          <a-asset-item id="my-model" src="./images/modelwalking2.glb"></a-asset-item>
+        </a-assets>
+
+        <!-- Add the GLB model with animation-mixer -->
+        <a-entity 
+          gltf-model="#my-model" 
+          animation-mixer 
+          scale="0.5 0.5 0.5" 
+          position="0 0 0">
+        </a-entity>
+
+<!-- Models End -->
 
 <!-- Music -->
 
@@ -173,7 +189,7 @@ fuse="true" fuse-timeout="1000"
 color="white"
 hover-color="white"
 active-color="white"
-design="cross">
+design="dot">
 </a-gui-cursor>
 
 </a-entity>
