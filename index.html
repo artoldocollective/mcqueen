@@ -158,7 +158,7 @@ document.querySelectorAll('img').forEach((img) => {
 <a-asset-item id="model2" src="./images/modelwalking2.glb"></a-asset-item>
 </a-assets>
 
-<a-entity position="0 0 -30" animation="property:position; to: -3 1.5 30; loop: true; dur: 40000">
+<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 30; loop: true; dur: 50000">
         <a-entity 
           gltf-model="#model1" 
           animation-mixer 
@@ -214,7 +214,7 @@ design="dot">
   <video id="video-src" src="assets/intro.mp4" autoplay muted loop></video>
 </a-assets>
 
-<a-video id="video-screen" src="#video-src" position="0 4.5 -14" width="12" height="9"></a-video>
+<a-video id="video-screen" src="#video-src" position="0 4.5 -14" width="12" height="9" opacity="0.9"></a-video>
 
 <!-- Video player End -->
 
