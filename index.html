@@ -163,8 +163,9 @@ document.querySelectorAll('img').forEach((img) => {
           gltf-model="#my-model" 
           animation-mixer 
           scale="2 2 2"
-          rotation="0 -180 0"  
-          position="0 1.5 3">
+          rotation="0 180 0"  
+          position="0 1.5 -20"
+          animation="property:position; to: 0 1.5 20; loop: true; dur: 20000">
         </a-entity>
 
 <!-- Models End -->
