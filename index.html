@@ -183,12 +183,6 @@ design="dot">
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-
-<a-plane gui-interactable id="09" onclick="location.href='./model1.html';" width="8" height="4.5" position=" 9 4 12" material="src:images/models1.webp; transparent: true" rotation="0 -160 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
-</a-plane>
-
 <a-plane gui-interactable id="10" onclick="location.href='./model1.html';" width="8" height="4.5" position=" -9 4 12" material="src:images/models1.webp; transparent: true" rotation="0 160 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
@@ -202,9 +196,10 @@ design="dot">
 <a-assets>
 <a-asset-item id="model1" src="./images/modelwalking1.glb"></a-asset-item>
 <a-asset-item id="model2" src="./images/modelwalking2.glb"></a-asset-item>
+<a-asset-item id="modelspray" src="./images/modelspray.glb"></a-asset-item>
 </a-assets>
 
-<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 50; loop: true; dur: 70000">
+<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 50; loop: true; dur: 60000">
         <a-entity 
           gltf-model="#model1" 
           animation-mixer 
@@ -219,6 +214,15 @@ design="dot">
           rotation="0 0 0"  
           position="3 1.2 -15">
         </a-entity>
+</a-entity>
+
+<a-entity 
+  	gltf-model="#model3" 
+  	animation-mixer 
+  	scale="2.5 2.5 2.5"
+  	rotation="0 0 0"  
+  	position="9 1.2 10" 
+  	animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000">
 </a-entity>
 
 <!-- Models End -->
