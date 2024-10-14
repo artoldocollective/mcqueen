@@ -78,6 +78,28 @@ document.querySelectorAll('img').forEach((img) => {
 });
 </script>
 
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.title = "Loading... 50%";
+        });
+
+        window.addEventListener("load", () => {
+            document.title = "Website Fully Loaded!";
+        });
+
+        // Optional: Simulate a smoother progress (e.g., loading resources)
+        let progress = 0;
+        const interval = setInterval(() => {
+            if (progress < 100) {
+                progress += 5;
+                document.title = `Loading... ${progress}%`;
+            } else {
+                clearInterval(interval);
+                document.title = "Website Fully Loaded!";
+            }
+        }, 100);
+</script>
+
 <body style="background-color:red">
 
 <div class="se-pre-con"></div>
@@ -184,20 +206,16 @@ design="dot">
 </a-plane>
 
 
-
-<a-entity scale="5 5 5">
-
-<a-plane gui-interactable id="09" onclick="location.href='./model1.html';" width="16" height="9" position=" 9 4 12" material="src:images/models1.webp; transparent: true" rotation="0 -160 0" 
+<a-plane gui-interactable id="09" onclick="location.href='./model1.html';" width="8" height="4.5" position=" 9 4 12" material="src:images/models1.webp; transparent: true" rotation="0 -160 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="10" onclick="location.href='./model1.html';" width="16" height="9" position=" -9 4 12" material="src:images/models1.webp; transparent: true" rotation="0 160 0" 
+<a-plane gui-interactable id="10" onclick="location.href='./model1.html';" width="8" height="4.5" position=" -9 4 12" material="src:images/models1.webp; transparent: true" rotation="0 160 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-</entity>
 
 <!-- Stage End -->
 
