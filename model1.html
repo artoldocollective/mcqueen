@@ -146,13 +146,13 @@ document.querySelectorAll('img').forEach((img) => {
 </a-assets>
 
 <!-- Ambient light -->
-<a-light type="ambient" color="#ffffff" intensity="1.5"></a-light>
+<a-light type="ambient" color="#ffffff" intensity="2"></a-light>
 
-<!-- Spotlight on the head -->
-<a-light type="spot" color="white" intensity="2" position="0 5 -8" target="#model-head" angle="20" distance="10"></a-light>
+<!-- Soft spotlight on the head -->
+<a-light type="spot" color="white" intensity="1.5" position="0 5 -8" target="#model-head" angle="25" penumbra="0.5" distance="12"></a-light>
 
-<!-- Spotlight on the legs -->
-<a-light type="spot" color="white" intensity="2" position="0 0.5 -8" target="#model-legs" angle="30" distance="10"></a-light>
+<!-- Soft spotlight on the legs -->
+<a-light type="spot" color="white" intensity="1.5" position="0 0.5 -8" target="#model-legs" angle="30" penumbra="0.5" distance="12"></a-light>
 
 <!-- Model -->
 <a-entity 
@@ -162,7 +162,7 @@ document.querySelectorAll('img').forEach((img) => {
   scale="4.5 4.5 4.5"
   rotation="0 0 0"  
   position="0 1.5 -8" 
-  animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 10000">
+  animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000">
 </a-entity>
 
 <!-- Invisible targets for head and legs -->
