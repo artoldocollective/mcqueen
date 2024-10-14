@@ -138,7 +138,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- World -->
 
-<a-sky color="#000"></a-sky>
+<a-sky color="#fff"></a-sky>
 
 <!-- Models -->
 
@@ -156,20 +156,6 @@ document.querySelectorAll('img').forEach((img) => {
         </a-entity>
 
 <!-- Models End -->
-
-<!-- Moving Spotlights -->
-
-      <a-light type="spot" color="white" intensity="4" position="-5 5 -5" target="#target"
-      animation="property: position; to: 5 5 -5; dur: 3000; dir: alternate; loop: true"></a-light>
-
-      <a-light type="spot" color="white" intensity="4" position="5 5 -5" target="#target"
-      animation="property: position; to: -5 5 -5; dur: 4000; dir: alternate; loop: true"></a-light>
-
-      <a-light type="spot" color="red" intensity="4" position="0 6 -3" target="#target"
-      animation="property: position; to: 0 6 -7; dur: 3500; dir: alternate; loop: true"></a-light>
-
-      <a-entity id="target" position="0 3 -8"></a-entity>
-
 
 </a-scene>
 
