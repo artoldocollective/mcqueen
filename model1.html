@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <title>McQueen feat. Witkin</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+    <meta property="og:image" content="./images/mask.png" />
+    <link rel="icon" type="image/png" href="./images/mask.png" />
+    <script src="assets/engine.js"></script>
+    <script src="assets/extras.js"></script>
+    <script src="assets/sound.js"></script>
+    <script src="assets/audio.js"></script>
+    <script src="assets/rain.js"></script>
+    <script src="assets/loader1.js"></script>
+    <script src="assets/loader2.js"></script>
+    <script src="assets/gui.js"></script>
+
+    <style>
+      .a-dialog-allow-button {
+       background-color: white;
+	}
+
+      .a-dialog-deny-button {
+       background-color: white;
+        }
+
+      .a-dialog-ok-button {
+       background-color: white;
+        }
+
+      .mask {
+      z-index: 99;
+      width: 250px;
+      height: 209px;
+      position: absolute;
+  
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      }
+
+      img {
+      -webkit-user-drag: none;
+      user-drag: none;         
+      -webkit-user-select: none;
+      -moz-user-select: none;    
+      -ms-user-select: none;    
+      user-select: none;        
+      }
+
+      .no-js #loader { display: none;  }
+      .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+      .se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(./images/spinner.svg) center no-repeat #000;
+     }
+  
+    </style>
+  </head>
+
+<script>
+// Wait for window load
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
+
+<script>
+document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});
+</script>
+
+<body style="background-color:red">
+
+<div class="se-pre-con"></div>
+
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: black; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true" cursor="none">
+
+
+<!-- World -->
+
+<a-sky color="#000"></a-sky>
+
+<!-- Models -->
+
+<a-assets>
+<a-asset-item id="model1" src="./images/model1.glb"></a-asset-item>
+</a-assets>
+
+<a-entity rotation="0 0 0" animation="property:position; to: 0 360 00; loop: true; dur: 50000">
+        <a-entity 
+          gltf-model="#model1" 
+          animation-mixer 
+          scale="4.5 4.5 24.5"
+          rotation="0 0 0"  
+          position="0 0 0">
+        </a-entity>
+</a-entity>
+
+<!-- Models End -->
+
+  </body>
+</html>
