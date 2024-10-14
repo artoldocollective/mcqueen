@@ -151,11 +151,28 @@ document.querySelectorAll('img').forEach((img) => {
           animation-mixer 
           scale="4.5 4.5 4.5"
           rotation="0 0 0"  
-          position="0 2 -8" 
+          position="0 1 -8" 
           animation="property:rotation; to: 0 360 0; loop: true; easing: linear; dur: 10000">
         </a-entity>
 
 <!-- Models End -->
+
+<!-- Moving Red Spotlight 1 -->
+
+      <a-light type="spot" color="red" intensity="2" position="-5 5 -5" target="#target"
+      animation="property: position; to: 5 5 -5; dur: 3000; dir: alternate; loop: true"></a-light>
+
+<!-- Moving White Spotlight 2 -->
+      <a-light type="spot" color="white" intensity="2" position="5 5 -5" target="#target"
+        animation="property: position; to: -5 5 -5; dur: 4000; dir: alternate; loop: true"></a-light>
+
+<!-- Moving Red Spotlight 3 -->
+      <a-light type="spot" color="red" intensity="2" position="0 6 -3" target="#target"
+        animation="property: position; to: 0 6 -7; dur: 3500; dir: alternate; loop: true"></a-light>
+
+<!-- Target for spotlights -->
+      <a-entity id="target" position="0 1 -8"></a-entity>
+
 
 </a-scene>
 
