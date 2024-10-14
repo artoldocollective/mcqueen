@@ -60,6 +60,44 @@
 	z-index: 9999;
 	background: url(./images/spinner.svg) center no-repeat #000;
      }
+
+        /* Fullscreen overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            z-index: 1000; /* Bring to front */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left and right arrows */
+        .arrow {
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none; /* Prevent text selection */
+        }
+
+        /* Close (X) button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .arrow:hover {
+            color: #ccc; /* Slight color change on hover */
+        }
   
     </style>
   </head>
@@ -82,45 +120,40 @@ document.querySelectorAll('img').forEach((img) => {
 
 <div class="se-pre-con"></div>
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
+ <!-- Overlay -->
+
+    <div class="overlay">
+        <!-- Left Arrow -->
+        <div class="arrow" id="leftArrow" onclick="window.location.href='your-left-url.html'">&#10094;</div> <!-- Left Arrow HTML Code -->
+        
+        <!-- Right Arrow -->
+        <div class="arrow" id="rightArrow" onclick="window.location.href='your-right-url.html'">&#10095;</div> <!-- Right Arrow HTML Code -->
+        
+        <!-- Close Button -->
+        <div class="close-btn" id="closeButton" onclick="window.location.href='your-close-url.html'">&#10006;</div> <!-- X Icon HTML Code -->
+    </div>
+
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: black; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
 
 
-<!-- Camera -->
+<!-- World -->
 
-<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:true;" animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
-
-<a-entity id="camera" camera position="0 1.6 0" cursor-visible="true">
-
-<a-gui-cursor id="cursor"
-raycaster="objects: [gui-interactable]"
-fuse="true" fuse-timeout="1000"
-color="white"
-hover-color="white"
-active-color="white"
-design="dot">
-</a-gui-cursor>
-
-</a-entity>
-
-</a-entity>
-
-<!-- Camera End -->
+<a-sky color="#000"></a-sky>
 
 <!-- Models -->
 
 <a-assets>
-<a-asset-item id="model" src="./images/model1.glb"></a-asset-item>
+<a-asset-item id="model1" src="./images/model1.glb"></a-asset-item>
 </a-assets>
 
-<a-entity rotation="0 0 0" animation="property:rotation; to: 0 360 0; loop: true; dur: 10000">
         <a-entity 
-          gltf-model="#model" 
+          gltf-model="#model1" 
           animation-mixer 
-          scale="2.5 2.5 2.5"
+          scale="2 2 2"
           rotation="0 0 0"  
-          position="0 0 0">
+          position="0 0 5" 
+          animation="property:position; to: 0 360 00; loop: true; dur: 50000">
         </a-entity>
-</a-entity>
 
 <!-- Models End -->
 
