@@ -133,7 +133,7 @@ document.querySelectorAll('img').forEach((img) => {
         <div class="close-btn" id="closeButton" onclick="window.location.href='your-close-url.html'">&#10006;</div> <!-- X Icon HTML Code -->
     </div>
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: black; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: black; backgroundColor: black" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
 
 
 <!-- World -->
@@ -143,19 +143,21 @@ document.querySelectorAll('img').forEach((img) => {
 <!-- Models -->
 
 <a-assets>
-<a-asset-item id="model1" src="./images/model1.glb"></a-asset-item>
+<a-asset-item id="model" src="./images/model1.glb"></a-asset-item>
 </a-assets>
 
         <a-entity 
-          gltf-model="#model1" 
+          gltf-model="#model" 
           animation-mixer 
-          scale="2 2 2"
+          scale="4.5 4.5 4.5"
           rotation="0 0 0"  
-          position="0 0 5" 
-          animation="property:position; to: 0 360 00; loop: true; dur: 50000">
+          position="0 2 -8" 
+          animation="property:rotation; to: 0 360 0; loop: true; easing: linear; dur: 10000">
         </a-entity>
 
 <!-- Models End -->
 
-  </body>
+</a-scene>
+
+</body>
 </html>
