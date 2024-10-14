@@ -133,7 +133,7 @@ document.querySelectorAll('img').forEach((img) => {
         <div class="close-btn" id="closeButton" onclick="window.location.href='your-close-url.html'">&#10006;</div> <!-- X Icon HTML Code -->
     </div>
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: black; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true" cursor="none">
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: black; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
 
 
 <!-- World -->
@@ -149,9 +149,9 @@ document.querySelectorAll('img').forEach((img) => {
         <a-entity 
           gltf-model="#model1" 
           animation-mixer 
-          scale="0.2 0.2 0.2"
+          scale="2 2 2"
           rotation="0 0 0"  
-          position="0 0 0" 
+          position="0 0 5" 
           animation="property:position; to: 0 360 00; loop: true; dur: 50000">
         </a-entity>
 
