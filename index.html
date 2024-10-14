@@ -197,6 +197,7 @@ design="dot">
 <a-asset-item id="model1" src="./images/modelwalking1.glb"></a-asset-item>
 <a-asset-item id="model2" src="./images/modelwalking2.glb"></a-asset-item>
 <a-asset-item id="modelspray" src="./images/modelspray.glb"></a-asset-item>
+<a-asset-item id="robot" src="./images/modelspray.glb"></a-asset-item>
 </a-assets>
 
 <a-entity position="0 -1 -30" animation="property:position; to: 0 -1 50; loop: true; dur: 60000">
@@ -223,6 +224,15 @@ design="dot">
   	rotation="0 0 0"  
   	position="9 1.2 10" 
   	animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000">
+</a-entity>
+
+<a-entity 
+  	gltf-model="#robot" 
+  	animation-mixer 
+  	scale="2.5 2.5 2.5"
+  	rotation="0 -45 0"  
+  	position="9 1.2 10" 
+  	>
 </a-entity>
 
 <!-- Models End -->
