@@ -133,28 +133,16 @@ document.querySelectorAll('img').forEach((img) => {
         <div class="close-btn" id="closeButton" onclick="window.location.href='your-close-url.html'">&#10006;</div> <!-- X Icon HTML Code -->
     </div>
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: black; backgroundColor: black" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
-
-
-<!-- World -->
-
-<a-sky color="#fff"></a-sky>
+<a-scene loading-screen="dotsColor: red; backgroundColor: black" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
 
 <!-- Assets -->
+
 <a-assets>
   <a-asset-item id="model" src="./images/model1.glb"></a-asset-item>
 </a-assets>
 
-<!-- Ambient light -->
-<a-light type="ambient" color="#ffffff" intensity="2"></a-light>
-
-<!-- Soft spotlight on the head -->
-<a-light type="spot" color="white" intensity="1.5" position="0 5 -8" target="#model-head" angle="25" penumbra="0.5" distance="12"></a-light>
-
-<!-- Soft spotlight on the legs -->
-<a-light type="spot" color="white" intensity="1.5" position="0 0.5 -8" target="#model-legs" angle="30" penumbra="0.5" distance="12"></a-light>
-
 <!-- Model -->
+
 <a-entity 
   gltf-model="#model" 
   id="model" 
@@ -165,13 +153,7 @@ document.querySelectorAll('img').forEach((img) => {
   animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000">
 </a-entity>
 
-<!-- Invisible targets for head and legs -->
-<a-entity id="model-head" position="0 3.5 -8"></a-entity> <!-- Adjust position to focus on the head -->
-<a-entity id="model-legs" position="0 0 -8"></a-entity> <!-- Adjust position to focus on the legs -->
-
 <!-- Models End -->
-
-
 
 </a-scene>
 

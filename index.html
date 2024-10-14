@@ -78,28 +78,6 @@ document.querySelectorAll('img').forEach((img) => {
 });
 </script>
 
-<script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.title = "Loading... 50%";
-        });
-
-        window.addEventListener("load", () => {
-            document.title = "Website Fully Loaded!";
-        });
-
-        // Optional: Simulate a smoother progress (e.g., loading resources)
-        let progress = 0;
-        const interval = setInterval(() => {
-            if (progress < 100) {
-                progress += 5;
-                document.title = `Loading... ${progress}%`;
-            } else {
-                clearInterval(interval);
-                document.title = "Website Fully Loaded!";
-            }
-        }, 100);
-</script>
-
 <body style="background-color:red">
 
 <div class="se-pre-con"></div>
