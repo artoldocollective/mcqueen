@@ -84,28 +84,6 @@ document.querySelectorAll('img').forEach((img) => {
 
 <a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: black" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
 
-
-<!-- Camera -->
-
-<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:true;" animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
-
-<a-entity id="camera" camera position="0 1.6 0" cursor-visible="true">
-
-<a-gui-cursor id="cursor"
-raycaster="objects: [gui-interactable]"
-fuse="true" fuse-timeout="1000"
-color="white"
-hover-color="white"
-active-color="white"
-design="dot">
-</a-gui-cursor>
-
-</a-entity>
-
-</a-entity>
-
-<!-- Camera End -->
-
 <!-- Models -->
 
 <a-assets>
@@ -118,7 +96,7 @@ design="dot">
           animation-mixer 
           scale="2.5 2.5 2.5"
           rotation="0 0 0"  
-          position="0 0 -3" 
+          position="0 0 -5" 
           animation="property:rotation; to: 0 360 0; loop: true; dur: 10000">
         </a-entity>
 
