@@ -138,24 +138,29 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- World -->
 
-<a-sky color="#fff"></a-sky>
+<a-sky color="#000000"></a-sky>
 
-<!-- Models -->
-
+<!-- Assets -->
 <a-assets>
-<a-asset-item id="model" src="./images/model1.glb"></a-asset-item>
+  <a-asset-item id="model" src="./images/model1.glb"></a-asset-item>
 </a-assets>
 
-        <a-entity 
-          gltf-model="#model" 
-          animation-mixer 
-          scale="4.5 4.5 4.5"
-          rotation="0 0 0"  
-          position="0 3 -8" 
-          animation="property:rotation; to: 0 360 0; loop: true; easing: linear; dur: 10000">
-        </a-entity>
+<!-- Ambient light -->
+<a-light type="ambient" color="#ffffff" intensity="1.5"></a-light>
+
+<!-- Model -->
+<a-entity 
+  gltf-model="#model" 
+  id="model" 
+  animation-mixer 
+  scale="4.5 4.5 4.5"
+  rotation="0 0 0"  
+  position="0 1.5 -8" 
+  animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 10000">
+</a-entity>
 
 <!-- Models End -->
+
 
 </a-scene>
 
