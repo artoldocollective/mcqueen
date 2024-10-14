@@ -147,15 +147,14 @@ document.querySelectorAll('img').forEach((img) => {
 <a-asset-item id="model1" src="./images/model1.glb"></a-asset-item>
 </a-assets>
 
-<a-entity rotation="0 0 0" animation="property:position; to: 0 360 00; loop: true; dur: 50000">
         <a-entity 
           gltf-model="#model1" 
           animation-mixer 
           scale="1 1 1"
           rotation="0 0 0"  
-          position="0 0 0">
+          position="0 0 0" 
+          animation="property:position; to: 0 360 00; loop: true; dur: 50000">
         </a-entity>
-</a-entity>
 
 <!-- Models End -->
 
