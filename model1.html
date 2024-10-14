@@ -96,7 +96,7 @@
 
         .close-btn:hover,
         .arrow:hover {
-            color: #ccc; /* Slight color change on hover */
+            color: red;
         }
   
     </style>
@@ -134,6 +134,10 @@ document.querySelectorAll('img').forEach((img) => {
     </div>
 
 <a-scene loading-screen="dotsColor: black; backgroundColor: white" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
+
+<!-- Add ambient light -->
+
+<a-light type="ambient" color="#ffffff" intensity="1.5"></a-light>
 
 <!-- Assets -->
 
