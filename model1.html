@@ -60,6 +60,43 @@
 	z-index: 9999;
 	background: url(./images/spinner.svg) center no-repeat #000;
      }
+
+        /* Fullscreen overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            z-index: 1000; /* Bring to front */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left and right arrows */
+        .arrow {
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            user-select: none; /* Prevent text selection */
+        }
+
+        /* Close (X) button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .arrow:hover {
+            color: #ccc; /* Slight color change on hover */
+        }
   
     </style>
   </head>
@@ -81,6 +118,19 @@ document.querySelectorAll('img').forEach((img) => {
 <body style="background-color:red">
 
 <div class="se-pre-con"></div>
+
+ <!-- Overlay -->
+
+    <div class="overlay">
+        <!-- Left Arrow -->
+        <div class="arrow" id="leftArrow" onclick="window.location.href='your-left-url.html'">&#10094;</div> <!-- Left Arrow HTML Code -->
+        
+        <!-- Right Arrow -->
+        <div class="arrow" id="rightArrow" onclick="window.location.href='your-right-url.html'">&#10095;</div> <!-- Right Arrow HTML Code -->
+        
+        <!-- Close Button -->
+        <div class="close-btn" id="closeButton" onclick="window.location.href='your-close-url.html'">&#10006;</div> <!-- X Icon HTML Code -->
+    </div>
 
 <a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: black; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true" cursor="none">
 
