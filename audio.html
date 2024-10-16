@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="/mute.js" defer></script>
+  </head>  
+  <body>
+  <a-scene cursor='rayOrigin: mouse' raycaster='objects: [sound]'>
+    <a-assets>
+      <audio id='hopscotch' crossorigin="anonymous"
+             src='assets/mcqueen.mp3'></audio>
+      <audio id='instrumental' crossorigin="anonymous"
+             src='assets/mcgirr.mp3'></audio>
+      <audio id='getHappy' crossorigin="anonymous"
+             src='https://cdn.glitch.com/dea3e23f-485c-4f59-9a05-ce364e725d8a%2FPurple20Planet20Music20-20Upbeat20-20Get20Happy202813A362920150bpm.mp3'></audio>
+
+    </a-assets>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#0000ff" scale='0.5 0.5 0.5'
+             sound="src: #hopscotch;"></a-box>
+       <a-box position="0 0.5 -3" rotation="0 45 0" color="#0000ff" scale='0.5 0.5 0.5'
+             sound="src: #instrumental;" ></a-box>
+      <a-box position="1 0.5 -3" rotation="0 45 0" color="#0000ff" scale='0.5 0.5 0.5'
+             sound="src: #getHappy;"></a-box>
+    </a-scene>
+    <p style="position:fixed;top:20px;left:20px;">
+      All songs are from  <a href="https://glitch.com">Purple Planet Music</a>!<br>
+      Press any box to start a song, and pause the other ones.
+    </p>
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
+</html>

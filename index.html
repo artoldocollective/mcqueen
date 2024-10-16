@@ -88,8 +88,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Mask -->
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true" antialias="true" 
-cursor="rayOrigin: mouse">
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
 
 
 <!-- World -->
@@ -286,37 +285,6 @@ design="dot">
     }
   };
 </script>
-
-<script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var scene = document.querySelector('a-scene');
-        
-        scene.addEventListener('loaded', function() {
-          // Select all elements that have the 'sound' component
-          var soundEls = document.querySelectorAll('[sound]');
-
-          // Add click event listener to each sound element
-          soundEls.forEach(function(item) {
-            item.addEventListener('click', function(e) {
-              let clickedElement = e.target; // Get the clicked element
-              let isPlaying = clickedElement.components.sound.isPlaying; // Check if the sound is already playing
-
-              // Stop all sounds except background music
-              soundEls.forEach(function(soundEl) {
-                if (soundEl.id !== 'background-music') { // Keep background music running
-                  soundEl.components.sound.stopSound();
-                }
-              });
-
-              // Play the clicked sound if it was not playing already
-              if (!isPlaying) {
-                clickedElement.components.sound.playSound();
-              }
-            });
-          });
-        });
-      });
- </script>
 
   </body>
 </html>
