@@ -133,7 +133,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Add ambient light -->
 
-<a-light type="ambient" color="#ffffff" intensity="1.5"></a-light>
+<a-light type="ambient" color="#ffffff" intensity="1.0"></a-light>
 
 <!-- Assets -->
 
@@ -157,6 +157,10 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Directional light (without shadows) -->
 <a-light type="directional" color="#ffffff" intensity="1" position="-3 10 -5"></a-light>
+
+<!-- Spotlight to highlight the face -->
+<a-light type="spot" color="#ffffff" intensity="1" position="0 3 -6" angle="30" target="#model"></a-light>
+
 
 </a-scene>
 
