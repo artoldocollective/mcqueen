@@ -274,19 +274,36 @@ design="dot">
   };
 </script>
 
-
 <script>
+      // Custom component to restrict vertical movement
       AFRAME.registerComponent('horizontal-look-controls', {
-        schema: {
-          enabled: { default: true }
-        },
         init: function () {
           this.yawObject = this.el.components['look-controls'].yawObject;
           this.pitchObject = this.el.components['look-controls'].pitchObject;
+
+          // Store initial pitch rotation
+          this.initialPitch = this.pitchObject.rotation.x;
+
+          // Handle mouse movement events
+          this.bindMethods();
         },
-        tick: function () {
-          // Lock the pitch (vertical rotation) to zero to disable vertical movement
-          this.pitchObject.rotation.x = 0;
+        bindMethods: function () {
+          this.onMouseMove = this.onMouseMove.bind(this);
+          this.el.sceneEl.addEventListener('mousemove', this.onMouseMove);
+        },
+        onMouseMove: function (event) {
+          // Get the movement delta from the mouse event
+          const deltaX = event.movementX;
+          const deltaY = event.movementY;
+
+          // Apply only horizontal movement
+          this.yawObject.rotation.y += deltaX * 0.1; // Adjust sensitivity here
+          // Lock vertical movement
+          this.pitchObject.rotation.x = this.initialPitch; // Keep the initial pitch
+        },
+        remove: function () {
+          // Clean up event listener on component removal
+          this.el.sceneEl.removeEventListener('mousemove', this.onMouseMove);
         }
       });
 
