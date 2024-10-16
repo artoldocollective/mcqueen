@@ -88,7 +88,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Mask -->
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true" cursor="rayOrigin: mouse">
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
 
 
 <!-- World -->
@@ -274,6 +274,27 @@ design="dot">
   };
 </script>
 
+
+<script>
+      // Customizing look-controls to restrict vertical movement
+      AFRAME.registerComponent('horizontal-look-controls', {
+        init: function () {
+          this.el.addEventListener('componentinitialized', evt => {
+            if (evt.detail.name === 'look-controls') {
+              const lookControls = this.el.components['look-controls'];
+              lookControls.pitchObject.rotation.x = 0; // Reset initial pitch
+            }
+          });
+        },
+        tick: function () {
+          const lookControls = this.el.components['look-controls'];
+          lookControls.pitchObject.rotation.x = 0; // Prevent vertical movement (pitch)
+        },
+      });
+
+      // Apply horizontal look-controls to the camera
+      document.querySelector('#camera').setAttribute('horizontal-look-controls', '');
+</script>
 
   </body>
 </html>
