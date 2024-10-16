@@ -11,7 +11,6 @@
     <script src="assets/extras.js"></script>
     <script src="assets/sound.js"></script>
     <script src="assets/audio.js"></script>
-    <script src="assets/solo.js"></script>
     <script src="assets/rain.js"></script>
     <script src="assets/loader1.js"></script>
     <script src="assets/loader2.js"></script>
@@ -289,28 +288,35 @@ design="dot">
 </script>
 
 <script>
-      function playOnlyThisAudio(entitySelector) {
-        // Get all entities with the sound component
-        const allSounds = document.querySelectorAll('[sound]');
+  // Function to handle playing only the clicked sound
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all elements that have the 'sound' component
+    var soundEls = document.querySelectorAll('[sound]');
 
-        // Loop through all sound components and stop them, except the background music
-        allSounds.forEach(entity => {
-          const soundComponent = entity.components.sound;
+    // Add click event listener to each sound element
+    for (var i = 0; i < soundEls.length; i++) {
+      var item = soundEls[i];
 
-          // Skip stopping if the entity is the background music
-          if (entity.id !== 'background-music' && soundComponent && soundComponent.isPlaying) {
-            soundComponent.stopSound();  // Stop any playing sound (except background music)
+      item.addEventListener('click', function(e) {
+        let clickedElement = e.target; // Get the clicked element
+        let isPlaying = clickedElement.components.sound.isPlaying; // Check if the sound is already playing
+
+        // Stop all sounds except background music
+        soundEls.forEach(function(soundEl) {
+          if (soundEl.id !== 'background-music') { // Keep background music running
+            soundEl.components.sound.stopSound();
           }
         });
 
-        // Play the clicked entity's audio
-        const clickedEntity = document.querySelector(entitySelector);
-        const clickedSoundComponent = clickedEntity.components.sound;
-        if (clickedSoundComponent) {
-          clickedSoundComponent.playSound();  // Play the clicked sound
+        // Play the clicked sound if it was not playing already
+        if (!isPlaying) {
+          clickedElement.components.sound.playSound();
         }
-      }
+      });
+    }
+  });
 </script>
+
 
   </body>
 </html>
