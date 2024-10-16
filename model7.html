@@ -135,6 +135,10 @@ document.querySelectorAll('img').forEach((img) => {
 
 <a-light type="ambient" color="#ffffff" intensity="1.5"></a-light>
 
+<!-- Directional light (without shadows) -->
+
+<a-light type="directional" color="#ffffff" intensity="1" position="-3 10 -5"></a-light>
+
 <!-- Assets -->
 
 <a-assets>
@@ -150,7 +154,7 @@ document.querySelectorAll('img').forEach((img) => {
   scale="4.5 4.5 4.5"
   rotation="0 0 0"  
   position="0 1.5 -8" 
-  animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000">
+  animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 10000">
 </a-entity>
 
 <!-- Models End -->
