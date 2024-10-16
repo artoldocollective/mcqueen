@@ -131,10 +131,31 @@ document.querySelectorAll('img').forEach((img) => {
 
 <a-scene loading-screen="dotsColor: black; backgroundColor: white" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
 
-  <!-- Add ambient light with reduced intensity -->
-  <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
+<!-- Add ambient light -->
 
-  <!-- Directional light for main lighting -->
+<a-light type="ambient" color="#ffffff" intensity="1.5"></a-light>
+
+<!-- Assets -->
+
+<a-assets>
+  <a-asset-item id="model" src="./images/model5.glb"></a-asset-item>
+</a-assets>
+
+<!-- Model -->
+
+<a-entity 
+  gltf-model="#model" 
+  id="model" 
+  animation-mixer 
+  scale="4.5 4.5 4.5"
+  rotation="0 0 0"  
+  position="0 1.5 -8" 
+  animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 10000">
+</a-entity>
+
+<!-- Models End -->
+
+<!-- Directional light for main lighting -->
   <a-light type="directional" color="#ffffff" intensity="1" position="-3 10 -5" target="#model" castShadow="true"></a-light>
 
   <!-- Point light for highlights -->
@@ -143,28 +164,7 @@ document.querySelectorAll('img').forEach((img) => {
   <!-- Spotlight for dramatic effect -->
   <a-light type="spot" color="#ffdd99" intensity="1" position="0 6 -4" angle="45" target="#model"></a-light>
 
-  <!-- Assets -->
-  <a-assets>
-    <a-asset-item id="model" src="./images/model5.glb"></a-asset-item>
-  </a-assets>
-
-  <!-- Model with shadows enabled -->
-  <a-entity 
-    gltf-model="#model" 
-    id="model" 
-    animation-mixer 
-    scale="4.5 4.5 4.5"
-    rotation="0 0 0"  
-    position="0 1.5 -8"
-    shadow="receive: true; cast: true"
-    animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 10000">
-  </a-entity>
-
-  <!-- Ground plane to receive shadows -->
-  <a-plane position="0 0 -8" rotation="-90 0 0" width="20" height="20" color="#cccccc" shadow="receive: true"></a-plane>
-
 </a-scene>
-
 
 </body>
 </html>
