@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>McQueen feat. Witkin</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+    <meta property="og:image" content="./images/mask.png" />
+    <link rel="icon" type="image/png" href="./images/mask.png" />
+    
+    <script>
+        window.onload = function() {
+            // Define an array of model pages
+            const models = [];
+            for (let i = 1; i <= 32; i++) {
+                models.push(`model${i}.html`);
+            }
+
+            // Select a random model from the array
+            const randomModel = models[Math.floor(Math.random() * models.length)];
+
+            // Redirect to the random model page
+            window.location.href = randomModel;
+        };
+    </script>
+
+  </head>
+
+<body>
+
+</body>
+</html>
