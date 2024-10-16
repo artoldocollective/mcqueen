@@ -292,10 +292,11 @@ design="dot">
 
         // Loop through all sound components and stop them, except the background music
         allSounds.forEach(entity => {
-          // Check if this is the music entity, and skip stopping it
+          // Skip stopping if the entity is the background music
           if (entity.id !== 'background-music') {
             const soundComponent = entity.components.sound;
-            if (soundComponent.isPlaying) {
+            // Stop the sound if it is currently playing
+            if (soundComponent && soundComponent.isPlaying) {
               soundComponent.stopSound();
             }
           }
@@ -303,32 +304,11 @@ design="dot">
 
         // Play the clicked entity's audio
         const clickedEntity = document.querySelector(entitySelector);
-        clickedEntity.components.sound.playSound();
-      }
-</script>
-
-<script>
-      // Overriding look-controls behavior for horizontal-only movement
-      AFRAME.registerComponent('horizontal-look-controls', {
-        init: function () {
-          // Get reference to look-controls component
-          this.lookControls = this.el.components['look-controls'];
-
-          // Store reference to pitch and yaw objects
-          this.pitchObject = this.lookControls.pitchObject;
-          this.yawObject = this.lookControls.yawObject;
-          
-          // Store the initial vertical (pitch) rotation
-          this.initialPitch = this.pitchObject.rotation.x;
-        },
-        tick: function () {
-          // Lock vertical movement by setting the pitch (x rotation) back to the initial value
-          this.pitchObject.rotation.x = this.initialPitch;
+        const soundComponent = clickedEntity.components.sound;
+        if (soundComponent) {
+          soundComponent.playSound();
         }
-      });
-
-      // Attach the custom horizontal-look-controls to the camera
-      document.querySelector('#camera').setAttribute('horizontal-look-controls', '');
+      }
 </script>
 
   </body>
