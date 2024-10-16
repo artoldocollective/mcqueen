@@ -276,23 +276,21 @@ design="dot">
 
 
 <script>
-      // Customizing look-controls to restrict vertical movement
       AFRAME.registerComponent('horizontal-look-controls', {
+        schema: {
+          enabled: { default: true }
+        },
         init: function () {
-          this.el.addEventListener('componentinitialized', evt => {
-            if (evt.detail.name === 'look-controls') {
-              const lookControls = this.el.components['look-controls'];
-              lookControls.pitchObject.rotation.x = 0; // Reset initial pitch
-            }
-          });
+          this.yawObject = this.el.components['look-controls'].yawObject;
+          this.pitchObject = this.el.components['look-controls'].pitchObject;
         },
         tick: function () {
-          const lookControls = this.el.components['look-controls'];
-          lookControls.pitchObject.rotation.x = 0; // Prevent vertical movement (pitch)
-        },
+          // Lock the pitch (vertical rotation) to zero to disable vertical movement
+          this.pitchObject.rotation.x = 0;
+        }
       });
 
-      // Apply horizontal look-controls to the camera
+      // Attach the custom horizontal-look-controls to the camera
       document.querySelector('#camera').setAttribute('horizontal-look-controls', '');
 </script>
 
