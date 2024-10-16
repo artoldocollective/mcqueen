@@ -155,14 +155,8 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Models End -->
 
-<!-- Directional light for main lighting -->
-  <a-light type="directional" color="#ffffff" intensity="1" position="-3 10 -5" target="#model" castShadow="true"></a-light>
-
-  <!-- Point light for highlights -->
-  <a-light type="point" color="#ffffff" intensity="0.8" position="2 4 -6" distance="10"></a-light>
-
-  <!-- Spotlight for dramatic effect -->
-  <a-light type="spot" color="#ffdd99" intensity="1" position="0 6 -4" angle="45" target="#model"></a-light>
+<!-- Directional light (without shadows) -->
+<a-light type="directional" color="#ffffff" intensity="1" position="-3 10 -5"></a-light>
 
 </a-scene>
 
