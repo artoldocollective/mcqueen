@@ -84,7 +84,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Mask -->
 
-<img src="images/mask.webp" class="mask" draggable="false"/>
+<img src="images/mask.webp" class="mask" draggable="false" style="cursor:none;"/>
 
 <!-- Mask -->
 
@@ -101,13 +101,13 @@ document.querySelectorAll('img').forEach((img) => {
 
 <a-plane id="curtain" width="40" height="30" color="grey" position="0 0.1 10" rotation="0 0 0" animation="property:rotation; to: 90 0 0; easing: easeOutQuad; dur: 4000"></a-plane>
 
-<a-plane id="red carpet 1" width="12" height="15" color="red" position="10 0.1 -7" rotation="-90 90 0" animation="property:position; to: 10 0.1 -7; easing: easeOutQuad; dur: 4000"></a-plane>
+<a-plane id="red carpet 1" width="12" height="16" color="red" position="10 0.1 -7" rotation="-90 90 0" animation="property:position; to: 10 0.1 -7; easing: easeOutQuad; dur: 4000"></a-plane>
 
-<a-plane id="red carpet 2" width="12" height="15" color="red" position="-10 0.1 -7" rotation="-90 90 0" animation="property:position; to: -10 0.1 -7; easing: easeOutQuad; dur: 4000"></a-plane>
+<a-plane id="red carpet 2" width="12" height="16" color="red" position="-10 0.1 -7" rotation="-90 90 0" animation="property:position; to: -10 0.1 -7; easing: easeOutQuad; dur: 4000"></a-plane>
 
-<a-plane id="red carpet 3" width="20" height="15" color="red" position="10 0.1 15" rotation="-90 90 0" animation="property:position; to: 10 0.1 15; easing: easeOutQuad; dur: 4000"></a-plane>
+<a-plane id="red carpet 3" width="20" height="16" color="red" position="10 0.1 15" rotation="-90 90 0" animation="property:position; to: 10 0.1 15; easing: easeOutQuad; dur: 4000"></a-plane>
 
-<a-plane id="red carpet 4" width="20" height="15" color="red" position="-10 0.1 15" rotation="-90 90 0" animation="property:position; to: -10 0.1 15; easing: easeOutQuad; dur: 4000"></a-plane>
+<a-plane id="red carpet 4" width="20" height="16" color="red" position="-10 0.1 15" rotation="-90 90 0" animation="property:position; to: -10 0.1 15; easing: easeOutQuad; dur: 4000"></a-plane>
 
 <a-image src="./images/shirts.webp" position="0 13.5 -15" width="14" height="7" rotation="25 0 0" animation="property:rotation; to: 0 0 0; easing: easeOutQuad; dir: alternate; loop: true; dur: 4000;">
 </a-image>
@@ -116,7 +116,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Camera -->
 
-<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:true;" animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
+<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:false;" animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
 
 <a-entity id="camera" camera position="0 1.6 0" cursor-visible="true">
 
