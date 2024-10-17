@@ -266,6 +266,9 @@ design="dot">
 
 </a-scene>
 
+
+<!-- Video autoplay mobile devices -->
+
 <script type="text/javascript">
   let scene = document.querySelector('a-scene');
   var videoEl = document.querySelector('#video-src');
@@ -291,6 +294,8 @@ design="dot">
   };
 </script>
 
+
+<!-- Stop audio click images -->
 
 <script>
   // Get all A-Frame entities with sounds (i.e., the entities for sounds 1 to 8)
@@ -344,6 +349,8 @@ design="dot">
 </script>
 
 
+<!-- Stop audio click video -->
+
 <script>
     // Get all A-Frame entities with sounds (i.e., the entities for sounds 1 to 8)
     const soundEntities = [
@@ -391,9 +398,7 @@ design="dot">
     videoElement.addEventListener('click', () => {
       stopAllSounds(); // Stop all currently playing sounds with fade-out
     });
-  </script>
-</a-scene>
-
+</script>
 
   </body>
 </html>
