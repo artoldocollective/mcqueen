@@ -305,56 +305,62 @@ design="dot">
         document.getElementById('sound8')
       ];
 
-      // Function to pause all sounds
-      function pauseAllSounds() {
+      // Function to stop all sounds (by lowering volume to 0)
+      function stopAllSounds() {
         sounds.forEach(sound => {
-          sound.pause(); // Pause each sound
+          sound.pause(); // Ensure playback is paused
           sound.currentTime = 0; // Rewind to the start
+          sound.volume = 0; // Mute the sound
         });
+      }
+
+      // Function to play a specific sound
+      function playSound(sound) {
+        sound.volume = 1; // Set volume back to normal
+        sound.play(); // Play the sound
       }
 
       // Add event listeners to each plane
       document.getElementById('1').addEventListener('click', () => {
-        pauseAllSounds();
-        document.getElementById('sound1').play(); // Play sound 1
+        stopAllSounds();
+        playSound(document.getElementById('sound1'));
       });
 
       document.getElementById('2').addEventListener('click', () => {
-        pauseAllSounds();
-        document.getElementById('sound2').play(); // Play sound 2
+        stopAllSounds();
+        playSound(document.getElementById('sound2'));
       });
 
       document.getElementById('3').addEventListener('click', () => {
-        pauseAllSounds();
-        document.getElementById('sound3').play(); // Play sound 3
+        stopAllSounds();
+        playSound(document.getElementById('sound3'));
       });
 
       document.getElementById('4').addEventListener('click', () => {
-        pauseAllSounds();
-        document.getElementById('sound4').play(); // Play sound 4
+        stopAllSounds();
+        playSound(document.getElementById('sound4'));
       });
 
       document.getElementById('5').addEventListener('click', () => {
-        pauseAllSounds();
-        document.getElementById('sound5').play(); // Play sound 5
+        stopAllSounds();
+        playSound(document.getElementById('sound5'));
       });
 
       document.getElementById('6').addEventListener('click', () => {
-        pauseAllSounds();
-        document.getElementById('sound6').play(); // Play sound 6
+        stopAllSounds();
+        playSound(document.getElementById('sound6'));
       });
 
       document.getElementById('7').addEventListener('click', () => {
-        pauseAllSounds();
-        document.getElementById('sound7').play(); // Play sound 7
+        stopAllSounds();
+        playSound(document.getElementById('sound7'));
       });
 
       document.getElementById('8').addEventListener('click', () => {
-        pauseAllSounds();
-        document.getElementById('sound8').play(); // Play sound 8
+        stopAllSounds();
+        playSound(document.getElementById('sound8'));
       });
 </script>
-
 
   </body>
 </html>
