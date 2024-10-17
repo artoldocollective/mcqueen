@@ -293,73 +293,71 @@ design="dot">
 
 
 <script>
-      // List of audio elements
-      const sounds = [
-        document.getElementById('sound1'),
-        document.getElementById('sound2'),
-        document.getElementById('sound3'),
-        document.getElementById('sound4'),
-        document.getElementById('sound5'),
-        document.getElementById('sound6'),
-        document.getElementById('sound7'),
-        document.getElementById('sound8')
-      ];
+     // List of audio elements
+const sounds = [
+  document.getElementById('sound1'),
+  document.getElementById('sound2'),
+  document.getElementById('sound3'),
+  document.getElementById('sound4'),
+  document.getElementById('sound5'),
+  document.getElementById('sound6'),
+  document.getElementById('sound7'),
+  document.getElementById('sound8')
+];
 
-      // Function to stop all sounds (by lowering volume to 0)
-      function stopAllSounds() {
-        sounds.forEach(sound => {
-          sound.pause(); // Ensure playback is paused
-          sound.currentTime = 0; // Rewind to the start
-          sound.volume = 0; // Mute the sound
-        });
-      }
+// Function to stop all sounds (by using sound.stop())
+function stopAllSounds() {
+  sounds.forEach(sound => {
+    sound.components.sound.stopSound(); // Stop the sound if it's playing
+  });
+}
 
-      // Function to play a specific sound
-      function playSound(sound) {
-        sound.volume = 1; // Set volume back to normal
-        sound.play(); // Play the sound
-      }
+// Function to play a specific sound
+function playSound(sound) {
+  sound.components.sound.playSound(); // Play the sound
+}
 
-      // Add event listeners to each plane
-      document.getElementById('1').addEventListener('click', () => {
-        stopAllSounds();
-        playSound(document.getElementById('sound1'));
-      });
+// Add event listeners to each plane
+document.getElementById('1').addEventListener('click', () => {
+  stopAllSounds();
+  playSound(document.getElementById('sound1'));
+});
 
-      document.getElementById('2').addEventListener('click', () => {
-        stopAllSounds();
-        playSound(document.getElementById('sound2'));
-      });
+document.getElementById('2').addEventListener('click', () => {
+  stopAllSounds();
+  playSound(document.getElementById('sound2'));
+});
 
-      document.getElementById('3').addEventListener('click', () => {
-        stopAllSounds();
-        playSound(document.getElementById('sound3'));
-      });
+document.getElementById('3').addEventListener('click', () => {
+  stopAllSounds();
+  playSound(document.getElementById('sound3'));
+});
 
-      document.getElementById('4').addEventListener('click', () => {
-        stopAllSounds();
-        playSound(document.getElementById('sound4'));
-      });
+document.getElementById('4').addEventListener('click', () => {
+  stopAllSounds();
+  playSound(document.getElementById('sound4'));
+});
 
-      document.getElementById('5').addEventListener('click', () => {
-        stopAllSounds();
-        playSound(document.getElementById('sound5'));
-      });
+document.getElementById('5').addEventListener('click', () => {
+  stopAllSounds();
+  playSound(document.getElementById('sound5'));
+});
 
-      document.getElementById('6').addEventListener('click', () => {
-        stopAllSounds();
-        playSound(document.getElementById('sound6'));
-      });
+document.getElementById('6').addEventListener('click', () => {
+  stopAllSounds();
+  playSound(document.getElementById('sound6'));
+});
 
-      document.getElementById('7').addEventListener('click', () => {
-        stopAllSounds();
-        playSound(document.getElementById('sound7'));
-      });
+document.getElementById('7').addEventListener('click', () => {
+  stopAllSounds();
+  playSound(document.getElementById('sound7'));
+});
 
-      document.getElementById('8').addEventListener('click', () => {
-        stopAllSounds();
-        playSound(document.getElementById('sound8'));
-      });
+document.getElementById('8').addEventListener('click', () => {
+  stopAllSounds();
+  playSound(document.getElementById('sound8'));
+});
+
 </script>
 
   </body>
