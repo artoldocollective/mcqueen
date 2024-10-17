@@ -293,68 +293,36 @@ design="dot">
 
 
 <script>
-  // Get references to the audio elements (sound1 to sound8)
-  const sounds = [
-    document.getElementById('sound1'),
-    document.getElementById('sound2'),
-    document.getElementById('sound3'),
-    document.getElementById('sound4'),
-    document.getElementById('sound5'),
-    document.getElementById('sound6'),
-    document.getElementById('sound7'),
-    document.getElementById('sound8')
+  // Get all A-Frame entities with sounds (i.e., the entities for sounds 1 to 8)
+  const soundEntities = [
+    document.querySelector('#01'),
+    document.querySelector('#02'),
+    document.querySelector('#03'),
+    document.querySelector('#04'),
+    document.querySelector('#05'),
+    document.querySelector('#06'),
+    document.querySelector('#07'),
+    document.querySelector('#08')
   ];
 
   // Function to stop all sounds
   function stopAllSounds() {
-    sounds.forEach(sound => {
-      sound.pause(); // Pause the sound
-      sound.currentTime = 0; // Reset playback to the start
+    soundEntities.forEach(soundEntity => {
+      const soundComponent = soundEntity.components.sound;
+      if (soundComponent && soundComponent.isPlaying) {
+        soundComponent.stopSound(); // Stop the sound if it is playing
+      }
     });
   }
 
-  // Add click event listeners to A-Frame planes
-  document.querySelector('#01').addEventListener('click', () => {
-    stopAllSounds();
-    document.getElementById('sound1').play(); // Play sound1
-  });
-
-  document.querySelector('#02').addEventListener('click', () => {
-    stopAllSounds();
-    document.getElementById('sound2').play(); // Play sound2
-  });
-
-  document.querySelector('#03').addEventListener('click', () => {
-    stopAllSounds();
-    document.getElementById('sound3').play(); // Play sound3
-  });
-
-  document.querySelector('#04').addEventListener('click', () => {
-    stopAllSounds();
-    document.getElementById('sound4').play(); // Play sound4
-  });
-
-  document.querySelector('#05').addEventListener('click', () => {
-    stopAllSounds();
-    document.getElementById('sound5').play(); // Play sound5
-  });
-
-  document.querySelector('#06').addEventListener('click', () => {
-    stopAllSounds();
-    document.getElementById('sound6').play(); // Play sound6
-  });
-
-  document.querySelector('#07').addEventListener('click', () => {
-    stopAllSounds();
-    document.getElementById('sound7').play(); // Play sound7
-  });
-
-  document.querySelector('#08').addEventListener('click', () => {
-    stopAllSounds();
-    document.getElementById('sound8').play(); // Play sound8
+  // Add click event listeners to each plane
+  soundEntities.forEach((soundEntity, index) => {
+    soundEntity.addEventListener('click', () => {
+      stopAllSounds(); // Stop all currently playing sounds
+      soundEntity.components.sound.playSound(); // Play the clicked sound
+    });
   });
 </script>
-
 
 
   </body>
