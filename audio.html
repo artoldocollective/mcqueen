@@ -160,42 +160,42 @@ design="dot">
 
 <a-entity text="value:McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="22 22 22"></a-entity> 
 
-<a-plane gui-interactable id="1" sound="src: #sound1; on: click;" width="3.168" height="4" position="-8 2.5 -10" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
+<a-plane gui-interactable id="01" sound="src: #sound1; on: click;" width="3.168" height="4" position="-8 2.5 -10" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="2" sound="src: #sound2; on: click;" width="3.168" height="4" position=" 8 2.5 -10" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
+<a-plane gui-interactable id="02" sound="src: #sound2; on: click;" width="3.168" height="4" position=" 8 2.5 -10" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="3" sound="src: #sound3; on: click;" width="3.168" height="4" position="-9 2.5 -6" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
+<a-plane gui-interactable id="03" sound="src: #sound3; on: click;" width="3.168" height="4" position="-9 2.5 -6" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="4" sound="src: #sound4; on: click;" width="3.168" height="4" position=" 9 2.5 -6" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
+<a-plane gui-interactable id="04" sound="src: #sound4; on: click;" width="3.168" height="4" position=" 9 2.5 -6" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="5" sound="src: #sound5; on: click;" width="3.168" height="4" position="-9 2.5 -2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
+<a-plane gui-interactable id="05" sound="src: #sound5; on: click;" width="3.168" height="4" position="-9 2.5 -2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="6" sound="src: #sound6; on: click;" width="3.168" height="4" position=" 9 2.5 -2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
+<a-plane gui-interactable id="06" sound="src: #sound6; on: click;" width="3.168" height="4" position=" 9 2.5 -2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="7" sound="src: #sound7; on: click;" width="3.168" height="4" position="-9 2.5 2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
+<a-plane gui-interactable id="07" sound="src: #sound7; on: click;" width="3.168" height="4" position="-9 2.5 2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="8" sound="src: #sound8; on: click;" width="3.168" height="4" position=" 9 2.5 2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
+<a-plane gui-interactable id="08" sound="src: #sound8; on: click;" width="3.168" height="4" position=" 9 2.5 2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
@@ -293,72 +293,73 @@ design="dot">
 
 
 <script>
-     // List of audio elements
-const sounds = [
-  document.getElementById('sound1'),
-  document.getElementById('sound2'),
-  document.getElementById('sound3'),
-  document.getElementById('sound4'),
-  document.getElementById('sound5'),
-  document.getElementById('sound6'),
-  document.getElementById('sound7'),
-  document.getElementById('sound8')
-];
+  // List of audio elements
+  const sounds = [
+    document.getElementById('sound1'),
+    document.getElementById('sound2'),
+    document.getElementById('sound3'),
+    document.getElementById('sound4'),
+    document.getElementById('sound5'),
+    document.getElementById('sound6'),
+    document.getElementById('sound7'),
+    document.getElementById('sound8')
+  ];
 
-// Function to stop all sounds (by using sound.stop())
-function stopAllSounds() {
-  sounds.forEach(sound => {
-    sound.components.sound.stopSound(); // Stop the sound if it's playing
+  // Function to stop all sounds
+  function stopAllSounds() {
+    sounds.forEach(sound => {
+      sound.pause(); // Pause the sound
+      sound.currentTime = 0; // Rewind to the start
+    });
+  }
+
+  // Function to play a specific sound
+  function playSound(sound) {
+    sound.play(); // Play the sound
+  }
+
+  // Add event listeners to each plane
+  document.getElementById('01').addEventListener('click', () => {
+    stopAllSounds(); // Stop all sounds
+    playSound(document.getElementById('sound1')); // Play sound 1
   });
-}
 
-// Function to play a specific sound
-function playSound(sound) {
-  sound.components.sound.playSound(); // Play the sound
-}
+  document.getElementById('02').addEventListener('click', () => {
+    stopAllSounds(); // Stop all sounds
+    playSound(document.getElementById('sound2')); // Play sound 2
+  });
 
-// Add event listeners to each plane
-document.getElementById('1').addEventListener('click', () => {
-  stopAllSounds();
-  playSound(document.getElementById('sound1'));
-});
+  document.getElementById('03').addEventListener('click', () => {
+    stopAllSounds(); // Stop all sounds
+    playSound(document.getElementById('sound3')); // Play sound 3
+  });
 
-document.getElementById('2').addEventListener('click', () => {
-  stopAllSounds();
-  playSound(document.getElementById('sound2'));
-});
+  document.getElementById('04').addEventListener('click', () => {
+    stopAllSounds(); // Stop all sounds
+    playSound(document.getElementById('sound4')); // Play sound 4
+  });
 
-document.getElementById('3').addEventListener('click', () => {
-  stopAllSounds();
-  playSound(document.getElementById('sound3'));
-});
+  document.getElementById('05').addEventListener('click', () => {
+    stopAllSounds(); // Stop all sounds
+    playSound(document.getElementById('sound5')); // Play sound 5
+  });
 
-document.getElementById('4').addEventListener('click', () => {
-  stopAllSounds();
-  playSound(document.getElementById('sound4'));
-});
+  document.getElementById('06').addEventListener('click', () => {
+    stopAllSounds(); // Stop all sounds
+    playSound(document.getElementById('sound6')); // Play sound 6
+  });
 
-document.getElementById('5').addEventListener('click', () => {
-  stopAllSounds();
-  playSound(document.getElementById('sound5'));
-});
+  document.getElementById('07').addEventListener('click', () => {
+    stopAllSounds(); // Stop all sounds
+    playSound(document.getElementById('sound7')); // Play sound 7
+  });
 
-document.getElementById('6').addEventListener('click', () => {
-  stopAllSounds();
-  playSound(document.getElementById('sound6'));
-});
-
-document.getElementById('7').addEventListener('click', () => {
-  stopAllSounds();
-  playSound(document.getElementById('sound7'));
-});
-
-document.getElementById('8').addEventListener('click', () => {
-  stopAllSounds();
-  playSound(document.getElementById('sound8'));
-});
-
+  document.getElementById('08').addEventListener('click', () => {
+    stopAllSounds(); // Stop all sounds
+    playSound(document.getElementById('sound8')); // Play sound 8
+  });
 </script>
+
 
   </body>
 </html>
