@@ -9,7 +9,8 @@
     <link rel="icon" type="image/png" href="./images/mask.png" />
     <script src="assets/engine.js"></script>
     <script src="assets/extras.js"></script>
-
+    <script src="assets/sound.js"></script>
+    <script src="assets/audio.js"></script>
     <script src="assets/rain.js"></script>
     <script src="assets/loader1.js"></script>
     <script src="assets/loader2.js"></script>
@@ -292,8 +293,8 @@ design="dot">
 
 
 <script>
-  // List of audio elements
-  const sounds = [
+  // List of audio elements specifically for sound1 to sound8
+  const soundEls = [
     document.getElementById('sound1'),
     document.getElementById('sound2'),
     document.getElementById('sound3'),
@@ -306,56 +307,23 @@ design="dot">
 
   // Function to stop all sounds
   function stopAllSounds() {
-    sounds.forEach(sound => {
-      sound.pause(); // Pause the sound
-      sound.currentTime = 0; // Rewind to the start
+    soundEls.forEach(soundEl => {
+      soundEl.pause(); // Stop any playing sound
+      soundEl.currentTime = 0; // Reset to the beginning
     });
   }
 
-  // Function to play a specific sound
-  function playSound(sound) {
-    sound.play(); // Play the sound
-  }
+  // Add click event listeners to each sound element
+  soundEls.forEach((soundEl, index) => {
+    soundEl.addEventListener('click', (e) => {
+      stopAllSounds(); // Stop all sounds
+      const isPlaying = !soundEl.paused; // Check if the sound is currently playing
 
-  // Add event listeners to each plane
-  document.getElementById('01').addEventListener('click', () => {
-    stopAllSounds(); // Stop all sounds
-    playSound(document.getElementById('sound1')); // Play sound 1
-  });
-
-  document.getElementById('02').addEventListener('click', () => {
-    stopAllSounds(); // Stop all sounds
-    playSound(document.getElementById('sound2')); // Play sound 2
-  });
-
-  document.getElementById('03').addEventListener('click', () => {
-    stopAllSounds(); // Stop all sounds
-    playSound(document.getElementById('sound3')); // Play sound 3
-  });
-
-  document.getElementById('04').addEventListener('click', () => {
-    stopAllSounds(); // Stop all sounds
-    playSound(document.getElementById('sound4')); // Play sound 4
-  });
-
-  document.getElementById('05').addEventListener('click', () => {
-    stopAllSounds(); // Stop all sounds
-    playSound(document.getElementById('sound5')); // Play sound 5
-  });
-
-  document.getElementById('06').addEventListener('click', () => {
-    stopAllSounds(); // Stop all sounds
-    playSound(document.getElementById('sound6')); // Play sound 6
-  });
-
-  document.getElementById('07').addEventListener('click', () => {
-    stopAllSounds(); // Stop all sounds
-    playSound(document.getElementById('sound7')); // Play sound 7
-  });
-
-  document.getElementById('08').addEventListener('click', () => {
-    stopAllSounds(); // Stop all sounds
-    playSound(document.getElementById('sound8')); // Play sound 8
+      // Play the sound if it was not already playing
+      if (!isPlaying) {
+        soundEl.play(); // Play the clicked sound
+      }
+    });
   });
 </script>
 
