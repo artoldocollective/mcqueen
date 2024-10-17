@@ -293,26 +293,66 @@ design="dot">
 
 
 <script>
-      // Function to stop all playing sounds
-      function stopAllSounds() {
-        const entities = document.querySelectorAll('a-plane');
-        entities.forEach((entity) => {
-          entity.components.sound.stopSound();  // Stop each plane's sound component
+      // List of audio elements
+      const sounds = [
+        document.getElementById('sound1'),
+        document.getElementById('sound2'),
+        document.getElementById('sound3'),
+        document.getElementById('sound4'),
+        document.getElementById('sound5'),
+        document.getElementById('sound6'),
+        document.getElementById('sound7'),
+        document.getElementById('sound8')
+      ];
+
+      // Function to pause all sounds
+      function pauseAllSounds() {
+        sounds.forEach(sound => {
+          sound.pause(); // Pause each sound
+          sound.currentTime = 0; // Rewind to the start
         });
       }
 
-      // Add event listeners to planes
-      for (let i = 1; i <= 8; i++) {
-        const plane = document.querySelector(`#${i}`);
+      // Add event listeners to each plane
+      document.getElementById('01').addEventListener('click', () => {
+        pauseAllSounds();
+        document.getElementById('sound1').play(); // Play sound 1
+      });
 
-        plane.addEventListener('click', function () {
-          // Stop all sounds before playing the clicked one
-          stopAllSounds();
-          
-          // Play the corresponding sound
-          plane.components.sound.playSound();
-        });
-      }
+      document.getElementById('02').addEventListener('click', () => {
+        pauseAllSounds();
+        document.getElementById('sound2').play(); // Play sound 2
+      });
+
+      document.getElementById('03').addEventListener('click', () => {
+        pauseAllSounds();
+        document.getElementById('sound3').play(); // Play sound 3
+      });
+
+      document.getElementById('04').addEventListener('click', () => {
+        pauseAllSounds();
+        document.getElementById('sound4').play(); // Play sound 4
+      });
+
+      document.getElementById('05').addEventListener('click', () => {
+        pauseAllSounds();
+        document.getElementById('sound5').play(); // Play sound 5
+      });
+
+      document.getElementById('06').addEventListener('click', () => {
+        pauseAllSounds();
+        document.getElementById('sound6').play(); // Play sound 6
+      });
+
+      document.getElementById('07').addEventListener('click', () => {
+        pauseAllSounds();
+        document.getElementById('sound7').play(); // Play sound 7
+      });
+
+      document.getElementById('08').addEventListener('click', () => {
+        pauseAllSounds();
+        document.getElementById('sound8').play(); // Play sound 8
+      });
 </script>
 
 
