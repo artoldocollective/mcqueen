@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Overlay styles */
+#overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  z-index: 9999; /* Ensure it's above the A-Frame scene */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Close button styles */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Iframe container with smooth border */
+.iframe-container {
+  width: 80%;
+  height: 80%;
+  border-radius: 15px; /* Rounded corners */
+  overflow: hidden; /* Clip content within rounded corners */
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.7); /* Soft shadow for smooth effect */
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

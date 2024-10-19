@@ -16,6 +16,9 @@
     <script src="assets/loader2.js"></script>
     <script src="assets/gui.js"></script>
 
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" type="text/css" href="lightbox.css" />
+
     <style>
       .a-dialog-allow-button {
        background-color: white;
@@ -199,7 +202,7 @@ design="dot">
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="models" onclick="location.href='./model1.html';" width="8" height="4.5" position=" -8.5 3 8" material="src:images/models1.webp; transparent: true" rotation="0 160 0" 
+<a-plane gui-interactable lightbox id="models" data-url="./models.html" width="8" height="4.5" position=" -8.5 3 8" material="src:images/models1.webp; transparent: true" rotation="0 160 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
@@ -280,7 +283,6 @@ design="dot">
 
 </a-scene>
 
-
 <!-- Video autoplay mobile devices -->
 
 <script type="text/javascript">
@@ -307,7 +309,6 @@ design="dot">
     }
   };
 </script>
-
 
 <!-- Stop audio -->
 
@@ -361,6 +362,19 @@ design="dot">
     });
   });
 </script>
+
+<!-- HTML Overlay with iframe for Lightbox -->
+
+    <div id="overlay">
+      <span class="close-btn" onclick="closeOverlay()">&times;</span>
+      <div class="iframe-container">
+        <iframe id="lightbox-iframe" src="" allowfullscreen></iframe>
+      </div>
+    </div>
+
+<!-- Link to external Lightbox JavaScript -->
+
+    <script src="./assets/lightbox.js"></script>
 
   </body>
 </html>
