@@ -192,7 +192,7 @@ design="dot">
     <audio id="placeholder-sound" src="assets/placeholder.mp3" preload="auto"></audio>
   </a-assets>
 
-  <a-plane gui-interactable id="clickable-plane" position="0 0 -13" width="16" height="9" material="opacity: 0; transparent: true"></a-plane>
+  <a-plane gui-interactable id="clickable-plane" position="0 0 -12" width="16" height="9" material="opacity: 0; transparent: true"></a-plane>
 
   <script>
     const plane = document.querySelector('#clickable-plane');
@@ -204,7 +204,7 @@ design="dot">
       if (soundElement.paused) {
         soundElement.play().then(() => {
           // Once the sound starts playing, move the plane out of view
-          plane.setAttribute('position', '0 -50 -14');
+          plane.setAttribute('position', '0 -50 -12');
         }).catch(error => {
           console.log("Error playing sound:", error);
         });
