@@ -15,6 +15,10 @@
     <script src="assets/loader1.js"></script>
     <script src="assets/loader2.js"></script>
     <script src="assets/gui.js"></script>
+    <script src="assets/lock-pitch.js"></script>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/lightbox.css" />
 
     <style>
       .a-dialog-allow-button {
@@ -82,41 +86,64 @@ document.querySelectorAll('img').forEach((img) => {
 
 <div class="se-pre-con"></div>
 
-<!-- Mask -->
-
-<img src="images/mask.webp" class="mask" draggable="false" style="cursor:none;"/>
 
 <!-- Mask -->
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true" antialias="true">
+<img src="images/mask.webp" class="mask" draggable="false" style="cursor:pointer;"/>
+
+<!-- Mask -->
+
+<script>
+    document.querySelector('.mask').addEventListener('click', function () {
+      const canvasEl = document.querySelector('a-scene').canvas;
+
+      // Request pointer lock on the canvas (A-Frame scene)
+      if (canvasEl.requestPointerLock) {
+        canvasEl.requestPointerLock();
+      } else if (canvasEl.mozRequestPointerLock) {
+        canvasEl.mozRequestPointerLock();
+      }
+
+      // Enable pointer lock in the A-Frame look-controls component
+      const cameraEl = document.querySelector('[camera]');
+      const lookControls = cameraEl.components['look-controls'];
+      if (lookControls) {
+        lookControls.data.pointerLockEnabled = true;
+        console.log('Pointer Lock Enabled');
+      }
+    });
+</script>
+
+
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
+device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
 
 
 <!-- World -->
 
 <a-sky color="#000"></a-sky>
 
-<a-cylinder material="src:images/cylinder1.webp; side: double;" open-ended="true" scale="80 50 80" opacity="0.6;" position="0 12 0" rotation="0 0 0" animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 20000"></a-cylinder>
+<a-cylinder material="src:images/cylinder1.webp; side: double;" open-ended="true" scale="80 50 80" opacity="0.6;" position="0 22.7 0" rotation="0 0 0" animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 20000"></a-cylinder>
 
-<a-cylinder material="src:images/cylinder2.webp; side: double;" open-ended="true" scale="80 50 80" opacity="0.3;" position="0 12 0" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 20000"></a-cylinder>
+<a-cylinder material="src:images/cylinder2.webp; side: double;" open-ended="true" scale="80 50 80" opacity="0.3;" position="0 22.7 0" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 20000"></a-cylinder>
 
-<a-plane id="curtain" width="40" height="30" color="grey" position="0 0.1 10" rotation="0 0 0" animation="property:rotation; to: 90 0 0; easing: easeOutQuad; dur: 4000"></a-plane>
+<a-plane id="red carpet 1" width="12" height="17" color="red" position="11 0.1 -7" rotation="-90 90 0"></a-plane>
 
-<a-plane id="red carpet 1" width="12" height="16" color="red" position="10 0.1 -7" rotation="-90 90 0" animation="property:position; to: 10 0.1 -7; easing: easeOutQuad; dur: 4000"></a-plane>
+<a-plane id="red carpet 2" width="12" height="17" color="red" position="-11 0.1 -7" rotation="-90 90 0"></a-plane>
 
-<a-plane id="red carpet 2" width="12" height="16" color="red" position="-10 0.1 -7" rotation="-90 90 0" animation="property:position; to: -10 0.1 -7; easing: easeOutQuad; dur: 4000"></a-plane>
+<a-plane id="red carpet 3" width="14" height="17" color="red" position="11 0.1 10" rotation="-90 90 0"></a-plane>
 
-<a-plane id="red carpet 3" width="20" height="16" color="red" position="10 0.1 15" rotation="-90 90 0" animation="property:position; to: 10 0.1 15; easing: easeOutQuad; dur: 4000"></a-plane>
-
-<a-plane id="red carpet 4" width="20" height="16" color="red" position="-10 0.1 15" rotation="-90 90 0" animation="property:position; to: -10 0.1 15; easing: easeOutQuad; dur: 4000"></a-plane>
+<a-plane id="red carpet 4" width="14" height="17" color="red" position="-11 0.1 10" rotation="-90 90 0"></a-plane>
 
 <a-image src="./images/shirts.webp" position="0 13.5 -15" width="14" height="7" rotation="25 0 0" animation="property:rotation; to: 0 0 0; easing: easeOutQuad; dir: alternate; loop: true; dur: 4000;">
 </a-image>
 
 <!-- World End -->
 
+
 <!-- Camera -->
 
-<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:false;" animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
+<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:true;" lock-pitch animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
 
 <a-entity id="camera" camera position="0 1.6 0" cursor-visible="true">
 
@@ -135,78 +162,89 @@ design="dot">
 
 <!-- Camera End -->
 
+
 <!-- Music -->
 
 <audio id="music" src="assets/music.mp3" crossorigin="anonymous"></audio>
 
-<a-box color="black" scale="200 2 200" position="0 -4 0" audio="src: #music; loop: true;"></a-box>
+<a-box color="black" scale="2 2 2" position="0 -2 0" audio="src: #music; loop: true;"></a-box>
 
 <!-- Music End -->
 
+
 <!-- Sound -->
-		
-    <audio id="sound1" src="assets/mcqueen.mp3" crossorigin="anonymous"></audio>
-    <audio id="sound2" src="assets/witkin.mp3" crossorigin="anonymous"></audio>
-    <audio id="sound3" src="assets/mcgirr.mp3" crossorigin="anonymous"></audio>
-    <audio id="sound4" src="assets/dante.mp3" crossorigin="anonymous"></audio>
-    <audio id="sound5" src="assets/bowie.mp3" crossorigin="anonymous"></audio>
-    <audio id="sound6" src="assets/west.mp3" crossorigin="anonymous"></audio>
-    <audio id="sound7" src="assets/lagerfeld.mp3" crossorigin="anonymous"></audio>
-    <audio id="sound8" src="assets/prada.mp3" crossorigin="anonymous"></audio>
+
+<audio id="sound2" src="assets/witkin.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound3" src="assets/mcgirr.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound4" src="assets/dante.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound5" src="assets/bowie.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound6" src="assets/west.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound7" src="assets/lagerfeld.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound8" src="assets/prada.mp3" preload="auto" crossorigin="anonymous"></audio>
 
 <!-- Sound End -->
 
+
 <!-- Stage -->
 
-<a-entity text="value:McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="22 22 22"></a-entity> 
+<a-entity text="value:McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="21 21 21"></a-entity> 
 
-<a-plane gui-interactable id="sound01" sound="src: #sound1; on: click;" width="3.168" height="4" position="-8 2.5 -10" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
+<a-plane gui-interactable id="sound01" sound="src: url(assets/mcqueen.mp3); on: click; autoplay: false;" width="3.168" height="4" position="-8 4.5 -10" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound02" sound="src: #sound2; on: click;" width="3.168" height="4" position=" 8 2.5 -10" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
+<a-plane gui-interactable id="sound02" sound="src: #sound2; on: click; autoplay: false;" width="3.168" height="4" position=" 8 4.5 -10" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound03" sound="src: #sound3; on: click;" width="3.168" height="4" position="-9 2.5 -6" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
+<a-plane gui-interactable id="sound03" sound="src: #sound3; on: click; autoplay: false;" width="3.168" height="4" position="-9 4.5 -6" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound04" sound="src: #sound4; on: click;" width="3.168" height="4" position=" 9 2.5 -6" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
+<a-plane gui-interactable id="sound04" sound="src: #sound4; on: click; autoplay: false;" width="3.168" height="4" position=" 9 4.5 -6" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound05" sound="src: #sound5; on: click;" width="3.168" height="4" position="-9 2.5 -2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
+<a-plane gui-interactable id="sound05" sound="src: #sound5; on: click; autoplay: false;" width="3.168" height="4" position="-9 4.5 -2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound06" sound="src: #sound6; on: click;" width="3.168" height="4" position=" 9 2.5 -2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
+<a-plane gui-interactable id="sound06" sound="src: #sound6; on: click; autoplay: false;" width="3.168" height="4" position=" 9 4.5 -2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound07" sound="src: #sound7; on: click;" width="3.168" height="4" position="-9 2.5 2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
+<a-plane gui-interactable id="sound07" sound="src: #sound7; on: click; autoplay: false;" width="3.168" height="4" position="-9 4.5 2" material="src:images/prada.webp; transparent: true" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound08" sound="src: #sound8; on: click;" width="3.168" height="4" position=" 9 2.5 2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
+<a-plane gui-interactable id="sound08" sound="src: #sound8; on: click; autoplay: false;" width="3.168" height="4" position=" 9 4.5 2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="10" onclick="location.href='./model1.html';" width="8" height="4.5" position=" -7 4 10" material="src:images/models1.webp; transparent: true" rotation="0 160 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+<a-plane 
+        gui-interactable 
+        id="models" 
+        lightbox 
+        data-url="models.html" 
+        width="8" 
+        height="4.5" 
+        position="-8.5 3 8" 
+        material="src:images/models1.webp; transparent: true" 
+        rotation="0 160 0" 
+        animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+        animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
 </a-plane>
-
 
 <!-- Stage End -->
+
 
 <!-- Models -->
 
@@ -254,15 +292,17 @@ design="dot">
 
 <!-- Models End -->
 
+
 <!-- Video player -->
 
 <a-assets>
   <video id="video-src" src="assets/intro.mp4" autoplay muted loop></video>
 </a-assets>
 
-<a-video gui-interactable id="video-screen" src="#video-src" position="0 4.5 -14" width="12" height="9" opacity="0.9"></a-video>
+<a-video id="video-screen" src="#video-src" position="0 4.5 -14" width="12" height="9" opacity="0.9"></a-video>
 
 <!-- Video player End -->
+
 
 </a-scene>
 
@@ -294,8 +334,10 @@ design="dot">
   };
 </script>
 
+<!-- Video autoplay mobile devices End -->
 
-<!-- Stop audio click images -->
+
+<!-- Stop audio -->
 
 <script>
   // Get all A-Frame entities with sounds (i.e., the entities for sounds 1 to 8)
@@ -348,6 +390,47 @@ design="dot">
   });
 </script>
 
+<!-- Stop audio End -->
+
+
+<!-- HTML Overlay with iframe for Lightbox -->
+
+    <div id="overlay">
+      <span class="close-btn" onclick="closeOverlay()">&times;</span>
+      <div class="iframe-container">
+        <iframe id="lightbox-iframe" src="" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <script src="assets/lightbox.js"></script>
+
+<!-- HTML Overlay with iframe for Lightbox End -->
+
+<script>
+      AFRAME.registerComponent('disable-pointer-lock', {
+        init: function () {
+          const plane = this.el;
+
+          plane.addEventListener('click', function () {
+            // Exit pointer lock when the plane is clicked
+            if (document.pointerLockElement) {
+              document.exitPointerLock();
+            }
+
+            // Optional: Disable pointer lock in the look-controls (for further safety)
+            const cameraEl = document.querySelector('[camera]');
+            const lookControls = cameraEl.components['look-controls'];
+            if (lookControls) {
+              lookControls.data.pointerLockEnabled = false;
+              console.log('Pointer Lock Disabled');
+            }
+          });
+        }
+      });
+
+      // Attach the component to the plane
+      document.querySelector('#models').setAttribute('disable-pointer-lock', '');
+</script>
 
   </body>
 </html>
