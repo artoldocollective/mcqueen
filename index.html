@@ -319,30 +319,31 @@ animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur:
 
 <script type="text/javascript">
   let scene = document.querySelector('a-scene');
-  var videoEl = document.querySelector('#video-src');
+  var videoEls = document.querySelectorAll('video'); // Select all video elements
 
   // Detect mobile device and add a user interaction fallback
-
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   window.onload = function() {
     if (isMobile) {
-
-  // For mobile devices, play video on user interaction
-
+      // For mobile devices, play all videos on user interaction
       document.body.addEventListener('touchstart', function() {
-        videoEl.play();
+        videoEls.forEach(function(videoEl) {
+          videoEl.play();
+        });
       }, { once: true });
     } else {
-
-  // Autoplay for non-mobile devices
-
-      videoEl.play();
+      // Autoplay and loop for non-mobile devices
+      videoEls.forEach(function(videoEl) {
+        videoEl.play();
+        videoEl.loop = true;  // Ensure all videos are set to loop
+      });
     }
   };
 </script>
 
 <!-- Video autoplay mobile devices End -->
+
 
 
 <!-- Stop audio -->
