@@ -272,25 +272,7 @@ design="dot">
 <!-- Video player End -->
 
 
-<!-- Invisible audio preload -->
 
-  <a-box gui-interactable id="click-box" position="0 4 -13" depth="1" height="10" width="10" color="red" opacity="0" transparent="true" sound="src: #sound1"></a-box>
-
-  <script>
-    // Get the box element
-    var box = document.querySelector('#click-box');
-
-    // Add an event listener for 'click' event
-    box.addEventListener('click', function () {
-      // Play the sound
-      box.components.sound.playSound();
-
-      // Hide the box (make it invisible)
-      box.setAttribute('visible', false);
-    });
-  </script> 
-
-<!-- Invisible audio preload End-->
 
 
 </a-scene>
