@@ -89,9 +89,30 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Mask -->
 
-<img src="images/mask.webp" class="mask" draggable="false" style="cursor:none;"/>
+<img src="images/mask.webp" class="mask" draggable="false" style="cursor:pointer;"/>
 
 <!-- Mask -->
+
+<script>
+    document.querySelector('.mask').addEventListener('click', function () {
+      const canvasEl = document.querySelector('a-scene').canvas;
+
+      // Request pointer lock on the canvas (A-Frame scene)
+      if (canvasEl.requestPointerLock) {
+        canvasEl.requestPointerLock();
+      } else if (canvasEl.mozRequestPointerLock) {
+        canvasEl.mozRequestPointerLock();
+      }
+
+      // Enable pointer lock in the A-Frame look-controls component
+      const cameraEl = document.querySelector('[camera]');
+      const lookControls = cameraEl.components['look-controls'];
+      if (lookControls) {
+        lookControls.data.pointerLockEnabled = true;
+        console.log('Pointer Lock Enabled');
+      }
+    });
+  </script>
 
 
 <a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
