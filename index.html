@@ -346,15 +346,14 @@ design="dot">
     soundEntities.forEach(soundEntity => {
       const soundComponent = soundEntity.components.sound;
       if (soundComponent && soundComponent.isPlaying) {
-        fadeOutAndStop(soundEntity); // Apply fade-out before stopping
+        fadeOutAndStop(soundComponent); // Apply fade-out before stopping
       }
     });
   }
 
   // Function to gradually lower the volume and then stop the sound
-  function fadeOutAndStop(soundEntity) {
-    const soundComponent = soundEntity.components.sound;
-    let volume = soundComponent.attrValue.volume || 1; // Get the current volume or default to 1
+  function fadeOutAndStop(soundComponent) {
+    let volume = soundComponent.volume; // Get the current volume
     const fadeDuration = 1000; // Fade-out duration in milliseconds
     const fadeStep = 50; // How often to lower the volume (milliseconds)
     const fadeAmount = volume / (fadeDuration / fadeStep); // Amount to decrease volume each step
@@ -363,7 +362,7 @@ design="dot">
       if (volume > 0) {
         volume -= fadeAmount; // Lower the volume
         if (volume < 0) volume = 0; // Ensure volume doesn't go below 0
-        soundEntity.setAttribute('sound', 'volume', volume); // Update the volume
+        soundComponent.setVolume(volume); // Update the volume
       } else {
         clearInterval(fadeInterval); // Stop the fade effect
         soundComponent.stopSound(); // Stop the sound when the volume reaches 0
@@ -371,13 +370,11 @@ design="dot">
     }, fadeStep);
   }
 
-  // Add click event listeners to each object
+  // Add click event listeners to each plane
   soundEntities.forEach((soundEntity) => {
     soundEntity.addEventListener('click', () => {
       stopAllSounds(); // Stop all currently playing sounds with fade-out
-      setTimeout(() => {
-        soundEntity.components.sound.playSound(); // Play the clicked sound after fade out
-      }, 1000); // Add a delay to ensure fade-out completes before playing
+      soundEntity.components.sound.playSound(); // Play the clicked sound
     });
   });
 </script>
