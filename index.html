@@ -15,6 +15,7 @@
     <script src="assets/loader1.js"></script>
     <script src="assets/loader2.js"></script>
     <script src="assets/gui.js"></script>
+    <script src="assets/lock-pitch.js"></script>
 
     <!-- Link to external CSS -->
     <link rel="stylesheet" type="text/css" href="assets/lightbox.css" />
@@ -93,7 +94,8 @@ document.querySelectorAll('img').forEach((img) => {
 <!-- Mask -->
 
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true" antialias="true">
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
+device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
 
 
 <!-- World -->
@@ -120,7 +122,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 <!-- Camera -->
 
-<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:false;" animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
+<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:true;" lock-pitch animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
 
 <a-entity id="camera" camera position="0 1.6 0" cursor-visible="true">
 
@@ -167,55 +169,64 @@ design="dot">
 
 <a-entity text="value:McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="21 21 21"></a-entity> 
 
-<a-plane gui-interactable id="sound01" sound="src: #sound1; on: click; autoplay: false;" width="3.168" height="4" position="-8 2.5 -10" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
+<a-plane gui-interactable id="sound01" sound="src: #sound1; on: click; autoplay: false;" width="3.168" height="4" position="-8 3.5 -10" material="src:images/mcqueen.webp; transparent: true" rotation="0  50 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound02" sound="src: #sound2; on: click; autoplay: false;" width="3.168" height="4" position=" 8 2.5 -10" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
+<a-plane gui-interactable id="sound02" sound="src: #sound2; on: click; autoplay: false;" width="3.168" height="4" position=" 8 3.5 -10" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound03" sound="src: #sound3; on: click; autoplay: false;" width="3.168" height="4" position="-9 2.5 -6" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
+<a-plane gui-interactable id="sound03" sound="src: #sound3; on: click; autoplay: false;" width="3.168" height="4" position="-9 3.5 -6" material="src:images/mcgirr.webp; transparent: true" rotation="0  90 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound04" sound="src: #sound4; on: click; autoplay: false;" width="3.168" height="4" position=" 9 2.5 -6" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
+<a-plane gui-interactable id="sound04" sound="src: #sound4; on: click; autoplay: false;" width="3.168" height="4" position=" 9 3.5 -6" material="src:images/dantemask.webp; transparent: true" rotation="0 -90 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound05" sound="src: #sound5; on: click; autoplay: false;" width="3.168" height="4" position="-9 2.5 -2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
+<a-plane gui-interactable id="sound05" sound="src: #sound5; on: click; autoplay: false;" width="3.168" height="4" position="-9 3.5 -2" material="src:images/bowie.webp; transparent: true" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound06" sound="src: #sound6; on: click; autoplay: false;" width="3.168" height="4" position=" 9 2.5 -2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
+<a-plane gui-interactable id="sound06" sound="src: #sound6; on: click; autoplay: false;" width="3.168" height="4" position=" 9 3.5 -2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound07" sound="src: #sound7; on: click; autoplay: false;" width="3.168" height="4" position="-9 2.5 2" material="src:images/prada.webp; transparent: true" rotation="0  90 0" 
+<a-plane gui-interactable id="sound07" sound="src: #sound7; on: click; autoplay: false;" width="3.168" height="4" position="-9 3.5 2" material="src:images/prada.webp; transparent: true" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="sound08" sound="src: #sound8; on: click; autoplay: false;" width="3.168" height="4" position=" 9 2.5 2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
+<a-plane gui-interactable id="sound08" sound="src: #sound8; on: click; autoplay: false;" width="3.168" height="4" position=" 9 3.5 2" material="src:images/west.webp; transparent: true" rotation="0 -90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-plane>
 
-<a-plane gui-interactable id="models" lightbox data-url="models.html" width="8" height="4.5" position=" -8.5 3 8" material="src:images/models1.webp; transparent: true" rotation="0 160 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+<a-plane 
+        gui-interactable 
+        id="models" 
+        lightbox 
+        data-url="models.html" 
+        width="8" 
+        height="4.5" 
+        position="-8.5 3 8" 
+        material="src:images/models1.webp; transparent: true" 
+        rotation="0 160 0" 
+        animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+        animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
 </a-plane>
 
 <!-- Stage End -->
 
 
-<!-- 3D Models -->
+<!-- Models -->
 
 <a-assets>
 <a-asset-item id="model1" src="./images/modelwalking1.glb"></a-asset-item>
@@ -224,7 +235,7 @@ design="dot">
 <a-asset-item id="robot" src="./images/robot.glb"></a-asset-item>
 </a-assets>
 
-<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 40; loop: true; dur: 50000">
+<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 50; loop: true; dur: 60000">
         <a-entity 
           gltf-model="#model1" 
           animation-mixer 
@@ -246,7 +257,7 @@ design="dot">
   	animation-mixer 
   	scale="2.8 3 2.8"
   	rotation="0 0 0"  
-  	position="14.30277 3.140 13.2878"
+  	position="15.30277 3.31358 14.2878"
   	animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000">
 </a-entity>
 
@@ -255,10 +266,11 @@ design="dot">
   	animation-mixer 
   	scale="8 8 8"
   	rotation="0 -45 0"  
-  	position="11.12169 2.52 11.90204">
+  	position="12.12169 2.7071 12.90204" 
+  	>
 </a-entity>
 
-<!-- 3D Models End -->
+<!-- Models End -->
 
 
 <!-- Video player -->
@@ -373,6 +385,32 @@ design="dot">
     <script src="assets/lightbox.js"></script>
 
 <!-- HTML Overlay with iframe for Lightbox End -->
+
+<script>
+      AFRAME.registerComponent('disable-pointer-lock', {
+        init: function () {
+          const plane = this.el;
+
+          plane.addEventListener('click', function () {
+            // Exit pointer lock when the plane is clicked
+            if (document.pointerLockElement) {
+              document.exitPointerLock();
+            }
+
+            // Optional: Disable pointer lock in the look-controls (for further safety)
+            const cameraEl = document.querySelector('[camera]');
+            const lookControls = cameraEl.components['look-controls'];
+            if (lookControls) {
+              lookControls.data.pointerLockEnabled = false;
+              console.log('Pointer Lock Disabled');
+            }
+          });
+        }
+      });
+
+      // Attach the component to the plane
+      document.querySelector('#models').setAttribute('disable-pointer-lock', '');
+</script>
 
   </body>
 </html>
