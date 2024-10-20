@@ -115,7 +115,7 @@ document.querySelectorAll('img').forEach((img) => {
 </script>
 
 
-<a-scene id="mainScene" rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
 device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
 
 
@@ -185,23 +185,6 @@ design="dot">
 
 <!-- Sound End -->
 
-<!-- Placeholder sound entity (muted 5 seconds clip) -->
-  <a-entity id="placeholderSound" sound="src: url(assets/placeholder.mp3); autoplay: false"></a-entity>
-
-  <script>
-    // Wait for the scene to be fully loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      // Get the a-scene and the sound entity
-      const scene = document.querySelector('#mainScene');
-      const placeholderSound = document.querySelector('#placeholderSound');
-      
-      // Add click event listener to the scene
-      scene.addEventListener('click', () => {
-        // Play the placeholder sound
-        placeholderSound.components.sound.playSound();
-      });
-    });
-  </script>
 
 <!-- Stage -->
 
@@ -424,6 +407,9 @@ design="dot">
 
 <!-- HTML Overlay with iframe for Lightbox End -->
 
+
+<!-- Disable Pointer Lock -->
+
 <script>
       AFRAME.registerComponent('disable-pointer-lock', {
         init: function () {
@@ -449,6 +435,38 @@ design="dot">
       // Attach the component to the plane
       document.querySelector('#models').setAttribute('disable-pointer-lock', '');
 </script>
+
+<!-- Disable Pointer Lock End -->
+
+
+<!-- Loading Progress -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scene = document.querySelector('#mainScene');
+
+    // Listen to the progress event to update the loading status
+    scene.addEventListener('progress', function (event) {
+      // event.detail.loaded: how many items have been loaded
+      // event.detail.total: total number of items to load
+      const loaded = event.detail.loaded;
+      const total = event.detail.total;
+      
+      // Calculate the percentage
+      const percentage = Math.floor((loaded / total) * 100);
+      
+      // Update the browser tab title with the loading percentage
+      document.title = `Loading: ${percentage}%`;
+    });
+
+    // Once the scene is fully loaded, update the title
+    scene.addEventListener('loaded', () => {
+      document.title = "Scene Loaded!";
+    });
+  });
+</script>
+
+<!-- Loading Progress End -->
 
   </body>
 </html>
