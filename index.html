@@ -115,7 +115,7 @@ document.querySelectorAll('img').forEach((img) => {
 </script>
 
 
-<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
+<a-scene id="mainScene" rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
 device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
 
 
@@ -185,47 +185,23 @@ design="dot">
 
 <!-- Sound End -->
 
-
-<!-- Invisible sound permission -->
-
-  <a-assets>
-    <audio id="placeholder-sound" src="assets/placeholder.mp3" preload="auto"></audio>
-  </a-assets>
-
-  <a-plane gui-interactable id="clickable-plane" position="0 0 -12" width="16" height="9" material="opacity: 0; transparent: true"></a-plane>
+<!-- Placeholder sound entity (muted 5 seconds clip) -->
+  <a-entity id="placeholderSound" sound="src: url(assets/placeholder.mp3); autoplay: false"></a-entity>
 
   <script>
-    const plane = document.querySelector('#clickable-plane');
-    const soundElement = document.querySelector('#placeholder-sound');
-
-    // Function to play the muted sound and move the plane out of view
-    function handleClick() {
-      // Check if the sound is already playing
-      if (soundElement.paused) {
-        soundElement.play().then(() => {
-          // Once the sound starts playing, move the plane out of view
-          plane.setAttribute('position', '0 -50 -12');
-        }).catch(error => {
-          console.log("Error playing sound:", error);
-        });
-      }
-    }
-
-    // Add click event listener to the plane
-    plane.addEventListener('click', handleClick);
-
-    // Simulate a click on first mouse move to "prime" audio
-    let clickSimulated = false;
-    window.addEventListener('mousemove', () => {
-      if (!clickSimulated) {
-        clickSimulated = true;
-        plane.emit('click'); // Trigger the click programmatically
-      }
+    // Wait for the scene to be fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get the a-scene and the sound entity
+      const scene = document.querySelector('#mainScene');
+      const placeholderSound = document.querySelector('#placeholderSound');
+      
+      // Add click event listener to the scene
+      scene.addEventListener('click', () => {
+        // Play the placeholder sound
+        placeholderSound.components.sound.playSound();
+      });
     });
   </script>
-
-<!-- Invisible sound permission End -->
-
 
 <!-- Stage -->
 
