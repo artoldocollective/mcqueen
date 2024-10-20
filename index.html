@@ -436,37 +436,5 @@ design="dot">
       document.querySelector('#models').setAttribute('disable-pointer-lock', '');
 </script>
 
-<!-- Disable Pointer Lock End -->
-
-
-<!-- Loading Progress -->
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scene = document.querySelector('#mainScene');
-
-    // Listen to the progress event to update the loading status
-    scene.addEventListener('progress', function (event) {
-      // event.detail.loaded: how many items have been loaded
-      // event.detail.total: total number of items to load
-      const loaded = event.detail.loaded;
-      const total = event.detail.total;
-      
-      // Calculate the percentage
-      const percentage = Math.floor((loaded / total) * 100);
-      
-      // Update the browser tab title with the loading percentage
-      document.title = `Loading: ${percentage}%`;
-    });
-
-    // Once the scene is fully loaded, update the title
-    scene.addEventListener('loaded', () => {
-      document.title = "Scene Loaded!";
-    });
-  });
-</script>
-
-<!-- Loading Progress End -->
-
   </body>
 </html>
