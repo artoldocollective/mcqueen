@@ -16,8 +16,6 @@
     <script src="assets/loader2.js"></script>
     <script src="assets/gui.js"></script>
     <script src="assets/lock-pitch.js"></script>
-    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
-    <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
 
     <!-- Link to external CSS -->
     <link rel="stylesheet" type="text/css" href="assets/lightbox.css" />
@@ -190,11 +188,18 @@ design="dot">
 
 <!-- Stage -->
 
+
 <a-entity text="value:McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="21 21 21"></a-entity> 
 
-<a-plane gui-interactable id="sound01" sound="src: #sound1; on: click; autoplay: false;" width="3.945" height="5" position="-8 4.5 -10" material="shader:gif;src:url(images/mcqueen.gif);" transparent: true" rotation="0  50 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
-             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+<a-assets>
+  <video id="video1" src="assets/mcqueen.mp4" autoplay muted loop></video>
+</a-assets>
+
+<a-video gui-interactable id="sound01" sound="src: #sound1; on: click; autoplay: false;" src="#video1" position="-8 4.5 -10" width="3.168" height="4" rotation="0  50 0" opacity="0.9"
+animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
 </a-plane>
 
 <a-plane gui-interactable id="sound02" sound="src: #sound2; on: click; autoplay: false;" width="3.168" height="4" position=" 8 4.5 -10" material="src:images/witkin.webp; transparent: true" rotation="0 -50 0"
