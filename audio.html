@@ -349,56 +349,5 @@ design="dot">
 </script>
 
 
-<!-- Stop audio click video -->
-
-<script>
-    // Get all A-Frame entities with sounds (i.e., the entities for sounds 1 to 8)
-    const soundEntities = [
-      document.querySelector('#sound01'),
-      document.querySelector('#sound02'),
-      document.querySelector('#sound03'),
-      document.querySelector('#sound04'),
-      document.querySelector('#sound05'),
-      document.querySelector('#sound06'),
-      document.querySelector('#sound07'),
-      document.querySelector('#sound08')
-    ];
-
-    // Function to stop all sounds with a fade-out effect
-    function stopAllSounds() {
-      soundEntities.forEach(soundEntity => {
-        const soundComponent = soundEntity.components.sound;
-        if (soundComponent && soundComponent.isPlaying) {
-          fadeOutAndStop(soundComponent); // Apply fade-out before stopping
-        }
-      });
-    }
-
-    // Function to gradually lower the volume and then stop the sound
-    function fadeOutAndStop(soundComponent) {
-      let volume = soundComponent.volume; // Get the current volume
-      const fadeDuration = 1000; // Fade-out duration in milliseconds
-      const fadeStep = 50; // How often to lower the volume (milliseconds)
-      const fadeAmount = volume / (fadeDuration / fadeStep); // Amount to decrease volume each step
-
-      const fadeInterval = setInterval(() => {
-        if (volume > 0) {
-          volume -= fadeAmount; // Lower the volume
-          if (volume < 0) volume = 0; // Ensure volume doesn't go below 0
-          soundComponent.setVolume(volume); // Update the volume
-        } else {
-          clearInterval(fadeInterval); // Stop the fade effect
-          soundComponent.stopSound(); // Stop the sound when the volume reaches 0
-        }
-      }, fadeStep);
-    }
-
-    // Add a click event listener to the a-video element
-    const videoElement = document.querySelector('#video-screen');
-    videoElement.addEventListener('click', () => {
-      stopAllSounds(); // Stop all currently playing sounds with fade-out
-    });
-</script>
-
   </body>
 </html>
