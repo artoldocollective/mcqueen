@@ -112,7 +112,7 @@ document.querySelectorAll('img').forEach((img) => {
         console.log('Pointer Lock Enabled');
       }
     });
-  </script>
+</script>
 
 
 <a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
@@ -173,38 +173,38 @@ design="dot">
 
 
 <!-- Sound -->
-		
-    <audio id="sound1" src="assets/mcqueen.mp3"   preload="auto" crossorigin="anonymous"></audio>
-    <audio id="sound2" src="assets/witkin.mp3"    preload="auto" crossorigin="anonymous"></audio>
-    <audio id="sound3" src="assets/mcgirr.mp3"    preload="auto" crossorigin="anonymous"></audio>
-    <audio id="sound4" src="assets/dante.mp3"     preload="auto" crossorigin="anonymous"></audio>
-    <audio id="sound5" src="assets/bowie.mp3"     preload="auto" crossorigin="anonymous"></audio>
-    <audio id="sound6" src="assets/west.mp3"      preload="auto" crossorigin="anonymous"></audio>
-    <audio id="sound7" src="assets/lagerfeld.mp3" preload="auto" crossorigin="anonymous"></audio>
-    <audio id="sound8" src="assets/prada.mp3"     preload="auto" crossorigin="anonymous"></audio>
 
-    <audio id="soundpreloader" src="assets/placeholder.mp3"  preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound1" src="assets/mcqueen.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound2" src="assets/witkin.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound3" src="assets/mcgirr.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound4" src="assets/dante.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound5" src="assets/bowie.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound6" src="assets/west.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound7" src="assets/lagerfeld.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound8" src="assets/prada.mp3" preload="auto" crossorigin="anonymous"></audio>
+
+<audio id="soundpreloader" src="assets/placeholder.mp3" preload="auto" crossorigin="anonymous"></audio>
 
 <!-- Sound End -->
 
 
 <!-- Invisible audio preload -->
 
-  <a-box gui-interactable id="preloader” position="0 4 -13" depth="1" height="10" width="10" color="red" opacity="0" transparent="true" sound="src: #soundpreloader></a-box>
+<a-box gui-interactable id="preloader" position="0 4 -13" depth="1" height="10" width="10" color="red" opacity="0" transparent="true" sound="src: #soundpreloader"></a-box>
 
-  <script>
-    // Get the box element
-    var box = document.querySelector('#preloader');
+<script type="text/javascript">
+  // Get the box element
+  var box = document.querySelector('#preloader');
 
-    // Add an event listener for 'click' event
-    box.addEventListener('click', function () {
-      // Play the sound
-      box.components.sound.playSound();
+  // Add an event listener for 'click' event
+  box.addEventListener('click', function () {
+    // Play the sound
+    box.components.sound.playSound();
 
-      // Hide the box (make it invisible)
-      box.setAttribute('visible', false);
-    });
-  </script> 
+    // Hide the box (make it invisible)
+    box.setAttribute('visible', false);
+  });
+</script> 
 
 <!-- Invisible audio preload End-->
 
