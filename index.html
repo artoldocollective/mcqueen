@@ -196,22 +196,25 @@ design="dot">
 
   <script>
     const plane = document.querySelector('#clickable-plane');
-    const soundSrc = document.querySelector('#placeholder-sound');
+    const soundElement = document.querySelector('#placeholder-sound');
 
-    // Function to play the sound and move the plane out of view
+    // Function to play the muted sound and move the plane out of view
     function handleClick() {
-      // Play the sound
-      const sound = new Audio(soundSrc.src); // Create an audio instance
-      sound.play();
-
-      // Move the plane out of view after click
-      plane.setAttribute('position', '0 -50 -13');
+      // Check if the sound is already playing
+      if (soundElement.paused) {
+        soundElement.play().then(() => {
+          // Once the sound starts playing, move the plane out of view
+          plane.setAttribute('position', '0 -50 -14');
+        }).catch(error => {
+          console.log("Error playing sound:", error);
+        });
+      }
     }
 
     // Add click event listener to the plane
     plane.addEventListener('click', handleClick);
 
-    // Simulate a click on first mouse move
+    // Simulate a click on first mouse move to "prime" audio
     let clickSimulated = false;
     window.addEventListener('mousemove', () => {
       if (!clickSimulated) {
