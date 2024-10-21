@@ -189,7 +189,7 @@ design="dot">
 <!-- Stage -->
 
 
-<a-entity text="value: Art-iti-fashion intellegenzia; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="21 21 21"></a-entity> 
+<a-entity text="value: McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="21 21 21"></a-entity> 
 
 <a-assets>
   <video id="video1" src="assets/mcqueen.mp4" autoplay muted loop></video>
@@ -198,7 +198,7 @@ design="dot">
   <video id="video4" src="assets/west.mp4" autoplay muted loop></video>
   <video id="video5" src="assets/blow.mp4" autoplay muted loop></video>
   <video id="video6" src="assets/burton.mp4" autoplay muted loop></video>
-  <video id="video7" src="assets/girr.mp4" autoplay muted loop></video>
+  <video id="video7" src="assets/mcgirr.mp4" autoplay muted loop></video>
   <video id="video8" src="assets/matter.mp4" autoplay muted loop></video>
 </a-assets>
 
@@ -253,7 +253,11 @@ design="dot">
 
 <a-entity text="value: Fecal Matter; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 2" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable id="sound08" sound="src: #sound8; on: click; autoplay: false;" src="#video8" opacity="0.9" width="3.168" height="4" position=" 12 4.5 2" rotation="0 -90 0" 
+<a-video gui-interactable id="sound08" sound="src: #sound8; on: click; autoplay: false;" src="#video8" opacity="0.9" width="3.168" height="4" position=" 12 4.5 2" rotation="0 -90 0"
+             gui-interactable 
+             lightbox 
+             data-url="assets/spiders/index.html"
+             disable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
@@ -262,7 +266,8 @@ design="dot">
         gui-interactable 
         id="models" 
         lightbox 
-        data-url="models.html" 
+        data-url="models.html"
+        disable-pointer-lock
         width="11.52" 
         height="6.48" 
         position="-11.75 4 10" 
@@ -440,29 +445,31 @@ design="dot">
 <!-- Disable Pointer Lock -->
 
 <script>
-      AFRAME.registerComponent('disable-pointer-lock', {
-        init: function () {
-          const plane = this.el;
+  AFRAME.registerComponent('disable-pointer-lock', {
+    init: function () {
+      const el = this.el;
 
-          plane.addEventListener('click', function () {
-            // Exit pointer lock when the plane is clicked
-            if (document.pointerLockElement) {
-              document.exitPointerLock();
-            }
+      el.addEventListener('click', function () {
+        // Exit pointer lock when the element is clicked
+        if (document.pointerLockElement) {
+          document.exitPointerLock();
+        }
 
-            // Optional: Disable pointer lock in the look-controls (for further safety)
-            const cameraEl = document.querySelector('[camera]');
-            const lookControls = cameraEl.components['look-controls'];
-            if (lookControls) {
-              lookControls.data.pointerLockEnabled = false;
-              console.log('Pointer Lock Disabled');
-            }
-          });
+        // Optional: Disable pointer lock in the look-controls (for further safety)
+        const cameraEl = document.querySelector('[camera]');
+        const lookControls = cameraEl.components['look-controls'];
+        if (lookControls) {
+          lookControls.data.pointerLockEnabled = false;
+          console.log('Pointer Lock Disabled');
         }
       });
+    }
+  });
 
-      // Attach the component to the plane
-      document.querySelector('#models').setAttribute('disable-pointer-lock', '');
+  // Apply the component to all elements that should have pointer lock disabled
+  document.querySelectorAll('[disable-pointer-lock]').forEach(el => {
+    el.setAttribute('disable-pointer-lock', '');
+  });
 </script>
 
   </body>
