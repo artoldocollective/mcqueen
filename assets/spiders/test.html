@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://www.showstudio.com/projects/tumblr-takeover-fecal-matter/day-2 -->
+<html lang="en" style="--v100: 779px;">
+    <script type="text/javascript" charset="UTF-8" async="" src="./Day 2_ Fecal Matter _ SHOWstudio_files/state.js"></script>
+    <script src="chrome-extension://dlpiaeofjhnjeckpjcbhmnifdejoikpa/js/ajax-listener-other.js"></script>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+        <meta name="robots" content="noindex, nofollow">
+        <meta data-rh="true" content="Multidisciplinary artists Fecal Matter share two of their visual projects–&#39;Ad Campaign Prototype - Eliminate White Power&#39; and &#39;Portrait of a Transhuman&#39;–on day two of their Tumblr takeover." name="description">
+        <title>Fecal Matter | SHOWstudio</title>
+        <link rel="preload" href="./Day 2_ Fecal Matter _ SHOWstudio_files/index.css" as="style">
+        <link rel="modulepreload" href="./Day 2_ Fecal Matter _ SHOWstudio_files/index.js" as="script">
+        <meta name="msapplication-TileColor" content="#000000">
+        <meta name="theme-color" content="#ffffff">
+        <link href="./Day 2_ Fecal Matter _ SHOWstudio_files/index.css" rel="stylesheet">
+        <script src="./Day 2_ Fecal Matter _ SHOWstudio_files/index.js" type="module" crossorigin=""></script>
+
+        <style>
+        /* Fullscreen overlay */
+        .hide {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: 100; /* Bring to front */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor:default;
+        }
+        </style>
+
+    </head>
+    <body class="overflow-x-hidden" inject_video_svd="true">
+
+<script>
+  // Create the warning overlay
+  document.body.innerHTML += `
+    <div id="overlay" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        color: white;
+    ">
+      <div class="overlay-content" style="text-align: center; padding: 20px">
+        <div class="warning-symbol" style="font-size: 100px; color: red;">⚠️</div>
+        <div class="warning-text" style="font-size: 50px; margin-top: 10px; color: white;">Warning</div>
+         <div class="warning-text" style="font-size: 30px; margin-top: 20px; color: red;">Your mind and taste in fashion has been infiltrated.</div>
+        <div class="warning-details" style="font-size: 20px; margin-top: 20px; color: white; text-align:justify;">
+          The content you are attempting to access may contain imagery, themes, or concepts that are highly unsettling and potentially disturbing to individuals. 
+          Viewer discretion is strongly advised, as this material may provoke discomfort or emotional distress.
+        </div>
+        <button id="show-anyway-btn" style="
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+        ">Show me anyway</button>
+      </div>
+    </div>
+  `;
+
+  // Function to hide the overlay when the button is clicked
+  function hideOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  // Attach event listener to button
+  document.getElementById('show-anyway-btn').addEventListener('click', function() {
+    hideOverlay();
+  });
+
+  // Set the cursor to default for all links, except the button
+  document.querySelectorAll('a').forEach(link => {
+    link.style.cursor = 'default'; // Set all <a> tags to default cursor
+  });
+
+  // Block all links except the button with event delegation
+  document.addEventListener('click', function(event) {
+    const target = event.target;
+
+    // If the clicked element is a link (a tag) and not the "Show me anyway" button, prevent default behavior
+    if (target.tagName === 'A' && target.id !== 'show-anyway-btn') {
+      event.preventDefault();
+      alert('Links are blocked until you click "Show me anyway"');
+    }
+  });
+
+  // Ensure the "Show me anyway" button has a pointer cursor
+  document.getElementById('show-anyway-btn').style.cursor = 'pointer';
+</script>
+
+<div class="hide">
+</div>
+
+     
+<script type='text/javascript' src='bug-min.js'></script>
+        <script type='text/javascript'>
+            // default fruit fly bug:
+            new BugController({});
+            // default spiders:
+            new SpiderController({});
+</script>
+
+    </body>
+</html>
