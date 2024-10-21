@@ -50,7 +50,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 100;
+        z-index: 1000;
         color: white;
     ">
       <div class="overlay-content" style="text-align: center; padding: 20px">
@@ -80,29 +80,32 @@
     document.getElementById('overlay').style.display = 'none';
   }
 
-  // Attach event listener to button
-  document.getElementById('show-anyway-btn').addEventListener('click', function() {
-    hideOverlay();
+  // Wait for the DOM content to load before attaching the event listener
+  document.addEventListener('DOMContentLoaded', function() {
+    // Attach event listener to the "Show me anyway" button
+    document.getElementById('show-anyway-btn').addEventListener('click', function() {
+      hideOverlay();
+    });
+
+    // Set the cursor to default for all links, except the button
+    document.querySelectorAll('a').forEach(link => {
+      link.style.cursor = 'default'; // Set all <a> tags to default cursor
+    });
+
+    // Block all links except the button with event delegation
+    document.addEventListener('click', function(event) {
+      const target = event.target;
+
+      // If the clicked element is a link (a tag) and not the "Show me anyway" button, prevent default behavior
+      if (target.tagName === 'A' && target.id !== 'show-anyway-btn') {
+        event.preventDefault();
+        alert('Links are blocked until you click "Show me anyway"');
+      }
+    });
+
+    // Ensure the "Show me anyway" button has a pointer cursor
+    document.getElementById('show-anyway-btn').style.cursor = 'pointer';
   });
-
-  // Set the cursor to default for all links, except the button
-  document.querySelectorAll('a').forEach(link => {
-    link.style.cursor = 'default'; // Set all <a> tags to default cursor
-  });
-
-  // Block all links except the button with event delegation
-  document.addEventListener('click', function(event) {
-    const target = event.target;
-
-    // If the clicked element is a link (a tag) and not the "Show me anyway" button, prevent default behavior
-    if (target.tagName === 'A' && target.id !== 'show-anyway-btn') {
-      event.preventDefault();
-      alert('Links are blocked until you click "Show me anyway"');
-    }
-  });
-
-  // Ensure the "Show me anyway" button has a pointer cursor
-  document.getElementById('show-anyway-btn').style.cursor = 'pointer';
 </script>
 
 <div class="hide">
@@ -1623,10 +1626,6 @@
                 </div>
             </div>
         </div>
-        <iframe tabindex="-1" role="presentation" aria-hidden="true" title="Blank" src="./Day 2_ Fecal Matter _ SHOWstudio_files/bc-v4.min.html" style="position: absolute; width: 1px; height: 1px; top: -9999px;"></iframe>
-        <div id="videoPopupMenu" style="display: none;"></div>
-        <img id="CookiebotSessionPixel" src="./Day 2_ Fecal Matter _ SHOWstudio_files/1.gif" alt="Cookiebot session tracker icon loaded" data-cookieconsent="ignore" style="display: none;">
-
      
 <script type='text/javascript' src='bug-min.js'></script>
         <script type='text/javascript'>
