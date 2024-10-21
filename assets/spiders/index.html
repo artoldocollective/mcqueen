@@ -53,8 +53,29 @@
             })();
         </script>
         <script data-cookieconsent="ignore" src="./Day 2_ Fecal Matter _ SHOWstudio_files/gsap.min.js"></script>
+
+        <style>
+        /* Fullscreen overlay */
+        .hide {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: 1000; /* Bring to front */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor:crosshair;
+        }
+        </style>
     </head>
     <body class="overflow-x-hidden" inject_video_svd="true">
+
+    <div class="hide">
+    </div>
+
         <div id="js-content">
             <div>
                 <div class="">
