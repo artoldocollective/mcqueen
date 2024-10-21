@@ -180,7 +180,7 @@ design="dot">
 <audio id="sound4" src="assets/west.mp3" preload="auto" crossorigin="anonymous"></audio>
 <audio id="sound5" src="assets/blow.mp3" preload="auto" crossorigin="anonymous"></audio>
 <audio id="sound6" src="assets/burton.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound7" src="assets/girr.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound7" src="assets/mcgirr.mp3" preload="auto" crossorigin="anonymous"></audio>
 <audio id="sound8" src="assets/matter.mp3" preload="auto" crossorigin="anonymous"></audio>
 
 <!-- Sound End -->
@@ -240,7 +240,11 @@ design="dot">
 <a-entity text="value: Sarah Burton; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 -2" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
 <a-video gui-interactable id="sound06" sound="src: #sound6; on: click; autoplay: false;" src="#video6" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -2" rotation="0 -90 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             gui-interactable 
+             lightbox 
+             data-url="butterfly.html"
+             disable-pointer-lock
+	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
