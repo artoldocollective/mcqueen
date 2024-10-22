@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Artifashion Intellighenzia: McQueen feat. Witkin</title>
+    <title>McQueen feat. Witkin</title>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -11,7 +11,6 @@
     <script src="assets/extras.js"></script>
     <script src="assets/sound.js"></script>
     <script src="assets/audio.js"></script>
-    <script src="assets/video.js"></script>
     <script src="assets/rain.js"></script>
     <script src="assets/loader1.js"></script>
     <script src="assets/loader2.js"></script>
@@ -169,7 +168,7 @@ design="dot">
 
 <!-- Music -->
 
-<audio id="music" src="assets/music.mp3" crossorigin="anonymous"></audio>
+<audio id="music" src="assets/media/music.mp3" crossorigin="anonymous"></audio>
 
 <a-box color="black" scale="2 2 2" position="0 -2 0" audio="src: #music; loop: true;"></a-box>
 
@@ -355,6 +354,37 @@ design="dot">
 
 
 </a-scene>
+
+
+
+<!-- Video autoplay mobile devices -->
+
+<script type="text/javascript">
+  let scene = document.querySelector('a-scene');
+  var videoEls = document.querySelectorAll('video'); // Select all video elements
+
+  // Detect mobile device and add a user interaction fallback
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  window.onload = function() {
+    if (isMobile) {
+      // For mobile devices, play all videos on user interaction
+      document.body.addEventListener('touchstart', function() {
+        videoEls.forEach(function(videoEl) {
+          videoEl.play();
+        });
+      }, { once: true });
+    } else {
+      // Autoplay and loop for non-mobile devices
+      videoEls.forEach(function(videoEl) {
+        videoEl.play();
+        videoEl.loop = true;  // Ensure all videos are set to loop
+      });
+    }
+  };
+</script>
+
+<!-- Video autoplay mobile devices End -->
 
 
 <!-- Stop audio -->

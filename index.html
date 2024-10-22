@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Artifashion Intellighenzia: McQueen feat. Witkin</title>
+    <title>Artifashion Intellighenzia</title>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -17,15 +17,19 @@
 
         body, html {
             font-family: Arial, sans-serif;
+            width: 100%;
         }
 
-        /* Flexbox container without vertical centering */
+        /* Centering the container and limiting its width */
         .container {
             display: flex;
             justify-content: center; /* Horizontal centering */
             flex-direction: column;
+            align-items: center; /* Center content horizontally */
             text-align: center;
             padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto; /* Horizontally center the container */
         }
 
         /* Image styling */
@@ -83,7 +87,7 @@
 
         /* Accordion styles */
         .accordion {
-            width: 80%;
+            width: 100%; /* Full width accordion */
             max-width: 600px;
             margin-top: 20px;
         }
@@ -123,6 +127,7 @@
             padding: 15px;
             background-color: white;
             font-size: 1rem;
+            text-align: justify; /* Justified text */
         }
 
     </style>
@@ -131,28 +136,28 @@
 
     <div class="container">
       <img src="./installation/images/mask.webp" alt="Artifashion Intellighenzia: McQueen feat. Witkin" width="20%" />
-      <h1>Main Heading (H1)</h1>
-      <h2>Subheading (H2)</h2>
-      <h3>Another Subheading (H3)</h3>
-      <a href="./installation/" class="button">E N T E R</a>
+      <h1>Artifashion Intellighenzia</h1>
+      <h2>McQueen feat. Witkin</h2>
+      <h3>Featuring Alexander McQueen, Joel-Peter Witkin, David Bowie, Kanye West, Isabell Blow, Sarah Burton and many more</h3>
+      <a href="./installation/" target="_blank" class="button">E N T E R [VR]</a>
 
       <div class="accordion">
         <div class="accordion-item">
           <div class="accordion-header">Accordion Item 1</div>
           <div class="accordion-content">
-            <p>This is the content for item 1.</p>
+            <p>This is the content for item 1. The text is fully justified so that it aligns neatly on both the left and right margins, providing a clean, professional look.</p>
           </div>
         </div>
         <div class="accordion-item">
           <div class="accordion-header">Accordion Item 2</div>
           <div class="accordion-content">
-            <p>This is the content for item 2.</p>
+            <p>This is the content for item 2. By using text-align: justify, the content spreads evenly across the width of the accordion, maintaining alignment on both sides.</p>
           </div>
         </div>
         <div class="accordion-item">
           <div class="accordion-header">Accordion Item 3</div>
           <div class="accordion-content">
-            <p>This is the content for item 3.</p>
+            <p>This is the content for item 3. The justified text ensures that the paragraphs look evenly distributed across the accordion panel, enhancing readability and aesthetics.</p>
           </div>
         </div>
       </div>
