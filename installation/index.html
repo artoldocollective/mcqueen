@@ -402,20 +402,32 @@ design="dot">
     document.querySelector('#sound08')
   ];
 
+  // Function to toggle play/pause for the clicked sound
+  function toggleSound(soundEntity) {
+    const soundComponent = soundEntity.components.sound;
+
+    if (soundComponent.isPlaying) {
+      fadeOutAndPause(soundComponent); // Apply fade-out before pausing
+    } else {
+      stopAllSounds(); // Stop all currently playing sounds with fade-out
+      soundComponent.playSound(); // Play the clicked sound
+    }
+  }
+
   // Function to stop all sounds with a fade-out effect
   function stopAllSounds() {
     soundEntities.forEach(soundEntity => {
       const soundComponent = soundEntity.components.sound;
       if (soundComponent && soundComponent.isPlaying) {
-        fadeOutAndStop(soundComponent); // Apply fade-out before stopping
+        fadeOutAndPause(soundComponent); // Apply fade-out before pausing
       }
     });
   }
 
-  // Function to gradually lower the volume and then stop the sound
-  function fadeOutAndStop(soundComponent) {
+  // Function to gradually lower the volume and then pause the sound
+  function fadeOutAndPause(soundComponent) {
     let volume = soundComponent.volume; // Get the current volume
-    const fadeDuration = 1000; // Fade-out duration in milliseconds
+    const fadeDuration = 1500; // Fade-out duration in milliseconds
     const fadeStep = 50; // How often to lower the volume (milliseconds)
     const fadeAmount = volume / (fadeDuration / fadeStep); // Amount to decrease volume each step
 
@@ -426,16 +438,15 @@ design="dot">
         soundComponent.setVolume(volume); // Update the volume
       } else {
         clearInterval(fadeInterval); // Stop the fade effect
-        soundComponent.stopSound(); // Stop the sound when the volume reaches 0
+        soundComponent.pauseSound(); // Pause the sound when the volume reaches 0
       }
     }, fadeStep);
   }
 
-  // Add click event listeners to each plane
+  // Add click event listeners to each sound entity
   soundEntities.forEach((soundEntity) => {
     soundEntity.addEventListener('click', () => {
-      stopAllSounds(); // Stop all currently playing sounds with fade-out
-      soundEntity.components.sound.playSound(); // Play the clicked sound
+      toggleSound(soundEntity); // Toggle play/pause for the clicked sound
     });
   });
 </script>
