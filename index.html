@@ -7,7 +7,7 @@
     <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
     <meta property="og:image" content="./images/mask.png" />
     <link rel="icon" type="image/png" href="./images/mask.png" />
-    <script src="assets/engine.js"></script>
+    <script src="assets/engine1.6.0.js"></script>
     <script src="assets/extras.js"></script>
     <script src="assets/sound.js"></script>
     <script src="assets/audio.js"></script>
@@ -91,8 +91,6 @@ document.querySelectorAll('img').forEach((img) => {
 
 <img src="images/mask.webp" class="mask" draggable="false" style="cursor:pointer;"/>
 
-<!-- Mask -->
-
 <script>
     document.querySelector('.mask').addEventListener('click', function () {
       const canvasEl = document.querySelector('a-scene').canvas;
@@ -114,9 +112,11 @@ document.querySelectorAll('img').forEach((img) => {
     });
 </script>
 
+<!-- Mask -->
+
 
 <a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
-device-orientation-permission-ui="enabled: true" antialias="true" cursor="rayOrigin: mouse">
+device-orientation-permission-ui="enabled: false" antialias="true" cursor="rayOrigin: mouse">
 
 
 <!-- World -->
