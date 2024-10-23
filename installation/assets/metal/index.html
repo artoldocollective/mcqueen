@@ -1,0 +1,244 @@
+<html>
+    <head>
+        <title>Metal</title>
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+        <meta property="og:image" content="./images/mask.png" />
+        <link rel="icon" type="image/png" href="./images/mask.png" />
+
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container for the video player */
+        .video-container {
+            position: relative;
+            width: 640px;
+            height: 360px;
+            overflow: hidden;
+            background-color: #000;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hide default video controls */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Play/Pause button styles */
+        .play-pause-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 50px;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .play-pause-btn:hover {
+            background-color: rgba(255, 0, 0, 0.8); /* Red hover effect */
+        }
+
+        .play-pause-btn:focus {
+            outline: none;
+        }
+
+        /* Icon styles */
+        .play-pause-btn svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        /* Fade-out effect for button and icons */
+        .hide-btn {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Fade-in effect for the button and icons on hover */
+        .video-container:hover .play-pause-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Smooth transition for fade-in/out */
+        .fade-transition {
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        /* Disable right-click */
+        video {
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="video-container" id="videoContainer">
+    <video id="videoPlayer">
+        <source src="https://artoldo.com/images/1.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <button id="playPauseBtn" class="play-pause-btn fade-transition">
+        <!-- Play Icon -->
+        <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <!-- Pause Icon (hidden initially) -->
+        <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+    </button>
+</div>
+
+<script>
+    // Get video player, play/pause button, and icons
+    const videoPlayer = document.getElementById('videoPlayer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const videoContainer = document.getElementById('videoContainer');
+
+    // To store original tab volumes
+    let originalTabVolumes = {};
+
+    // Remove default controls of the video
+    videoPlayer.removeAttribute('controls');
+
+    // Play and pause event listeners
+    playPauseBtn.addEventListener('click', handlePlayPause);
+
+    // Function to handle Play/Pause button click
+    function handlePlayPause() {
+        if (videoPlayer.paused) {
+            fadeOutAllTabs();
+            videoPlayer.play();
+            togglePlayPauseIcon(true); // Switch to pause icon
+            fadeOutButton(); // Fade out button after play
+            postMessageToParent('play'); // Send message to parent to stop aframe sound
+        } else {
+            videoPlayer.pause();
+            fadeInAllTabs();
+            togglePlayPauseIcon(false); // Switch to play icon
+            postMessageToParent('pause'); // Send message to parent to resume aframe sound
+        }
+    }
+
+    // Toggle between Play and Pause icons
+    function togglePlayPauseIcon(isPlaying) {
+        if (isPlaying) {
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        } else {
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    }
+
+    // Fade-out the button and icons
+    function fadeOutButton() {
+        // Hide the play/pause button (including both icons)
+        playPauseBtn.classList.add('hide-btn');
+    }
+
+    // When video ends, show play button again
+    videoPlayer.addEventListener('ended', function() {
+        fadeInAllTabs();
+        togglePlayPauseIcon(false); // Switch back to play icon
+        playPauseBtn.classList.remove('hide-btn'); // Show button after video ends
+        postMessageToParent('pause'); // Resume A-Frame sound
+    });
+
+    // Fade out all audio in all tabs
+    function fadeOutAllTabs() {
+        const audioElements = document.querySelectorAll('audio');
+        originalTabVolumes = {};
+
+        audioElements.forEach((audio, index) => {
+            originalTabVolumes[index] = audio.volume;
+            let volume = audio.volume;
+
+            // Gradually decrease the volume
+            const fadeOutInterval = setInterval(() => {
+                if (volume > 0.05) {
+                    volume -= 0.05;
+                    audio.volume = volume;
+                } else {
+                    audio.pause();
+                    clearInterval(fadeOutInterval);
+                }
+            }, 100); // Decrease volume every 100ms
+        });
+    }
+
+    // Fade in all audio in all tabs
+    function fadeInAllTabs() {
+        const audioElements = document.querySelectorAll('audio');
+        
+        audioElements.forEach((audio, index) => {
+            let volume = 0;
+            audio.play(); // Resume audio
+
+            // Gradually increase the volume to its original state
+            const fadeInInterval = setInterval(() => {
+                if (volume < originalTabVolumes[index]) {
+                    volume += 0.05;
+                    audio.volume = volume;
+                } else {
+                    audio.volume = originalTabVolumes[index];
+                    clearInterval(fadeInInterval);
+                }
+            }, 100); // Increase volume every 100ms
+        });
+    }
+
+    // Show play/pause button on mouse move (fade in)
+    videoContainer.addEventListener('mousemove', () => {
+        playPauseBtn.classList.remove('hide-btn');
+    });
+
+    // Disable right-click
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Send a message to the parent window
+    function postMessageToParent(action) {
+        if (window.parent) {
+            window.parent.postMessage(action, '*');
+        }
+    }
+
+</script>
+
+</body>
+</html>

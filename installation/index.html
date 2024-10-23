@@ -215,6 +215,10 @@ design="dot">
 <a-entity text="value: Joel-Peter Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="8 6.5 -8" scale="6 6 6" rotation="0 -60 0">
 </a-entity> 
 <a-video gui-interactable id="sound02" sound="src: #sound2; on: click; autoplay: false;" src="#video2" opacity="0.9" width="3.168" height="4" position=" 8 4.5 -8" rotation="0 -60 0"
+             gui-interactable 
+             lightbox 
+             data-url="assets/media/metal/"
+             disable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
@@ -456,6 +460,18 @@ design="dot">
 </script>
 
 <!-- Stop audio End -->
+
+
+<!-- Script to listen for messages from the iframe -->
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data === 'play') {
+                document.querySelector('a-sound').components.sound.pauseSound();
+            } else if (event.data === 'pause') {
+                document.querySelector('a-sound').components.sound.playSound();
+            }
+        });
+    </script>
 
 
 <!-- HTML Overlay with iframe for Lightbox -->
