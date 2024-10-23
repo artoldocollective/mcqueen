@@ -119,7 +119,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 
 <a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
-device-orientation-permission-ui="enabled: false" antialias="true" cursor="rayOrigin: mouse">
+device-orientation-permission-ui="enabled: false" antialias="true" cursor="rayOrigin: mouse" id="music01" sound="src: #music1; on: click; autoplay: false; loop:true;">
 
 
 <!-- World -->
@@ -166,17 +166,9 @@ design="dot">
 <!-- Camera End -->
 
 
-<!-- Music -->
-
-<audio id="music" src="assets/media/music.mp3" crossorigin="anonymous"></audio>
-
-<a-box color="black" scale="2 2 2" position="0 -2 0" audio="src: #music; loop: true;"></a-box>
-
-<!-- Music End -->
-
-
 <!-- Sound -->
 
+<audio id="music1"  src="assets/media/music.mp3" preload="true" crossorigin="anonymous"></audio>
 <audio id="sound1" src="assets/media/mcqueen.mp3" preload="auto" crossorigin="anonymous"></audio>
 <audio id="sound2" src="assets/media/witkin.mp3" preload="auto" crossorigin="anonymous"></audio>
 <audio id="sound3" src="assets/media/bowie.mp3" preload="auto" crossorigin="anonymous"></audio>
@@ -396,6 +388,7 @@ design="dot">
 <script>
   // Get all A-Frame entities with sounds (i.e., the entities for sounds 1 to 8)
   const soundEntities = [
+    document.querySelector('#music01'),
     document.querySelector('#sound01'),
     document.querySelector('#sound02'),
     document.querySelector('#sound03'),
