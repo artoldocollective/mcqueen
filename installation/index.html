@@ -16,7 +16,6 @@
     <script src="assets/loader2.js"></script>
     <script src="assets/gui.js"></script>
     <script src="assets/lock-pitch.js"></script>
-    <script src="assets/pointer-unlock.js"></script>
 
     <!-- Link to external CSS -->
     <link rel="stylesheet" type="text/css" href="assets/lightbox.css" />
@@ -83,9 +82,7 @@ document.querySelectorAll('img').forEach((img) => {
 });
 </script>
 
-
 <body style="background-color:red">
-
 
 <div class="se-pre-con"></div>
 
@@ -119,7 +116,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 
 <a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
-device-orientation-permission-ui="enabled: false" renderer="antialias: true" cursor="rayOrigin: mouse">
+device-orientation-permission-ui="enabled: false" antialias="true" cursor="rayOrigin: mouse">
 
 
 <!-- World -->
@@ -168,7 +165,7 @@ design="dot">
 
 <!-- Music -->
 
-<audio id="music" src="assets/media/music.mp3" crossorigin="anonymous"></audio>
+<audio id="music" src="assets/music.mp3" crossorigin="anonymous"></audio>
 
 <a-box color="black" scale="2 2 2" position="0 -2 0" audio="src: #music; loop: true;"></a-box>
 
@@ -177,14 +174,14 @@ design="dot">
 
 <!-- Sound -->
 
-<audio id="sound1" src="assets/media/mcqueen.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound2" src="assets/media/witkin.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound3" src="assets/media/bowie.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound4" src="assets/media/west.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound5" src="assets/media/blow.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound6" src="assets/media/burton.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound7" src="assets/media/mcgirr.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound8" src="assets/media/matter.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound1" src="assets/mcqueen.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound2" src="assets/witkin.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound3" src="assets/bowie.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound4" src="assets/west.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound5" src="assets/blow.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound6" src="assets/burton.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound7" src="assets/mcgirr.mp3" preload="auto" crossorigin="anonymous"></audio>
+<audio id="sound8" src="assets/matter.mp3" preload="auto" crossorigin="anonymous"></audio>
 
 <!-- Sound End -->
 
@@ -195,14 +192,14 @@ design="dot">
 <a-entity text="value: McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="21 21 21"></a-entity> 
 
 <a-assets>
-  <video id="video1" src="assets/media/mcqueen.mp4" autoplay muted loop></video>
-  <video id="video2" src="assets/media/witkin.mp4" autoplay muted loop></video>
-  <video id="video3" src="assets/media/bowie.mp4" autoplay muted loop></video>
-  <video id="video4" src="assets/media/west.mp4" autoplay muted loop></video>
-  <video id="video5" src="assets/media/blow.mp4" autoplay muted loop></video>
-  <video id="video6" src="assets/media/burton.mp4" autoplay muted loop></video>
-  <video id="video7" src="assets/media/mcgirr.mp4" autoplay muted loop></video>
-  <video id="video8" src="assets/media/matter.mp4" autoplay muted loop></video>
+  <video id="video1" src="assets/mcqueen.mp4" autoplay muted loop></video>
+  <video id="video2" src="assets/witkin.mp4" autoplay muted loop></video>
+  <video id="video3" src="assets/bowie.mp4" autoplay muted loop></video>
+  <video id="video4" src="assets/west.mp4" autoplay muted loop></video>
+  <video id="video5" src="assets/blow.mp4" autoplay muted loop></video>
+  <video id="video6" src="assets/burton.mp4" autoplay muted loop></video>
+  <video id="video7" src="assets/mcgirr.mp4" autoplay muted loop></video>
+  <video id="video8" src="assets/matter.mp4" autoplay muted loop></video>
 </a-assets>
 
 <a-entity text="value: Alexander McQueen; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-8 6.5 -8" scale="6 6 6" rotation="0 60 0">
@@ -217,7 +214,7 @@ design="dot">
 <a-video gui-interactable id="sound02" sound="src: #sound2; on: click; autoplay: false;" src="#video2" opacity="0.9" width="3.168" height="4" position=" 8 4.5 -8" rotation="0 -60 0"
              gui-interactable 
              lightbox 
-             data-url="assets/metal/"
+             data-url="assets/witkin/"
              disable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
@@ -228,7 +225,7 @@ design="dot">
 <a-video gui-interactable id="sound03" sound="src: #sound3; on: click; autoplay: false;" src="#video3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -6" rotation="0  90 0"
              gui-interactable 
              lightbox 
-             data-url="assets/media/bowie.pdf"
+             data-url="assets/west.pdf"
              disable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
@@ -239,7 +236,7 @@ design="dot">
 <a-video gui-interactable id="sound04" sound="src: #sound4; on: click; autoplay: false;" src="#video4" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -6" rotation="0 -90 0"
              gui-interactable 
              lightbox 
-             data-url="assets/media/west.pdf"
+             data-url="assets/west.pdf"
              disable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
@@ -257,7 +254,7 @@ design="dot">
 <a-video gui-interactable id="sound06" sound="src: #sound6; on: click; autoplay: false; loop:true;" src="#video6" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -2" rotation="0 -90 0" 
              gui-interactable 
              lightbox 
-             data-url="assets/butterfly/"
+             data-url="butterfly.html"
              disable-pointer-lock
 	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
@@ -275,7 +272,7 @@ design="dot">
 <a-video gui-interactable id="sound08" sound="src: #sound8; on: click; autoplay: false;" src="#video8" opacity="0.9" width="3.168" height="4" position=" 12 4.5 2" rotation="0 -90 0"
              gui-interactable 
              lightbox 
-             data-url="assets/spiders/"
+             data-url="assets/spiders/index.html"
              disable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
@@ -334,7 +331,7 @@ design="dot">
   	animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000"
         gui-interactable 
         lightbox 
-        data-url="assets/spray/"
+        data-url="spray.html"
         disable-pointer-lock>
 </a-entity>
 
@@ -353,7 +350,7 @@ design="dot">
 <!-- Video player -->
 
 <a-assets>
-  <video id="video-src" src="assets/media/intro.mp4" autoplay muted loop></video>
+  <video id="video-src" src="assets/intro.mp4" autoplay muted loop></video>
 </a-assets>
 
 <a-video id="video-screen" src="#video-src" position="0 4.5 -14" width="12" height="9" opacity="0.9"></a-video>
@@ -362,7 +359,6 @@ design="dot">
 
 
 </a-scene>
-
 
 
 <!-- Video autoplay mobile devices -->
@@ -395,6 +391,7 @@ design="dot">
 <!-- Video autoplay mobile devices End -->
 
 
+
 <!-- Stop audio -->
 
 <script>
@@ -410,32 +407,20 @@ design="dot">
     document.querySelector('#sound08')
   ];
 
-  // Function to toggle play/pause for the clicked sound
-  function toggleSound(soundEntity) {
-    const soundComponent = soundEntity.components.sound;
-
-    if (soundComponent.isPlaying) {
-      fadeOutAndPause(soundComponent); // Apply fade-out before pausing
-    } else {
-      stopAllSounds(); // Stop all currently playing sounds with fade-out
-      soundComponent.playSound(); // Play the clicked sound
-    }
-  }
-
   // Function to stop all sounds with a fade-out effect
   function stopAllSounds() {
     soundEntities.forEach(soundEntity => {
       const soundComponent = soundEntity.components.sound;
       if (soundComponent && soundComponent.isPlaying) {
-        fadeOutAndPause(soundComponent); // Apply fade-out before pausing
+        fadeOutAndStop(soundComponent); // Apply fade-out before stopping
       }
     });
   }
 
-  // Function to gradually lower the volume and then pause the sound
-  function fadeOutAndPause(soundComponent) {
+  // Function to gradually lower the volume and then stop the sound
+  function fadeOutAndStop(soundComponent) {
     let volume = soundComponent.volume; // Get the current volume
-    const fadeDuration = 1500; // Fade-out duration in milliseconds
+    const fadeDuration = 1000; // Fade-out duration in milliseconds
     const fadeStep = 50; // How often to lower the volume (milliseconds)
     const fadeAmount = volume / (fadeDuration / fadeStep); // Amount to decrease volume each step
 
@@ -446,41 +431,21 @@ design="dot">
         soundComponent.setVolume(volume); // Update the volume
       } else {
         clearInterval(fadeInterval); // Stop the fade effect
-        soundComponent.pauseSound(); // Pause the sound when the volume reaches 0
+        soundComponent.stopSound(); // Stop the sound when the volume reaches 0
       }
     }, fadeStep);
   }
 
-  // Add click event listeners to each sound entity
+  // Add click event listeners to each plane
   soundEntities.forEach((soundEntity) => {
     soundEntity.addEventListener('click', () => {
-      toggleSound(soundEntity); // Toggle play/pause for the clicked sound
+      stopAllSounds(); // Stop all currently playing sounds with fade-out
+      soundEntity.components.sound.playSound(); // Play the clicked sound
     });
   });
 </script>
 
 <!-- Stop audio End -->
-
-
- <!-- Script to listen for messages from the iframe -->
-    <script>
-        window.addEventListener('message', function(event) {
-            console.log("Message received from iframe:", event.data);
-
-            // Select the A-Frame entity with the sound component
-            const soundEntity = document.querySelector('a-entity[sound]');
-
-            if (event.data === 'play') {
-                if (soundEntity && soundEntity.components.sound) {
-                    soundEntity.components.sound.pauseSound(); // Pause A-Frame sound
-                }
-            } else if (event.data === 'pause') {
-                if (soundEntity && soundEntity.components.sound) {
-                    soundEntity.components.sound.playSound(); // Resume A-Frame sound
-                }
-            }
-        });
-    </script>
 
 
 <!-- HTML Overlay with iframe for Lightbox -->
@@ -496,6 +461,36 @@ design="dot">
 
 <!-- HTML Overlay with iframe for Lightbox End -->
 
+
+<!-- Disable Pointer Lock -->
+
+<script>
+  AFRAME.registerComponent('disable-pointer-lock', {
+    init: function () {
+      const el = this.el;
+
+      el.addEventListener('click', function () {
+        // Exit pointer lock when the element is clicked
+        if (document.pointerLockElement) {
+          document.exitPointerLock();
+        }
+
+        // Optional: Disable pointer lock in the look-controls (for further safety)
+        const cameraEl = document.querySelector('[camera]');
+        const lookControls = cameraEl.components['look-controls'];
+        if (lookControls) {
+          lookControls.data.pointerLockEnabled = false;
+          console.log('Pointer Lock Disabled');
+        }
+      });
+    }
+  });
+
+  // Apply the component to all elements that should have pointer lock disabled
+  document.querySelectorAll('[disable-pointer-lock]').forEach(el => {
+    el.setAttribute('disable-pointer-lock', '');
+  });
+</script>
 
   </body>
 </html>

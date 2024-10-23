@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Audio Player</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container styles for the audio player */
+        .player-container {
+            position: relative;
+            width: 640px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            background-color: #fff; /* Set a background for visibility */
+        }
+
+        /* Hide default controls */
+        audio {
+            display: none; /* Hide default audio player UI */
+        }
+
+        /* Play/Pause button styles */
+        .play-pause-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 50px;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-pause-btn:hover {
+            background-color: rgba(255, 0, 0, 0.8); /* Red hover effect */
+        }
+
+        /* Icon styles */
+        .play-icon, .pause-icon {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Audio Player -->
+<div class="player-container">
+    <audio id="audioPlayer" src="https://artoldo.com/mcqueen/installation/assets/media/music.mp3"></audio>
+    <button id="playPauseAudioBtn" class="play-pause-btn">
+        <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+    </button>
+</div>
+
+<script>
+    // Get audio player and play/pause button
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playPauseAudioBtn = document.getElementById('playPauseAudioBtn');
+    const playIcon = playPauseAudioBtn.querySelector('.play-icon');
+    const pauseIcon = playPauseAudioBtn.querySelector('.pause-icon');
+
+    // Event listener for play/pause button
+    playPauseAudioBtn.addEventListener('click', () => {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        } else {
+            audioPlayer.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    });
+
+    // Reset icon when audio ends
+    audioPlayer.addEventListener('ended', () => {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
