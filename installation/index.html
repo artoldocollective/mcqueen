@@ -119,7 +119,7 @@ document.querySelectorAll('img').forEach((img) => {
 
 
 <a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: red; backgroundColor: red" vr-mode-ui="enabled: false" 
-device-orientation-permission-ui="enabled: false" antialias="true" cursor="rayOrigin: mouse">
+device-orientation-permission-ui="enabled: false" renderer="antialias: true" cursor="rayOrigin: mouse">
 
 
 <!-- World -->
@@ -462,13 +462,22 @@ design="dot">
 <!-- Stop audio End -->
 
 
-<!-- Script to listen for messages from the iframe -->
+ <!-- Script to listen for messages from the iframe -->
     <script>
         window.addEventListener('message', function(event) {
+            console.log("Message received from iframe:", event.data);
+
+            // Select the A-Frame entity with the sound component
+            const soundEntity = document.querySelector('a-entity[sound]');
+
             if (event.data === 'play') {
-                document.querySelector('a-sound').components.sound.pauseSound();
+                if (soundEntity && soundEntity.components.sound) {
+                    soundEntity.components.sound.pauseSound(); // Pause A-Frame sound
+                }
             } else if (event.data === 'pause') {
-                document.querySelector('a-sound').components.sound.playSound();
+                if (soundEntity && soundEntity.components.sound) {
+                    soundEntity.components.sound.playSound(); // Resume A-Frame sound
+                }
             }
         });
     </script>
