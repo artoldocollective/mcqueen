@@ -185,8 +185,9 @@ design="dot">
 
 <a-entity text="value: Alexander McQueen; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-8 6.5 -8" scale="6 6 6" rotation="0 60 0">
 </a-entity> 
-<a-video gui-interactable src="#video1" opacity="0.9" position="-8 4.5 -8" width="3.168" height="4" rotation="0 60 0"
-             disable-pointer-lock
+<a-video src="#video1" opacity="0.9" position="-8 4.5 -8" width="3.168" height="4" rotation="0 60 0"
+             gui-interactable
+	     disable-pointer-lock
              enable-pointer-lock
 	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
@@ -194,7 +195,7 @@ design="dot">
 
 <a-entity text="value: Joel-Peter Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="8 6.5 -8" scale="6 6 6" rotation="0 -60 0">
 </a-entity> 
-<a-video gui-interactable src="#video2" opacity="0.9" width="3.168" height="4" position=" 8 4.5 -8" rotation="0 -60 0"
+<a-video src="#video2" opacity="0.9" width="3.168" height="4" position=" 8 4.5 -8" rotation="0 -60 0"
              gui-interactable 
              lightbox 
              data-url="assets/witkin/"
@@ -207,10 +208,10 @@ design="dot">
 
 <a-entity text="value: David Bowie; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 -6" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable src="#video3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -6" rotation="0  90 0"
+<a-video src="#video3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -6" rotation="0  90 0"
              gui-interactable 
              lightbox 
-             data-url="assets/bowie.pdf"
+             data-url="assets/media/bowie.pdf"
              disable-pointer-lock
              enable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
@@ -219,10 +220,10 @@ design="dot">
 
 <a-entity text="value: Kanye West; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 -6" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable src="#video4" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -6" rotation="0 -90 0"
+<a-video src="#video4" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -6" rotation="0 -90 0"
              gui-interactable 
              lightbox 
-             data-url="assets/west.pdf"
+             data-url="assets/media/west.pdf"
              disable-pointer-lock
              enable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
@@ -231,8 +232,9 @@ design="dot">
 
 <a-entity text="value: Isabell Blow; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 -2" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable src="#video5" opacity="0.9" width="3.168" height="4" position="-12 4.5 -2" rotation="0  90 0" 
-             disable-pointer-lock
+<a-video src="#video5" opacity="0.9" width="3.168" height="4" position="-12 4.5 -2" rotation="0  90 0" 
+             gui-interactable
+	     disable-pointer-lock
              enable-pointer-lock
 	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
@@ -240,7 +242,7 @@ design="dot">
 
 <a-entity text="value: Sarah Burton; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 -2" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable src="#video6" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -2" rotation="0 -90 0" 
+<a-video src="#video6" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -2" rotation="0 -90 0" 
              gui-interactable 
              lightbox 
              data-url="assets/butterfly/"
@@ -252,17 +254,18 @@ design="dot">
 
 <a-entity text="value: Sean McGirr; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 2" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable src="#video7" opacity="0.9" width="3.168" height="4" position="-12 4.5 2" rotation="0  90 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+<a-video src="#video7" opacity="0.9" width="3.168" height="4" position="-12 4.5 2" rotation="0  90 0" 
+             gui-interactable 
+	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: Fecal Matter; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 2" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable play-audio-on-click="src: assets/media/matter.mp3; volume: 0.1" src="#video8" opacity="0.9" width="3.168" height="4" position=" 12 4.5 2" rotation="0 -90 0"
+<a-video play-audio-on-click="src: assets/media/matter.mp3; volume: 0.3" src="#video8" opacity="0.9" width="3.168" height="4" position=" 12 4.5 2" rotation="0 -90 0"
              gui-interactable 
              lightbox 
-             data-url="assets/spiders/index.html"
+             data-url="assets/spiders/"
              disable-pointer-lock
              enable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
@@ -288,7 +291,57 @@ design="dot">
 <!-- Stage End -->
 
 
+<!-- Models -->
 
+<a-assets>
+<a-asset-item id="model1" src="./images/modelwalking1.glb"></a-asset-item>
+<a-asset-item id="model2" src="./images/modelwalking2.glb"></a-asset-item>
+<a-asset-item id="model3" src="./images/modelspray.glb"></a-asset-item>
+<a-asset-item id="robot" src="./images/robot.glb"></a-asset-item>
+</a-assets>
+
+<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 50; loop: true; dur: 60000">
+        <a-entity 
+          gltf-model="#model1" 
+          animation-mixer 
+          scale="3 3 3"
+          rotation="0 0 0"  
+          position="-3 1.2 0">
+        </a-entity>
+        <a-entity 
+          gltf-model="#model2" 
+          animation-mixer 
+          scale="3 3 3"
+          rotation="0 0 0"  
+          position="3 1.2 -15">
+        </a-entity>
+</a-entity>
+
+<a-entity gui-interactable lightbox data-url="assets/spray" disable-pointer-lock enable-pointer-lock>
+
+<a-entity 
+  	gltf-model="#model3" 
+  	animation-mixer 
+  	scale="2.8 3.6 2.8"
+  	rotation="0 0 0"  
+  	position="15.30277 3.7 14.2878"
+  	animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000"
+        >
+</a-entity>
+
+<a-entity 
+  	gltf-model="#robot" 
+  	animation-mixer 
+  	scale="8 8 8"
+  	rotation="0 -45 0"  
+  	position="12.12169 2.7071 12.90204" 
+  	>
+</a-entity>
+
+</a-entity>
+
+
+<!-- Models End -->
 
 
 <!-- Video player -->
