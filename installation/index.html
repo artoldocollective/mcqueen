@@ -9,8 +9,6 @@
     <link rel="icon" type="image/png" href="./images/mask.png" />
     <script src="assets/engine.js"></script>
     <script src="assets/extras.js"></script>
-    <script src="assets/sound.js"></script>
-    <script src="assets/audio.js"></script>
     <script src="assets/rain.js"></script>
     <script src="assets/loader1.js"></script>
     <script src="assets/loader2.js"></script>
@@ -165,108 +163,108 @@ design="dot">
 
 <!-- Music -->
 
-<audio id="music" src="assets/music.mp3" crossorigin="anonymous"></audio>
-
-<a-box color="black" scale="2 2 2" position="0 -2 0" audio="src: #music; loop: true;"></a-box>
+<audio id="background-music" src="assets/media/music.mp3" autoplay loop></audio>
 
 <!-- Music End -->
 
 
-<!-- Sound -->
-
-<audio id="sound8" src="assets/matter.mp3" preload="auto" crossorigin="anonymous"></audio>
-
-<!-- Sound End -->
-
-
 <!-- Stage -->
-
 
 <a-entity text="value: McQueen feat. Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="21 21 21"></a-entity> 
 
 <a-assets>
-  <video id="video1" src="assets/mcqueen.mp4" autoplay muted loop></video>
-  <video id="video2" src="assets/witkin.mp4" autoplay muted loop></video>
-  <video id="video3" src="assets/bowie.mp4" autoplay muted loop></video>
-  <video id="video4" src="assets/west.mp4" autoplay muted loop></video>
-  <video id="video5" src="assets/blow.mp4" autoplay muted loop></video>
-  <video id="video6" src="assets/burton.mp4" autoplay muted loop></video>
-  <video id="video7" src="assets/mcgirr.mp4" autoplay muted loop></video>
-  <video id="video8" src="assets/matter.mp4" autoplay muted loop></video>
+  <video id="video1" src="assets/media/mcqueen.mp4" autoplay muted loop></video>
+  <video id="video2" src="assets/media/witkin.mp4"  autoplay muted loop></video>
+  <video id="video3" src="assets/media/bowie.mp4"   autoplay muted loop></video>
+  <video id="video4" src="assets/media/west.mp4"    autoplay muted loop></video>
+  <video id="video5" src="assets/media/blow.mp4"    autoplay muted loop></video>
+  <video id="video6" src="assets/media/burton.mp4"  autoplay muted loop></video>
+  <video id="video7" src="assets/media/mcgirr.mp4"  autoplay muted loop></video>
+  <video id="video8" src="assets/media/matter.mp4"  autoplay muted loop></video>
 </a-assets>
 
 <a-entity text="value: Alexander McQueen; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-8 6.5 -8" scale="6 6 6" rotation="0 60 0">
 </a-entity> 
-<a-video gui-interactable id="sound01"  src="#video1" opacity="0.9" position="-8 4.5 -8" width="3.168" height="4" rotation="0 60 0"
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+<a-video gui-interactable src="#video1" opacity="0.9" position="-8 4.5 -8" width="3.168" height="4" rotation="0 60 0"
+             disable-pointer-lock
+             enable-pointer-lock
+	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: Joel-Peter Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="8 6.5 -8" scale="6 6 6" rotation="0 -60 0">
 </a-entity> 
-<a-video gui-interactable id="sound02" sound="src: #sound2; on: click; autoplay: false;" src="#video2" opacity="0.9" width="3.168" height="4" position=" 8 4.5 -8" rotation="0 -60 0"
+<a-video gui-interactable src="#video2" opacity="0.9" width="3.168" height="4" position=" 8 4.5 -8" rotation="0 -60 0"
              gui-interactable 
              lightbox 
              data-url="assets/witkin/"
              disable-pointer-lock
+             enable-pointer-lock
+             stop-music
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: David Bowie; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 -6" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable id="sound03" src="#video3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -6" rotation="0  90 0"
+<a-video gui-interactable src="#video3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -6" rotation="0  90 0"
              gui-interactable 
              lightbox 
-             data-url="assets/west.pdf"
+             data-url="assets/bowie.pdf"
              disable-pointer-lock
+             enable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: Kanye West; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 -6" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable id="sound04"  src="#video4" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -6" rotation="0 -90 0"
+<a-video gui-interactable src="#video4" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -6" rotation="0 -90 0"
              gui-interactable 
              lightbox 
              data-url="assets/west.pdf"
              disable-pointer-lock
+             enable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: Isabell Blow; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 -2" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable id="sound05"  src="#video5" opacity="0.9" width="3.168" height="4" position="-12 4.5 -2" rotation="0  90 0" 
-             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+<a-video gui-interactable src="#video5" opacity="0.9" width="3.168" height="4" position="-12 4.5 -2" rotation="0  90 0" 
+             disable-pointer-lock
+             enable-pointer-lock
+	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: Sarah Burton; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 -2" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable id="sound06" src="#video6" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -2" rotation="0 -90 0" 
+<a-video gui-interactable src="#video6" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -2" rotation="0 -90 0" 
              gui-interactable 
              lightbox 
-             data-url="butterfly.html"
+             data-url="assets/butterfly/"
              disable-pointer-lock
+             enable-pointer-lock
 	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: Sean McGirr; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 2" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable id="sound07" src="#video7" opacity="0.9" width="3.168" height="4" position="-12 4.5 2" rotation="0  90 0" 
+<a-video gui-interactable src="#video7" opacity="0.9" width="3.168" height="4" position="-12 4.5 2" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: Fecal Matter; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 2" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable id="sound08" sound="src: #sound8; on: click; autoplay: false;" src="#video8" opacity="0.9" width="3.168" height="4" position=" 12 4.5 2" rotation="0 -90 0"
+<a-video gui-interactable play-audio-on-click="src: assets/media/matter.mp3; volume: 0.1" src="#video8" opacity="0.9" width="3.168" height="4" position=" 12 4.5 2" rotation="0 -90 0"
              gui-interactable 
              lightbox 
              data-url="assets/spiders/index.html"
              disable-pointer-lock
+             enable-pointer-lock
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
@@ -277,6 +275,7 @@ design="dot">
         lightbox 
         data-url="models.html"
         disable-pointer-lock
+        enable-pointer-lock
         width="11.52" 
         height="6.48" 
         position="-10 4 9" 
@@ -295,7 +294,7 @@ design="dot">
 <!-- Video player -->
 
 <a-assets>
-  <video id="video-src" src="assets/intro.mp4" autoplay muted loop></video>
+  <video id="video-src" src="assets/media/intro.mp4" autoplay muted loop></video>
 </a-assets>
 
 <a-video id="video-screen" src="#video-src" position="0 4.5 -14" width="12" height="9" opacity="0.9"></a-video>
@@ -336,121 +335,96 @@ design="dot">
 <!-- Video autoplay mobile devices End -->
 
 
-
-<!-- Stop audio -->
-
-<script>
-  // Get all A-Frame entities with sounds
-  const soundEntities = [
-    document.querySelector('#music'),
-    document.querySelector('#sound08')
-  ];
-
-  // Function to stop all sounds with a fade-out effect
-  function stopAllSounds() {
-    soundEntities.forEach(soundEntity => {
-      const soundComponent = soundEntity.components.sound;
-      if (soundComponent && soundComponent.isPlaying) {
-        fadeOutAndStop(soundComponent); // Apply fade-out before stopping
-      }
-    });
-  }
-
-  // Function to gradually lower the volume and then stop the sound
-  function fadeOutAndStop(soundComponent) {
-    let volume = soundComponent.volume; // Get the current volume
-    const fadeDuration = 1000; // Fade-out duration in milliseconds
-    const fadeStep = 50; // How often to lower the volume (milliseconds)
-    const fadeAmount = volume / (fadeDuration / fadeStep); // Amount to decrease volume each step
-
-    const fadeInterval = setInterval(() => {
-      if (volume > 0) {
-        volume -= fadeAmount; // Lower the volume
-        if (volume < 0) volume = 0; // Ensure volume doesn't go below 0
-        soundComponent.setVolume(volume); // Update the volume
-      } else {
-        clearInterval(fadeInterval); // Stop the fade effect
-        soundComponent.stopSound(); // Stop the sound when the volume reaches 0
-      }
-    }, fadeStep);
-  }
-
-  // Add click event listeners to each plane
-  soundEntities.forEach((soundEntity) => {
-    soundEntity.addEventListener('click', () => {
-      stopAllSounds(); // Stop all currently playing sounds with fade-out
-      soundEntity.components.sound.playSound(); // Play the clicked sound
-    });
-  });
-</script>
-
-<!-- Stop audio End -->
-
-
-<!-- Pause music -->
+<!-- Play sound -->
 
 <script>
-  const musicElement = document.querySelector('#music');
-  let isMusicPaused = false;
-  let fadeInterval; // Variable to store the fade effect interval
+  AFRAME.registerComponent('play-audio-on-click', {
+    schema: {
+      src: { type: 'string' },  // Audio source URL
+      volume: { type: 'number', default: 1.0 }  // Default volume
+    },
+    init: function () {
+      const el = this.el;
+      const data = this.data;
+      const audio = new Audio(data.src); // Create an audio instance
+      audio.volume = data.volume; // Set the volume from the schema
 
-  // Function to gradually lower the volume and then pause the music
-  function fadeOutAndPause() {
-    let volume = musicElement.volume || 1; // Get the current volume or default to 1
-    const fadeDuration = 1000; // Fade-out duration in milliseconds
-    const fadeStep = 50; // How often to lower the volume (milliseconds)
-    const fadeAmount = volume / (fadeDuration / fadeStep); // Amount to decrease volume each step
-
-    fadeInterval = setInterval(() => {
-      if (volume > 0) {
-        volume -= fadeAmount; // Lower the volume
-        if (volume < 0) volume = 0; // Ensure volume doesn't go below 0
-        musicElement.volume = volume; // Update the volume
-      } else {
-        clearInterval(fadeInterval); // Stop the fade effect
-        musicElement.pause(); // Pause the music when the volume reaches 0
-        isMusicPaused = true; // Set flag to indicate music is paused
-      }
-    }, fadeStep);
-  }
-
-  // Function to gradually increase the volume and play the music
-  function fadeInAndPlay() {
-    if (isMusicPaused) {
-      musicElement.play(); // Start playing the music if it's paused
-      let volume = 0; // Start from zero volume
-      const fadeDuration = 1000; // Fade-in duration in milliseconds
-      const fadeStep = 50; // How often to increase the volume (milliseconds)
-      const fadeAmount = 1 / (fadeDuration / fadeStep); // Amount to increase volume each step
-
-      fadeInterval = setInterval(() => {
-        if (volume < 1) {
-          volume += fadeAmount; // Increase the volume
-          if (volume > 1) volume = 1; // Ensure volume doesn't go above 1
-          musicElement.volume = volume; // Update the volume
-        } else {
-          clearInterval(fadeInterval); // Stop the fade effect when volume reaches 1
-        }
-      }, fadeStep);
-
-      isMusicPaused = false; // Reset the paused flag
+      el.addEventListener('click', function () {
+        audio.currentTime = 0; // Reset audio to the start
+        audio.play();          // Play audio
+      });
     }
-  }
-
-  // Add click event listeners to each interactive element to pause the music
-  document.querySelectorAll('#sound01, #sound02, #sound03, #sound04, #sound05, #sound06, #sound07, #sound08').forEach((element) => {
-    element.addEventListener('click', () => {
-      if (!isMusicPaused) fadeOutAndPause(); // Fade out and pause the music if not already paused
-    });
-  });
-
-  // Add click event listener to the A-Frame scene to resume the music
-  document.querySelector('a-scene').addEventListener('click', () => {
-    if (isMusicPaused) fadeInAndPlay(); // Fade in and play the music if paused
   });
 </script>
 
-<!-- Pause music End -->
+<!-- Play sound End -->
+
+
+<!-- Pause music and resume with closed Lightbox -->
+
+<script>
+  AFRAME.registerComponent('stop-music', {
+    init: function () {
+      const audioElement = document.querySelector('#background-music');  // Select the audio element
+      let isMusicPaused = false; // Track if the music is paused
+      let fadeDuration = 1000;  // Fade duration in milliseconds
+      let initialVolume = 1;    // Save the initial volume level
+
+      if (!audioElement) {
+        console.error('Audio element not found!');
+        return;
+      }
+
+      // Function to fade out the audio
+      function fadeOutAudio() {
+        let volume = initialVolume;
+        const fadeOutInterval = setInterval(() => {
+          if (volume > 0) {
+            volume -= 0.1;
+            audioElement.volume = Math.max(volume, 0);
+          } else {
+            clearInterval(fadeOutInterval);
+            audioElement.pause();
+            isMusicPaused = true;
+          }
+        }, fadeDuration / 10);  // Adjust volume in 10 steps
+      }
+
+      // Function to fade in the audio
+      function fadeInAudio() {
+        let volume = 0;
+        audioElement.volume = volume;
+        audioElement.play();
+        const fadeInInterval = setInterval(() => {
+          if (volume < initialVolume) {
+            volume += 0.1;
+            audioElement.volume = Math.min(volume, initialVolume);
+          } else {
+            clearInterval(fadeInInterval);
+            isMusicPaused = false;
+          }
+        }, fadeDuration / 10);  // Adjust volume in 10 steps
+      }
+
+      // Handle click event on elements with the stop-music component
+      this.el.addEventListener('click', (evt) => {
+        evt.stopPropagation(); // Prevent scene click event from firing
+        if (!isMusicPaused) {
+          fadeOutAudio();
+        }
+      });
+
+      // Resume music when lightbox is closed (after pointer lock is enabled)
+      document.addEventListener('pointerlockchange', () => {
+        if (document.pointerLockElement && isMusicPaused) {
+          fadeInAudio();
+        }
+      });
+    }
+  });
+</script>
+
+<!-- Pause music and resume with closed Lightbox End -->
 
 
 <!-- HTML Overlay with iframe for Lightbox -->
@@ -463,6 +437,40 @@ design="dot">
     </div>
 
     <script src="assets/lightbox.js"></script>
+
+
+<!-- Enable Pointerlock with Lightbox closed-->
+
+<script>
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.querySelector('.close-btn'); // Select .close-btn as per your CSS
+    const scene = document.getElementById('scene');
+
+    // Function to close the lightbox and enable pointer lock
+    function closeLightbox() {
+        overlay.style.display = "none"; // Hide the lightbox
+        scene.requestPointerLock(); // Re-enable pointer lock for A-Frame scene
+    }
+
+    // Add event listener to close button to close the lightbox
+    closeButton.addEventListener('click', closeLightbox);
+
+    // Optionally, if the lightbox can be hidden by other means, listen for style change
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === "style" && overlay.style.display === "none") {
+                scene.requestPointerLock(); // Automatically request pointer lock if lightbox is hidden
+            }
+        });
+    });
+
+    // Observe the overlay's style attribute
+    observer.observe(overlay, { attributes: true });
+
+</script>
+
+<!-- Enable Pointerlock with Lightbox closed End-->
+
 
 <!-- HTML Overlay with iframe for Lightbox End -->
 
@@ -496,6 +504,64 @@ design="dot">
     el.setAttribute('disable-pointer-lock', '');
   });
 </script>
+
+<!-- Disable Pointer Lock End -->
+
+
+<!-- Enable Pointer Lock -->
+
+<script>
+  AFRAME.registerComponent('enable-pointer-lock', {
+    init: function () {
+      const el = this.el;
+      el.addEventListener('click', function () {
+        if (!document.pointerLockElement) {
+          el.sceneEl.requestPointerLock();
+        }
+
+        const cameraEl = document.querySelector('[camera]');
+        const lookControls = cameraEl.components['look-controls'];
+        if (lookControls) {
+          lookControls.data.pointerLockEnabled = true;
+          console.log('Pointer Lock Enabled');
+        }
+      });
+    }
+  });
+
+  document.querySelectorAll('[enable-pointer-lock]').forEach(el => {
+    el.setAttribute('enable-pointer-lock', '');
+  });
+
+  const overlay = document.getElementById('overlay');
+  const closeButton = document.querySelector('.close-btn');
+
+  function closeLightbox() {
+    overlay.style.display = 'none';
+    const scene = document.querySelector('a-scene');
+    scene.sceneEl.requestPointerLock();
+    const cameraEl = document.querySelector('[camera]');
+    const lookControls = cameraEl.components['look-controls'];
+    if (lookControls) {
+      lookControls.data.pointerLockEnabled = true;
+      console.log('Pointer Lock Re-enabled');
+    }
+  }
+
+  closeButton.addEventListener('click', closeLightbox);
+
+  const observer = new MutationObserver(function (mutationsList) {
+    for (const mutation of mutationsList) {
+      if (mutation.attributeName === 'style' && overlay.style.display === 'none') {
+        closeLightbox();
+      }
+    }
+  });
+
+  observer.observe(overlay, { attributes: true });
+</script>
+
+<!-- Enable Pointer End -->
 
   </body>
 </html>
