@@ -174,13 +174,6 @@ design="dot">
 
 <!-- Sound -->
 
-<audio id="sound1" src="assets/mcqueen.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound2" src="assets/witkin.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound3" src="assets/bowie.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound4" src="assets/west.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound5" src="assets/blow.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound6" src="assets/burton.mp3" preload="auto" crossorigin="anonymous"></audio>
-<audio id="sound7" src="assets/mcgirr.mp3" preload="auto" crossorigin="anonymous"></audio>
 <audio id="sound8" src="assets/matter.mp3" preload="auto" crossorigin="anonymous"></audio>
 
 <!-- Sound End -->
@@ -204,7 +197,7 @@ design="dot">
 
 <a-entity text="value: Alexander McQueen; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-8 6.5 -8" scale="6 6 6" rotation="0 60 0">
 </a-entity> 
-<a-video gui-interactable id="sound01" sound="src: #sound1; on: click; autoplay: false;" src="#video1" opacity="0.9" position="-8 4.5 -8" width="3.168" height="4" rotation="0 60 0"
+<a-video gui-interactable id="sound01"  src="#video1" opacity="0.9" position="-8 4.5 -8" width="3.168" height="4" rotation="0 60 0"
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
@@ -222,7 +215,7 @@ design="dot">
 
 <a-entity text="value: David Bowie; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 -6" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable id="sound03" sound="src: #sound3; on: click; autoplay: false;" src="#video3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -6" rotation="0  90 0"
+<a-video gui-interactable id="sound03" src="#video3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -6" rotation="0  90 0"
              gui-interactable 
              lightbox 
              data-url="assets/west.pdf"
@@ -233,7 +226,7 @@ design="dot">
 
 <a-entity text="value: Kanye West; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 -6" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable id="sound04" sound="src: #sound4; on: click; autoplay: false;" src="#video4" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -6" rotation="0 -90 0"
+<a-video gui-interactable id="sound04"  src="#video4" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -6" rotation="0 -90 0"
              gui-interactable 
              lightbox 
              data-url="assets/west.pdf"
@@ -244,14 +237,14 @@ design="dot">
 
 <a-entity text="value: Isabell Blow; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 -2" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable id="sound05" sound="src: #sound5; on: click; autoplay: false;" src="#video5" opacity="0.9" width="3.168" height="4" position="-12 4.5 -2" rotation="0  90 0" 
+<a-video gui-interactable id="sound05"  src="#video5" opacity="0.9" width="3.168" height="4" position="-12 4.5 -2" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
 
 <a-entity text="value: Sarah Burton; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 6.5 -2" scale="6 6 6" rotation="0 -90 0">
 </a-entity> 
-<a-video gui-interactable id="sound06" sound="src: #sound6; on: click; autoplay: false; loop:true;" src="#video6" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -2" rotation="0 -90 0" 
+<a-video gui-interactable id="sound06" src="#video6" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -2" rotation="0 -90 0" 
              gui-interactable 
              lightbox 
              data-url="butterfly.html"
@@ -262,7 +255,7 @@ design="dot">
 
 <a-entity text="value: Sean McGirr; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 6.5 2" scale="6 6 6" rotation="0 90 0">
 </a-entity> 
-<a-video gui-interactable id="sound07" sound="src: #sound7; on: click; autoplay: false;" src="#video7" opacity="0.9" width="3.168" height="4" position="-12 4.5 2" rotation="0  90 0" 
+<a-video gui-interactable id="sound07" src="#video7" opacity="0.9" width="3.168" height="4" position="-12 4.5 2" rotation="0  90 0" 
              animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
              animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
 </a-video>
@@ -296,55 +289,7 @@ design="dot">
 <!-- Stage End -->
 
 
-<!-- Models -->
 
-<a-assets>
-<a-asset-item id="model1" src="./images/modelwalking1.glb"></a-asset-item>
-<a-asset-item id="model2" src="./images/modelwalking2.glb"></a-asset-item>
-<a-asset-item id="model3" src="./images/modelspray.glb"></a-asset-item>
-<a-asset-item id="robot" src="./images/robot.glb"></a-asset-item>
-</a-assets>
-
-<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 50; loop: true; dur: 60000">
-        <a-entity 
-          gltf-model="#model1" 
-          animation-mixer 
-          scale="3 3 3"
-          rotation="0 0 0"  
-          position="-3 1.2 0">
-        </a-entity>
-        <a-entity 
-          gltf-model="#model2" 
-          animation-mixer 
-          scale="3 3 3"
-          rotation="0 0 0"  
-          position="3 1.2 -15">
-        </a-entity>
-</a-entity>
-
-<a-entity 
-  	gltf-model="#model3" 
-  	animation-mixer 
-  	scale="2.8 3.6 2.8"
-  	rotation="0 0 0"  
-  	position="15.30277 3.7 14.2878"
-  	animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000"
-        gui-interactable 
-        lightbox 
-        data-url="spray.html"
-        disable-pointer-lock>
-</a-entity>
-
-<a-entity 
-  	gltf-model="#robot" 
-  	animation-mixer 
-  	scale="8 8 8"
-  	rotation="0 -45 0"  
-  	position="12.12169 2.7071 12.90204" 
-  	>
-</a-entity>
-
-<!-- Models End -->
 
 
 <!-- Video player -->
@@ -395,15 +340,9 @@ design="dot">
 <!-- Stop audio -->
 
 <script>
-  // Get all A-Frame entities with sounds (i.e., the entities for sounds 1 to 8)
+  // Get all A-Frame entities with sounds
   const soundEntities = [
-    document.querySelector('#sound01'),
-    document.querySelector('#sound02'),
-    document.querySelector('#sound03'),
-    document.querySelector('#sound04'),
-    document.querySelector('#sound05'),
-    document.querySelector('#sound06'),
-    document.querySelector('#sound07'),
+    document.querySelector('#music'),
     document.querySelector('#sound08')
   ];
 
@@ -446,6 +385,72 @@ design="dot">
 </script>
 
 <!-- Stop audio End -->
+
+
+<!-- Pause music -->
+
+<script>
+  const musicElement = document.querySelector('#music');
+  let isMusicPaused = false;
+  let fadeInterval; // Variable to store the fade effect interval
+
+  // Function to gradually lower the volume and then pause the music
+  function fadeOutAndPause() {
+    let volume = musicElement.volume || 1; // Get the current volume or default to 1
+    const fadeDuration = 1000; // Fade-out duration in milliseconds
+    const fadeStep = 50; // How often to lower the volume (milliseconds)
+    const fadeAmount = volume / (fadeDuration / fadeStep); // Amount to decrease volume each step
+
+    fadeInterval = setInterval(() => {
+      if (volume > 0) {
+        volume -= fadeAmount; // Lower the volume
+        if (volume < 0) volume = 0; // Ensure volume doesn't go below 0
+        musicElement.volume = volume; // Update the volume
+      } else {
+        clearInterval(fadeInterval); // Stop the fade effect
+        musicElement.pause(); // Pause the music when the volume reaches 0
+        isMusicPaused = true; // Set flag to indicate music is paused
+      }
+    }, fadeStep);
+  }
+
+  // Function to gradually increase the volume and play the music
+  function fadeInAndPlay() {
+    if (isMusicPaused) {
+      musicElement.play(); // Start playing the music if it's paused
+      let volume = 0; // Start from zero volume
+      const fadeDuration = 1000; // Fade-in duration in milliseconds
+      const fadeStep = 50; // How often to increase the volume (milliseconds)
+      const fadeAmount = 1 / (fadeDuration / fadeStep); // Amount to increase volume each step
+
+      fadeInterval = setInterval(() => {
+        if (volume < 1) {
+          volume += fadeAmount; // Increase the volume
+          if (volume > 1) volume = 1; // Ensure volume doesn't go above 1
+          musicElement.volume = volume; // Update the volume
+        } else {
+          clearInterval(fadeInterval); // Stop the fade effect when volume reaches 1
+        }
+      }, fadeStep);
+
+      isMusicPaused = false; // Reset the paused flag
+    }
+  }
+
+  // Add click event listeners to each interactive element to pause the music
+  document.querySelectorAll('#sound01, #sound02, #sound03, #sound04, #sound05, #sound06, #sound07, #sound08').forEach((element) => {
+    element.addEventListener('click', () => {
+      if (!isMusicPaused) fadeOutAndPause(); // Fade out and pause the music if not already paused
+    });
+  });
+
+  // Add click event listener to the A-Frame scene to resume the music
+  document.querySelector('a-scene').addEventListener('click', () => {
+    if (isMusicPaused) fadeInAndPlay(); // Fade in and play the music if paused
+  });
+</script>
+
+<!-- Pause music End -->
 
 
 <!-- HTML Overlay with iframe for Lightbox -->

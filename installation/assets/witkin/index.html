@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Audio Player</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="./../../images/mask.png">
+    <title>Witkin</title>
     <style>
         /* Basic reset */
         * {
@@ -17,32 +20,38 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #000000;
             font-family: Arial, sans-serif;
         }
 
-        /* Container styles for the audio player */
-        .player-container {
+        /* Container for each player (audio or video) */
+        .media-container {
             position: relative;
             width: 640px;
+            height: 360px; /* Default height for video */
+            background-color: #000;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            background-color: #fff; /* Set a background for visibility */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0; /* Space between players */
         }
 
-        /* Hide default controls */
-        audio {
-            display: none; /* Hide default audio player UI */
+        /* Specific container height adjustment for audio */
+        .audio-container {
+            height: 100px;
+        }
+
+        /* Audio and video element styles */
+        audio, video {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
         }
 
         /* Play/Pause button styles */
         .play-pause-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.7);
             border: none;
             border-radius: 50px;
@@ -52,61 +61,177 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            position: absolute; /* Center button in the container */
         }
 
         .play-pause-btn:hover {
             background-color: rgba(255, 0, 0, 0.8); /* Red hover effect */
         }
 
+        .play-pause-btn:focus {
+            outline: none;
+        }
+
         /* Icon styles */
-        .play-icon, .pause-icon {
+        .play-pause-btn svg {
             width: 40px;
             height: 40px;
             fill: white;
+        }
+
+        /* Fade-out effect for button and icons */
+        .hide-btn {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Fade-in effect for the button and icons on hover */
+        .media-container:hover .play-pause-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Smooth transition for fade-in/out */
+        .fade-transition {
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        /* Disable right-click */
+        audio, video {
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-<!-- Audio Player -->
-<div class="player-container">
-    <audio id="audioPlayer" src="https://artoldo.com/mcqueen/installation/assets/media/music.mp3"></audio>
-    <button id="playPauseAudioBtn" class="play-pause-btn">
-        <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-        </svg>
-        <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
-            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-        </svg>
-    </button>
-</div>
+    <!-- Video Player 1 -->
+    <div class="media-container" id="videoContainer1">
+        <video id="videoPlayer1">
+            <source src="https://artoldo.com/images/1.mp4" type="video/mp4"> <!-- Video source -->
+            Your browser does not support HTML5 video.
+        </video>
+        <button id="playPauseBtnVideo1" class="play-pause-btn fade-transition">
+            <!-- Play Icon -->
+            <svg id="playIconVideo1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <!-- Pause Icon (hidden initially) -->
+            <svg id="pauseIconVideo1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
 
-<script>
-    // Get audio player and play/pause button
-    const audioPlayer = document.getElementById('audioPlayer');
-    const playPauseAudioBtn = document.getElementById('playPauseAudioBtn');
-    const playIcon = playPauseAudioBtn.querySelector('.play-icon');
-    const pauseIcon = playPauseAudioBtn.querySelector('.pause-icon');
+    <!-- Video Player 2 -->
+    <div class="media-container" id="videoContainer2">
+        <video id="videoPlayer2">
+            <source src="https://artoldo.com/images/2.mp4" type="video/mp4"> <!-- Video source -->
+            Your browser does not support HTML5 video.
+        </video>
+        <button id="playPauseBtnVideo2" class="play-pause-btn fade-transition">
+            <svg id="playIconVideo2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIconVideo2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
 
-    // Event listener for play/pause button
-    playPauseAudioBtn.addEventListener('click', () => {
-        if (audioPlayer.paused) {
-            audioPlayer.play();
-            playIcon.style.display = 'none';
-            pauseIcon.style.display = 'block';
-        } else {
-            audioPlayer.pause();
-            playIcon.style.display = 'block';
-            pauseIcon.style.display = 'none';
+    <!-- Audio Player 1 -->
+    <div class="media-container audio-container" id="audioContainer1">
+        <audio id="audioPlayer1">
+            <source src="https://artoldo.com/mcqueen/installation/assets/media/music.mp3" type="audio/mp3"> <!-- Audio source -->
+            Your browser does not support HTML5 audio.
+        </audio>
+        <button id="playPauseBtnAudio1" class="play-pause-btn fade-transition">
+            <!-- Play Icon -->
+            <svg id="playIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <!-- Pause Icon (hidden initially) -->
+            <svg id="pauseIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Audio Player 2 -->
+    <div class="media-container audio-container" id="audioContainer2">
+        <audio id="audioPlayer2">
+            <source src="https://artoldo.com/mcqueen/installation/assets/media/music.mp3" type="audio/mp3"> <!-- Audio source -->
+            Your browser does not support HTML5 audio.
+        </audio>
+        <button id="playPauseBtnAudio2" class="play-pause-btn fade-transition">
+            <svg id="playIconAudio2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIconAudio2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        // Array to hold the media players (audio and video) and buttons
+        const mediaPlayers = [
+            { player: document.getElementById('videoPlayer1'), button: document.getElementById('playPauseBtnVideo1'), playIcon: document.getElementById('playIconVideo1'), pauseIcon: document.getElementById('pauseIconVideo1') },
+            { player: document.getElementById('videoPlayer2'), button: document.getElementById('playPauseBtnVideo2'), playIcon: document.getElementById('playIconVideo2'), pauseIcon: document.getElementById('pauseIconVideo2') },
+            { player: document.getElementById('audioPlayer1'), button: document.getElementById('playPauseBtnAudio1'), playIcon: document.getElementById('playIconAudio1'), pauseIcon: document.getElementById('pauseIconAudio1') },
+            { player: document.getElementById('audioPlayer2'), button: document.getElementById('playPauseBtnAudio2'), playIcon: document.getElementById('playIconAudio2'), pauseIcon: document.getElementById('pauseIconAudio2') }
+        ];
+
+        // Initialize event listeners for each media player
+        mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
+            button.addEventListener('click', () => handlePlayPause(player, button, playIcon, pauseIcon));
+            player.addEventListener('ended', () => handleMediaEnded(player, button, playIcon, pauseIcon));
+        });
+
+        // Function to handle Play/Pause button click
+        function handlePlayPause(currentPlayer, button, playIcon, pauseIcon) {
+            // Pause all players
+            mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
+                if (player !== currentPlayer) {
+                    player.pause();
+                    player.currentTime = 0; // Reset time for other players
+                    button.classList.remove('hide-btn');
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                }
+            });
+
+            // Play or pause the current player
+            if (currentPlayer.paused) {
+                currentPlayer.play();
+                togglePlayPauseIcon(playIcon, pauseIcon, true);
+            } else {
+                currentPlayer.pause();
+                togglePlayPauseIcon(playIcon, pauseIcon, false);
+            }
         }
-    });
 
-    // Reset icon when audio ends
-    audioPlayer.addEventListener('ended', () => {
-        playIcon.style.display = 'block';
-        pauseIcon.style.display = 'none';
-    });
-</script>
+        // Toggle between Play and Pause icons
+        function togglePlayPauseIcon(playIcon, pauseIcon, isPlaying) {
+            if (isPlaying) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
 
+        // When media ends, show play button again
+        function handleMediaEnded(player, button, playIcon, pauseIcon) {
+            togglePlayPauseIcon(playIcon, pauseIcon, false); // Switch back to play icon
+            button.classList.remove('hide-btn'); // Show button after media ends
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
 </body>
 </html>
