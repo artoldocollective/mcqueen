@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+    <link rel="icon" type="image/png" href="./images/mask.png">
+    <title>Kanye West</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh; /* Full height for responsive design */
+        }
+
+        /* Container for each player (audio or video) */
+        .media-container {
+            position: relative;
+            width: 640px;
+            height: 360px; /* Default height for video */
+            background-color: #000;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0; /* Space between players */
+        }
+
+        /* Specific container height adjustment for audio */
+        .audio-container {
+            height: 100px;
+        }
+
+        /* Audio element styles */
+        audio {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+
+        /* Play/Pause button styles */
+        .play-pause-btn {
+            background-color: rgba(255, 0, 0, 0.8);
+            border: none;
+            border-radius: 50px;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            position: absolute; /* Center button in the container */
+        }
+
+        .play-pause-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8); /* Red hover effect */
+        }
+
+        .play-pause-btn:focus {
+            outline: none;
+        }
+
+        /* Icon styles */
+        .play-pause-btn svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        /* Fade-out effect for button and icons */
+        .hide-btn {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Fade-in effect for the button and icons on hover */
+        .media-container:hover .play-pause-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Smooth transition for fade-in/out */
+        .fade-transition {
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        /* Disable right-click */
+        audio {
+            pointer-events: none;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            display: block; /* Remove loading bars */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Player -->
+    <div class="media-container audio-container" id="audioContainer">
+        <audio id="audioPlayer1">
+            <source src="./../media/west.mp3" type="audio/mpeg"> <!-- Relative audio source -->
+            Your browser does not support HTML5 audio.
+        </audio>
+        <button id="playPauseBtnAudio1" class="play-pause-btn fade-transition">
+            <svg id="playIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        // Media players array
+        const mediaPlayers = [
+            { player: document.getElementById('audioPlayer1'), button: document.getElementById('playPauseBtnAudio1'), playIcon: document.getElementById('playIconAudio1'), pauseIcon: document.getElementById('pauseIconAudio1') }
+        ];
+
+        // Initialize event listeners
+        mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
+            button.addEventListener('click', () => handlePlayPause(player, button, playIcon, pauseIcon));
+            player.addEventListener('ended', () => handleMediaEnded(player, button, playIcon, pauseIcon));
+        });
+
+        // Function to handle Play/Pause button click
+        function handlePlayPause(currentPlayer, button, playIcon, pauseIcon) {
+            // Pause all players
+            mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
+                if (player !== currentPlayer) {
+                    player.pause();
+                    player.currentTime = 0; // Reset time for other players
+                    button.classList.remove('hide-btn');
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                }
+            });
+
+            // Play or pause the current player
+            if (currentPlayer.paused) {
+                currentPlayer.play();
+                togglePlayPauseIcon(playIcon, pauseIcon, true);
+            } else {
+                currentPlayer.pause();
+                togglePlayPauseIcon(playIcon, pauseIcon, false);
+            }
+        }
+
+        // Function to toggle Play/Pause icon display
+        function togglePlayPauseIcon(playIcon, pauseIcon, isPlaying) {
+            if (isPlaying) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        // Function to handle media ended event
+        function handleMediaEnded(player, button, playIcon, pauseIcon) {
+            togglePlayPauseIcon(playIcon, pauseIcon, false);
+            button.classList.remove('hide-btn');
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+
+    <div class="pdf-container">
+        <iframe id="pdfIframe" src="./../media/west.pdf" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        // Ensure the iframe adjusts to the full height of its container
+        const iframe = document.getElementById('pdfIframe');
+        iframe.onload = function() {
+            this.style.height = (this.contentWindow.document.body.scrollHeight) + 'px';
+        };
+    </script>
+
+</body>
+</html>
