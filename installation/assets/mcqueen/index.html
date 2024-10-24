@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+    <link rel="icon" type="image/png" href="./../../images/mask.png">
+    <title>Alexander McQueen</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        p {
+            text-align: justify;
+            Padding: 30px;
+        }
+
+        /* Container for each player (audio or video) */
+        .media-container {
+            position: relative;
+            width: 640px;
+            height: 360px; /* Default height for video */
+            background-color: #000;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0; /* Space between players */
+        }
+
+        /* Specific container height adjustment for audio */
+        .audio-container {
+            height: 100px;
+        }
+
+        /* Audio element styles */
+        audio {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+
+        /* Play/Pause button styles */
+        .play-pause-btn {
+            background-color: rgba(255, 0, 0, 0.8);
+            border: none;
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            position: absolute; /* Center button in the container */
+        }
+
+        .play-pause-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8); /* Red hover effect */
+        }
+
+        .play-pause-btn:focus {
+            outline: none;
+        }
+
+        /* Icon styles */
+        .play-pause-btn svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        /* Fade-out effect for button and icons */
+        .hide-btn {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Fade-in effect for the button and icons on hover */
+        .media-container:hover .play-pause-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Smooth transition for fade-in/out */
+        .fade-transition {
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        /* Disable right-click */
+        audio {
+            pointer-events: none;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            display: block; /* Remove loading bars */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Alexander McQueen</h1>
+
+    <!-- Audio Player -->
+    <div class="media-container audio-container" id="audioContainer">
+        <audio id="audioPlayer1">
+            <source src="./../media/mcqueen.mp3" type="audio/mpeg"> <!-- Relative audio source -->
+            Your browser does not support HTML5 audio.
+        </audio>
+        <button id="playPauseBtnAudio1" class="play-pause-btn fade-transition">
+            <svg id="playIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
+
+<br><br>
+
+<h2>Alexander McQueen Fashion Shows</h2>
+
+<br><br>
+
+    <table style="width: 50%; margin: 0 auto; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Season</th>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Year</th>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Graduation collection</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1992</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Jack the Ripper Stalks His Victims"</td>
+            </tr>
+	    <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1993</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Taxi Driver"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1994</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Nihilism"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1994</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Banshee"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1995</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"The Birds"</td>
+            </tr>
+
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1995</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Highland Rape"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1996</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"The Hunger"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1996</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Dante"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1997</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"La Poupee"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1997</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"It's A Jungle Out There"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1998</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Untitled" (Originally named "Golden Shower")</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1998</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Joan"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1999</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"No.13"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">1999</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"The Overlook"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2000</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Eye"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2000</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Eshu"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2001</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"VOSS"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2001</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"What a Merry-Go-Round"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2002</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"The Dance of the Twisted Bull"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2002</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Supercalifragilisticexpialidocious"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2003</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Irere"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2003</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Scanners"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2004</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Deliverance"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2004</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Pantheon as Lecum"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2005</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"It's Only a Game"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2005</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"The Man Who Knew Too Much"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2006</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Neptune"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2006</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Widows of Culloden"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2007</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Sarabande"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2007</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"In Memory of Elizabeth Howe, Salem, 1692"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2008</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"La Dame Bleue"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2008</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"The Girl Who Lived in the Tree"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2009</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Natural Dis-tinction Un-natural Selection"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2009</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"The Horn of Plenty"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Spring/Summer</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2010</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">"Plato's Atlantis"</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Autumn/Winter</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">2010</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Angels & Demons (Posthumous)</td>
+            </tr>
+        </tbody>
+    </table>
+
+<br><br>
+
+<h1>Biography of Alexander McQueen</h1>
+
+<br><br>
+
+    <h2>Full Name:</h2>
+    <p>Lee Alexander McQueen</p>
+
+    <h2>Born:</h2>
+    <p>March 17, 1969, in Lewisham, London, England</p>
+
+    <h2>Died:</h2>
+    <p>February 11, 2010, in Mayfair, London, England</p>
+
+    <h2>Occupation:</h2>
+    <p>Fashion Designer, Founder of Alexander McQueen</p>
+
+<br><br>
+
+    <h2>Early Life and Education</h2>
+    <p>
+        Lee Alexander McQueen was born to a working-class family in Lewisham, London. The youngest of six children, his father was a taxi driver, and his mother, Joyce, was a social science teacher. McQueen showed an early interest in fashion, reportedly making dresses for his sisters at a young age. His unconventional and rebellious streak emerged early, and at the age of 16, he left school to pursue a career in fashion design.
+    </p>
+    <p>
+        McQueen's fashion education began through an apprenticeship at the prestigious Savile Row tailors Anderson & Sheppard and later Gieves & Hawkes, where he honed his impeccable tailoring skills. He then worked for theatrical costumiers Angels and Bermans, where he learned how to construct garments with a dramatic flair, an ability that would later define his career. After his tailoring apprenticeship, McQueen completed his studies at Central Saint Martins College of Art and Design, graduating with a master's degree in fashion design in 1992. His graduate collection, titled "Taxi Driver," caught the attention of fashion stylist Isabella Blow, who bought his entire collection and became his mentor and close friend.
+    </p>
+
+    <h2>Rise to Fame</h2>
+    <p>
+        McQueen quickly rose to prominence in the fashion world with his provocative and innovative designs. In 1994, he launched his own label, Alexander McQueen, and quickly gained a reputation for his dramatic, often controversial runway shows and his mastery of both tailoring and construction. His early collections were marked by a rebellious spirit, a love of historical references, and the use of dark, edgy themes. Some of his earliest shows, such as "Highland Rape" (Autumn/Winter 1995), challenged societal norms and stirred debate, bringing McQueen both criticism and acclaim.
+    </p>
+    <p>
+        In 1996, McQueen was appointed as the head designer at the French couture house Givenchy, where he succeeded John Galliano. His tenure at Givenchy (1996-2001) was marked by both creative highs and tensions with the company. McQueen felt constrained by the brand's conservative legacy, yet he still produced stunning collections that merged his bold aesthetic with Givenchy's elegance. Despite the challenges, McQueen remained highly influential, and he left Givenchy to focus on his own label in 2001.
+    </p>
+
+    <h2>Design Aesthetic and Legacy</h2>
+    <p>
+        Alexander McQueen's work was characterized by its contrast between light and dark, beauty and brutality, tradition and innovation. He often drew from historical references, nature, and art to create collections that told stories, blending the macabre with the magnificent. McQueen's shows became legendary for their theatricality, often pushing the boundaries of fashion as performance art. His Spring/Summer 1999 show "No. 13," in which a model was spray-painted by robotic arms while standing on a rotating platform, is one of fashion's most iconic moments. Another famous collection, "VOSS" (Spring/Summer 2001), explored the themes of mental illness and self-image, featuring a mirrored box as the stage, creating a disorienting and impactful experience.
+    </p>
+    <p>
+        McQueen's technical skills were extraordinary. His ability to blend his Savile Row training with a dramatic, avant-garde vision allowed him to create garments that were both meticulously crafted and emotionally powerful. His collections often referenced gothic themes, the natural world, and British heritage, with pieces that seemed to question the nature of beauty itself. His designs were known for their striking silhouettes, exquisite tailoring, and imaginative embellishments.
+    </p>
+
+    <h2>Accomplishments and Recognition</h2>
+    <p>
+        McQueen was named British Designer of the Year four times (1996, 1997, 2001, 2003) and received the CFDA's International Designer of the Year award in 2003. His collaboration with Puma, the creation of his McQ diffusion line, and partnerships with retailers helped expand his global reach, yet it was his high-fashion creations that continued to define him.
+    </p>
+    <p>
+        Some of McQueen's most celebrated works include his "Widows of Culloden" collection (Autumn/Winter 2006), where he used a hologram of supermodel Kate Moss to create a haunting and ethereal show, and his final complete collection, "Plato's Atlantis" (Spring/Summer 2010), which showcased his vision of a future where humanity evolves to live underwater, reflecting McQueen’s deep concern for environmental issues. This was also one of the first fashion shows live-streamed online, highlighting McQueen's forward-thinking approach to technology.
+    </p>
+
+    <h2>Personal Life and Tragic Death</h2>
+    <p>
+        Despite his enormous professional success, McQueen struggled with personal challenges, including depression, substance abuse, and the death of his beloved mother, Joyce, in February 2010. Deeply affected by her loss, McQueen took his own life on February 11, 2010, just days after her funeral, leaving the fashion world in shock and mourning the loss of one of its greatest talents. His final collection, Autumn/Winter 2010, was completed by his team and presented posthumously, marking the end of an extraordinary career.
+    </p>
+
+    <h2>Legacy</h2>
+    <p>
+        Alexander McQueen's influence on the fashion world is undeniable. His boundary-pushing designs redefined what fashion could be, merging art, history, and innovation into every collection. His legacy continues through the Alexander McQueen label, now led by his longtime colleague Sarah Burton, who has carried on his vision while bringing her own creative perspective to the brand.
+    </p>
+    <p>
+        McQueen's work has been celebrated in numerous exhibitions, including the critically acclaimed "Savage Beauty" retrospective at the Metropolitan Museum of Art in New York in 2011 and the Victoria and Albert Museum in London in 2015. His impact on fashion, art, and culture endures, as he is remembered not only for his technical brilliance and creative genius but also for his ability to evoke emotion and challenge the fashion industry's status quo.
+    </p>
+    <p>
+        Alexander McQueen remains one of the most important and iconic designers of the 21st century, leaving behind a legacy of groundbreaking design, artistic vision, and an indelible mark on the history of fashion.
+    </p>
+
+</body>
+</html>
