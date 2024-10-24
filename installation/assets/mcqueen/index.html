@@ -120,7 +120,7 @@
         iframe {
             border: none;
             width: 100%;
-            height: 100%;
+            height: 1000px;
             display: block; /* Remove loading bars */
         }
     </style>
@@ -411,6 +411,18 @@
     <p>
         Alexander McQueen remains one of the most important and iconic designers of the 21st century, leaving behind a legacy of groundbreaking design, artistic vision, and an indelible mark on the history of fashion.
     </p>
+
+ <div class="pdf-container">
+        <iframe id="pdfIframe" src="./../media/mcqueen.pdf" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        // Ensure the iframe adjusts to the full height of its container
+        const iframe = document.getElementById('pdfIframe');
+        iframe.onload = function() {
+            this.style.height = (this.contentWindow.document.body.scrollHeight) + 'px';
+        };
+    </script>
 
 </body>
 </html>
