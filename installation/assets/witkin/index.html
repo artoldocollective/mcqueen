@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="">
     <link rel="icon" type="image/png" href="./../../images/mask.png">
-    <title>Witkin</title>
+    <title>Joel-Peter Witkin</title>
     <style>
         /* Basic reset */
         * {
@@ -107,10 +107,32 @@
 </head>
 <body>
 
+<h1>Joel-Peter Witkin</h1>
+
+    <!-- Audio Player 1 -->
+    <div class="media-container audio-container" id="audioContainer1">
+        <audio id="audioPlayer1">
+            <source src="./../media/witkin.mp3" type="audio/mp3"> <!-- Audio source -->
+            Your browser does not support HTML5 audio.
+        </audio>
+        <button id="playPauseBtnAudio1" class="play-pause-btn fade-transition">
+            <!-- Play Icon -->
+            <svg id="playIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <!-- Pause Icon (hidden initially) -->
+            <svg id="pauseIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
+
+<h2>Music Videos featuring Joel-Peter Witkin's work</h2>
+
     <!-- Video Player 1 -->
     <div class="media-container" id="videoContainer1">
         <video id="videoPlayer1">
-            <source src="https://artoldo.com/images/1.mp4" type="video/mp4"> <!-- Video source -->
+            <source src="./../media/19940530.mp4" type="video/mp4"> <!-- Video source -->
             Your browser does not support HTML5 video.
         </video>
         <button id="playPauseBtnVideo1" class="play-pause-btn fade-transition">
@@ -141,47 +163,18 @@
         </button>
     </div>
 
-    <!-- Audio Player 1 -->
-    <div class="media-container audio-container" id="audioContainer1">
-        <audio id="audioPlayer1">
-            <source src="https://artoldo.com/mcqueen/installation/assets/media/music.mp3" type="audio/mp3"> <!-- Audio source -->
-            Your browser does not support HTML5 audio.
-        </audio>
-        <button id="playPauseBtnAudio1" class="play-pause-btn fade-transition">
-            <!-- Play Icon -->
-            <svg id="playIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-            </svg>
-            <!-- Pause Icon (hidden initially) -->
-            <svg id="pauseIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-            </svg>
-        </button>
-    </div>
-
-    <!-- Audio Player 2 -->
-    <div class="media-container audio-container" id="audioContainer2">
-        <audio id="audioPlayer2">
-            <source src="https://artoldo.com/mcqueen/installation/assets/media/music.mp3" type="audio/mp3"> <!-- Audio source -->
-            Your browser does not support HTML5 audio.
-        </audio>
-        <button id="playPauseBtnAudio2" class="play-pause-btn fade-transition">
-            <svg id="playIconAudio2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-            </svg>
-            <svg id="pauseIconAudio2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-            </svg>
-        </button>
-    </div>
+  
 
     <script>
         // Array to hold the media players (audio and video) and buttons
         const mediaPlayers = [
             { player: document.getElementById('videoPlayer1'), button: document.getElementById('playPauseBtnVideo1'), playIcon: document.getElementById('playIconVideo1'), pauseIcon: document.getElementById('pauseIconVideo1') },
             { player: document.getElementById('videoPlayer2'), button: document.getElementById('playPauseBtnVideo2'), playIcon: document.getElementById('playIconVideo2'), pauseIcon: document.getElementById('pauseIconVideo2') },
-            { player: document.getElementById('audioPlayer1'), button: document.getElementById('playPauseBtnAudio1'), playIcon: document.getElementById('playIconAudio1'), pauseIcon: document.getElementById('pauseIconAudio1') },
-            { player: document.getElementById('audioPlayer2'), button: document.getElementById('playPauseBtnAudio2'), playIcon: document.getElementById('playIconAudio2'), pauseIcon: document.getElementById('pauseIconAudio2') }
+{ player: document.getElementById('videoPlayer3'), button: document.getElementById('playPauseBtnVideo3'), playIcon: document.getElementById('playIconVideo3'), pauseIcon: document.getElementById('pauseIconVideo3') },
+{ player: document.getElementById('videoPlayer4'), button: document.getElementById('playPauseBtnVideo4'), playIcon: document.getElementById('playIconVideo4'), pauseIcon: document.getElementById('pauseIconVideo4') },
+{ player: document.getElementById('videoPlayer5'), button: document.getElementById('playPauseBtnVideo5'), playIcon: document.getElementById('playIconVideo5'), pauseIcon: document.getElementById('pauseIconVideo5') },
+{ player: document.getElementById('videoPlayer6'), button: document.getElementById('playPauseBtnVideo6'), playIcon: document.getElementById('playIconVideo6'), pauseIcon: document.getElementById('pauseIconVideo6') },
+            { player: document.getElementById('audioPlayer1'), button: document.getElementById('playPauseBtnAudio1'), playIcon: document.getElementById('playIconAudio1'), pauseIcon: document.getElementById('pauseIconAudio1') }
         ];
 
         // Initialize event listeners for each media player
