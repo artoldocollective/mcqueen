@@ -9,8 +9,6 @@
     <link rel="icon" type="image/png" href="./images/mask.png" />
     <script src="assets/engine.js"></script>
     <script src="assets/extras.js"></script>
-    <script src="assets/sound.js"></script>
-    <script src="assets/audio.js"></script>
     <script src="assets/rain.js"></script>
     <script src="assets/loader1.js"></script>
     <script src="assets/loader2.js"></script>
@@ -165,9 +163,24 @@ design="dot">
 
 <!-- Music -->
 
-<audio id="background-music" src="assets/media/music.mp3" autoplay loop preload="auto" crossorigin="anonymous"></audio>
+<audio id="background-music" src="assets/media/music.mp3" loop preload="auto"></audio>
 
-<a-box color="black" scale="2 2 2" position="0 -2 0" audio="src: #music; loop: true;"></a-box>
+<script>
+  // Function to play music
+  function playBackgroundMusic() {
+    const audioElement = document.getElementById('background-music');
+    audioElement.play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
+  }
+
+  // Play music on user interaction
+  document.addEventListener('click', playBackgroundMusic);
+
+  // Optionally, you can play it right after the scene is loaded
+  document.querySelector('a-scene').addEventListener('loaded', playBackgroundMusic);
+</script>
+
 
 <!-- Music End -->
 
