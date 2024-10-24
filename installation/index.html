@@ -163,7 +163,7 @@ design="dot">
 
 <!-- Music -->
 
-<audio id="background-music" src="assets/media/music.mp3" autoplay loop preload="auto"></audio>
+<audio id="background-music" src="assets/media/music.mp3" autoplay loop preload="auto" crossorigin="anonymous"></audio>
 
 <!-- Music End -->
 
@@ -318,28 +318,23 @@ design="dot">
 </a-entity>
 
 <a-entity gui-interactable lightbox data-url="assets/spray" disable-pointer-lock enable-pointer-lock>
+    <a-entity 
+        gltf-model="#model3" 
+        animation-mixer 
+        scale="2.8 3.6 2.8"
+        rotation="0 0 0"  
+        position="15.30277 3.7 14.2878"
+        animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000">
+    </a-entity>
 
-<a-entity 
-  	gltf-model="#model3" 
-  	animation-mixer 
-  	scale="2.8 3.6 2.8"
-  	rotation="0 0 0"  
-  	position="15.30277 3.7 14.2878"
-  	animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000"
-        >
+    <a-entity 
+        gltf-model="#robot" 
+        animation-mixer 
+        scale="8 8 8"
+        rotation="0 -45 0"  
+        position="12.12169 2.7071 12.90204">
+    </a-entity>
 </a-entity>
-
-<a-entity 
-  	gltf-model="#robot" 
-  	animation-mixer 
-  	scale="8 8 8"
-  	rotation="0 -45 0"  
-  	position="12.12169 2.7071 12.90204" 
-  	>
-</a-entity>
-
-</a-entity>
-
 
 <!-- Models End -->
 
