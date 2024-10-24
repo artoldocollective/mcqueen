@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" href="./../../images/mask.png">
-    <title>Joel-Peter Witkin</title>
+    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+    <link rel="icon" type="image/png" href="./images/mask.png">
+    <title>Media Players Without Controls</title>
     <style>
         /* Basic reset */
         * {
@@ -107,40 +107,32 @@
 </head>
 <body>
 
-<h1>Joel-Peter Witkin</h1>
-
-    <!-- Audio Player 1 -->
-    <div class="media-container audio-container" id="audioContainer1">
+     <!-- Audio Player -->
+    <div class="media-container audio-container" id="audioContainer">
         <audio id="audioPlayer1">
-            <source src="./../media/witkin.mp3" type="audio/mp3"> <!-- Audio source -->
+            <source src="./../media/witkin.mp3" type="audio/mpeg"> <!-- Relative audio source -->
             Your browser does not support HTML5 audio.
         </audio>
         <button id="playPauseBtnAudio1" class="play-pause-btn fade-transition">
-            <!-- Play Icon -->
             <svg id="playIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
             </svg>
-            <!-- Pause Icon (hidden initially) -->
             <svg id="pauseIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
                 <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
             </svg>
         </button>
     </div>
 
-<h2>Music Videos featuring Joel-Peter Witkin's work</h2>
-
     <!-- Video Player 1 -->
     <div class="media-container" id="videoContainer1">
         <video id="videoPlayer1">
-            <source src="./../media/19940530.mp4" type="video/mp4"> <!-- Video source -->
+            <source src="./../media/19940530.mp4" type="video/mp4"> <!-- Relative video source -->
             Your browser does not support HTML5 video.
         </video>
         <button id="playPauseBtnVideo1" class="play-pause-btn fade-transition">
-            <!-- Play Icon -->
             <svg id="playIconVideo1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
             </svg>
-            <!-- Pause Icon (hidden initially) -->
             <svg id="pauseIconVideo1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
                 <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
             </svg>
@@ -150,7 +142,7 @@
     <!-- Video Player 2 -->
     <div class="media-container" id="videoContainer2">
         <video id="videoPlayer2">
-            <source src="https://artoldo.com/images/2.mp4" type="video/mp4"> <!-- Video source -->
+            <source src="./../media/19950911.mp4" type="video/mp4"> <!-- Relative video source -->
             Your browser does not support HTML5 video.
         </video>
         <button id="playPauseBtnVideo2" class="play-pause-btn fade-transition">
@@ -163,21 +155,83 @@
         </button>
     </div>
 
-  
+    <!-- Video Player 3 -->
+    <div class="media-container" id="videoContainer3">
+        <video id="videoPlayer3">
+            <source src="./../media/19960908.mp4" type="video/mp4"> <!-- Relative video source -->
+            Your browser does not support HTML5 video.
+        </video>
+        <button id="playPauseBtnVideo3" class="play-pause-btn fade-transition">
+            <svg id="playIconVideo3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIconVideo3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Video Player 4 -->
+    <div class="media-container" id="videoContainer4">
+        <video id="videoPlayer4">
+            <source src="./../media/19970127.mp4" type="video/mp4"> <!-- Relative video source -->
+            Your browser does not support HTML5 video.
+        </video>
+        <button id="playPauseBtnVideo4" class="play-pause-btn fade-transition">
+            <svg id="playIconVideo4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIconVideo4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Video Player 5 -->
+    <div class="media-container" id="videoContainer5">
+        <video id="videoPlayer5">
+            <source src="./../media/19970414.mp4" type="video/mp4"> <!-- Relative video source -->
+            Your browser does not support HTML5 video.
+        </video>
+        <button id="playPauseBtnVideo5" class="play-pause-btn fade-transition">
+            <svg id="playIconVideo5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIconVideo5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Video Player 6 -->
+    <div class="media-container" id="videoContainer6">
+        <video id="videoPlayer6">
+            <source src="./../media/19970908.mp4" type="video/mp4"> <!-- Relative video source -->
+            Your browser does not support HTML5 video.
+        </video>
+        <button id="playPauseBtnVideo6" class="play-pause-btn fade-transition">
+            <svg id="playIconVideo6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pauseIconVideo6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+    </div>
 
     <script>
-        // Array to hold the media players (audio and video) and buttons
+        // Media players array
         const mediaPlayers = [
             { player: document.getElementById('videoPlayer1'), button: document.getElementById('playPauseBtnVideo1'), playIcon: document.getElementById('playIconVideo1'), pauseIcon: document.getElementById('pauseIconVideo1') },
             { player: document.getElementById('videoPlayer2'), button: document.getElementById('playPauseBtnVideo2'), playIcon: document.getElementById('playIconVideo2'), pauseIcon: document.getElementById('pauseIconVideo2') },
-{ player: document.getElementById('videoPlayer3'), button: document.getElementById('playPauseBtnVideo3'), playIcon: document.getElementById('playIconVideo3'), pauseIcon: document.getElementById('pauseIconVideo3') },
-{ player: document.getElementById('videoPlayer4'), button: document.getElementById('playPauseBtnVideo4'), playIcon: document.getElementById('playIconVideo4'), pauseIcon: document.getElementById('pauseIconVideo4') },
-{ player: document.getElementById('videoPlayer5'), button: document.getElementById('playPauseBtnVideo5'), playIcon: document.getElementById('playIconVideo5'), pauseIcon: document.getElementById('pauseIconVideo5') },
-{ player: document.getElementById('videoPlayer6'), button: document.getElementById('playPauseBtnVideo6'), playIcon: document.getElementById('playIconVideo6'), pauseIcon: document.getElementById('pauseIconVideo6') },
+            { player: document.getElementById('videoPlayer3'), button: document.getElementById('playPauseBtnVideo3'), playIcon: document.getElementById('playIconVideo3'), pauseIcon: document.getElementById('pauseIconVideo3') },
+            { player: document.getElementById('videoPlayer4'), button: document.getElementById('playPauseBtnVideo4'), playIcon: document.getElementById('playIconVideo4'), pauseIcon: document.getElementById('pauseIconVideo4') },
+            { player: document.getElementById('videoPlayer5'), button: document.getElementById('playPauseBtnVideo5'), playIcon: document.getElementById('playIconVideo5'), pauseIcon: document.getElementById('pauseIconVideo5') },
+            { player: document.getElementById('videoPlayer6'), button: document.getElementById('playPauseBtnVideo6'), playIcon: document.getElementById('playIconVideo6'), pauseIcon: document.getElementById('pauseIconVideo6') },
             { player: document.getElementById('audioPlayer1'), button: document.getElementById('playPauseBtnAudio1'), playIcon: document.getElementById('playIconAudio1'), pauseIcon: document.getElementById('pauseIconAudio1') }
         ];
 
-        // Initialize event listeners for each media player
+        // Initialize event listeners
         mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
             button.addEventListener('click', () => handlePlayPause(player, button, playIcon, pauseIcon));
             player.addEventListener('ended', () => handleMediaEnded(player, button, playIcon, pauseIcon));
@@ -206,7 +260,7 @@
             }
         }
 
-        // Toggle between Play and Pause icons
+        // Function to toggle Play/Pause icon display
         function togglePlayPauseIcon(playIcon, pauseIcon, isPlaying) {
             if (isPlaying) {
                 playIcon.style.display = 'none';
@@ -217,10 +271,10 @@
             }
         }
 
-        // When media ends, show play button again
+        // Function to handle media ended event
         function handleMediaEnded(player, button, playIcon, pauseIcon) {
-            togglePlayPauseIcon(playIcon, pauseIcon, false); // Switch back to play icon
-            button.classList.remove('hide-btn'); // Show button after media ends
+            togglePlayPauseIcon(playIcon, pauseIcon, false);
+            button.classList.remove('hide-btn');
         }
 
         // Disable right-click
