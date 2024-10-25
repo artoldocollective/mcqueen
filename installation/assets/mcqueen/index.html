@@ -8,27 +8,43 @@
     <link rel="icon" type="image/png" href="./../../images/mask.png">
     <title>Alexander McQueen</title>
     <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* General reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent;
-            font-family: Arial, sans-serif;
-            color: white;
-        }
+/* Main content styles */
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: #121212;
+}
 
-        p {
-            text-align: justify;
-            Padding: 30px;
-        }
+/* Container for main content to keep above the PDF */
+.main-content {
+    flex: 1 0 auto; /* Allows content to take up necessary space */
+    padding: 20px;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    text-align: center;
+}
+
+/* PDF container for responsive design */
+.pdf-container {
+    flex-shrink: 0; /* Prevents shrinking */
+    height: 80vh; /* Keeps PDF iframe at 80% of viewport height */
+    width: 100%;
+    overflow: hidden;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
         /* Container for each player (audio or video) */
         .media-container {
@@ -45,7 +61,15 @@
 
         /* Specific container height adjustment for audio */
         .audio-container {
-            height: 100px;
+           height: 100px;
+    margin: 10px auto; /* Center the audio container */
+    width: 80%; /* Adjust width as needed */
+    max-width: 640px; /* Keeps the audio container within a max width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Background color for contrast */
+    border-radius: 15px;
         }
 
         /* Audio element styles */
@@ -109,23 +133,30 @@
             pointer-events: none;
         }
 
-        .pdf-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+       /* Styles for PDF container */
+.pdf-container {
+    width: 100%;
+    height: 80vh; /* Adjust to fit other content; try 80vh for space above */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto; /* Allows scrolling if PDF content exceeds container size */
+}
 
-        iframe {
-            border: none;
-            width: 100%;
-            height: 1000px;
-            display: block; /* Remove loading bars */
-        }
+iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
     </style>
 </head>
 <body>
+
+<!-- Main Content Section -->
+    <div class="main-content">
+
+    
 
 <h1>Alexander McQueen</h1>
 
@@ -147,6 +178,8 @@
 
 <br><br>
 
+<img src="./../../images/mcqueen-photo.webp" style="border-radius: 15px"/>
+
 <h2>Alexander McQueen Fashion Shows</h2>
 
 <br><br>
@@ -154,9 +187,9 @@
     <table style="width: 50%; margin: 0 auto; border-collapse: collapse;">
         <thead>
             <tr>
-                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Season</th>
-                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Year</th>
-                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Title</th>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Season</th>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Year</th>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Title</th>
             </tr>
         </thead>
         <tbody>
@@ -365,63 +398,131 @@
 <br><br>
 
     <h2>Early Life and Education</h2>
-    <p>
+    <p style="text-align:justify;">
         Lee Alexander McQueen was born to a working-class family in Lewisham, London. The youngest of six children, his father was a taxi driver, and his mother, Joyce, was a social science teacher. McQueen showed an early interest in fashion, reportedly making dresses for his sisters at a young age. His unconventional and rebellious streak emerged early, and at the age of 16, he left school to pursue a career in fashion design.
     </p>
-    <p>
+    <p style="text-align:justify;">
         McQueen's fashion education began through an apprenticeship at the prestigious Savile Row tailors Anderson & Sheppard and later Gieves & Hawkes, where he honed his impeccable tailoring skills. He then worked for theatrical costumiers Angels and Bermans, where he learned how to construct garments with a dramatic flair, an ability that would later define his career. After his tailoring apprenticeship, McQueen completed his studies at Central Saint Martins College of Art and Design, graduating with a master's degree in fashion design in 1992. His graduate collection, titled "Taxi Driver," caught the attention of fashion stylist Isabella Blow, who bought his entire collection and became his mentor and close friend.
     </p>
 
     <h2>Rise to Fame</h2>
-    <p>
+    <p style="text-align:justify;">
         McQueen quickly rose to prominence in the fashion world with his provocative and innovative designs. In 1994, he launched his own label, Alexander McQueen, and quickly gained a reputation for his dramatic, often controversial runway shows and his mastery of both tailoring and construction. His early collections were marked by a rebellious spirit, a love of historical references, and the use of dark, edgy themes. Some of his earliest shows, such as "Highland Rape" (Autumn/Winter 1995), challenged societal norms and stirred debate, bringing McQueen both criticism and acclaim.
     </p>
-    <p>
+    <p style="text-align:justify;">
         In 1996, McQueen was appointed as the head designer at the French couture house Givenchy, where he succeeded John Galliano. His tenure at Givenchy (1996-2001) was marked by both creative highs and tensions with the company. McQueen felt constrained by the brand's conservative legacy, yet he still produced stunning collections that merged his bold aesthetic with Givenchy's elegance. Despite the challenges, McQueen remained highly influential, and he left Givenchy to focus on his own label in 2001.
     </p>
 
     <h2>Design Aesthetic and Legacy</h2>
-    <p>
+    <p style="text-align:justify;">
         Alexander McQueen's work was characterized by its contrast between light and dark, beauty and brutality, tradition and innovation. He often drew from historical references, nature, and art to create collections that told stories, blending the macabre with the magnificent. McQueen's shows became legendary for their theatricality, often pushing the boundaries of fashion as performance art. His Spring/Summer 1999 show "No. 13," in which a model was spray-painted by robotic arms while standing on a rotating platform, is one of fashion's most iconic moments. Another famous collection, "VOSS" (Spring/Summer 2001), explored the themes of mental illness and self-image, featuring a mirrored box as the stage, creating a disorienting and impactful experience.
     </p>
-    <p>
+    <p style="text-align:justify;">
         McQueen's technical skills were extraordinary. His ability to blend his Savile Row training with a dramatic, avant-garde vision allowed him to create garments that were both meticulously crafted and emotionally powerful. His collections often referenced gothic themes, the natural world, and British heritage, with pieces that seemed to question the nature of beauty itself. His designs were known for their striking silhouettes, exquisite tailoring, and imaginative embellishments.
     </p>
 
     <h2>Accomplishments and Recognition</h2>
-    <p>
+    <p style="text-align:justify;">
         McQueen was named British Designer of the Year four times (1996, 1997, 2001, 2003) and received the CFDA's International Designer of the Year award in 2003. His collaboration with Puma, the creation of his McQ diffusion line, and partnerships with retailers helped expand his global reach, yet it was his high-fashion creations that continued to define him.
     </p>
-    <p>
+    <p style="text-align:justify;">
         Some of McQueen's most celebrated works include his "Widows of Culloden" collection (Autumn/Winter 2006), where he used a hologram of supermodel Kate Moss to create a haunting and ethereal show, and his final complete collection, "Plato's Atlantis" (Spring/Summer 2010), which showcased his vision of a future where humanity evolves to live underwater, reflecting McQueen’s deep concern for environmental issues. This was also one of the first fashion shows live-streamed online, highlighting McQueen's forward-thinking approach to technology.
     </p>
 
     <h2>Personal Life and Tragic Death</h2>
-    <p>
+    <p style="text-align:justify;">
         Despite his enormous professional success, McQueen struggled with personal challenges, including depression, substance abuse, and the death of his beloved mother, Joyce, in February 2010. Deeply affected by her loss, McQueen took his own life on February 11, 2010, just days after her funeral, leaving the fashion world in shock and mourning the loss of one of its greatest talents. His final collection, Autumn/Winter 2010, was completed by his team and presented posthumously, marking the end of an extraordinary career.
     </p>
 
     <h2>Legacy</h2>
-    <p>
+    <p style="text-align:justify;">
         Alexander McQueen's influence on the fashion world is undeniable. His boundary-pushing designs redefined what fashion could be, merging art, history, and innovation into every collection. His legacy continues through the Alexander McQueen label, now led by his longtime colleague Sarah Burton, who has carried on his vision while bringing her own creative perspective to the brand.
     </p>
-    <p>
+    <p style="text-align:justify;">
         McQueen's work has been celebrated in numerous exhibitions, including the critically acclaimed "Savage Beauty" retrospective at the Metropolitan Museum of Art in New York in 2011 and the Victoria and Albert Museum in London in 2015. His impact on fashion, art, and culture endures, as he is remembered not only for his technical brilliance and creative genius but also for his ability to evoke emotion and challenge the fashion industry's status quo.
     </p>
-    <p>
+    <p style="text-align:justify;">
         Alexander McQueen remains one of the most important and iconic designers of the 21st century, leaving behind a legacy of groundbreaking design, artistic vision, and an indelible mark on the history of fashion.
     </p>
 
- <div class="pdf-container">
+    <script>
+        // Media players array
+        const mediaPlayers = [
+            { player: document.getElementById('audioPlayer1'), button: document.getElementById('playPauseBtnAudio1'), playIcon: document.getElementById('playIconAudio1'), pauseIcon: document.getElementById('pauseIconAudio1') }
+        ];
+
+        // Initialize event listeners
+        mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
+            button.addEventListener('click', () => handlePlayPause(player, button, playIcon, pauseIcon));
+            player.addEventListener('ended', () => handleMediaEnded(player, button, playIcon, pauseIcon));
+        });
+
+        // Function to handle Play/Pause button click
+        function handlePlayPause(currentPlayer, button, playIcon, pauseIcon) {
+            // Pause all players
+            mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
+                if (player !== currentPlayer) {
+                    player.pause();
+                    player.currentTime = 0; // Reset time for other players
+                    button.classList.remove('hide-btn');
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                }
+            });
+
+            // Play or pause the current player
+            if (currentPlayer.paused) {
+                currentPlayer.play();
+                togglePlayPauseIcon(playIcon, pauseIcon, true);
+            } else {
+                currentPlayer.pause();
+                togglePlayPauseIcon(playIcon, pauseIcon, false);
+            }
+        }
+
+        // Function to toggle Play/Pause icon display
+        function togglePlayPauseIcon(playIcon, pauseIcon, isPlaying) {
+            if (isPlaying) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        // Function to handle media ended event
+        function handleMediaEnded(player, button, playIcon, pauseIcon) {
+            togglePlayPauseIcon(playIcon, pauseIcon, false);
+            button.classList.remove('hide-btn');
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+
+</div>
+
+
+
+<!-- PDF Container with Responsive Iframe -->
+    <div class="pdf-container">
         <iframe id="pdfIframe" src="./../media/mcqueen.pdf" allowfullscreen></iframe>
     </div>
 
+
     <script>
-        // Ensure the iframe adjusts to the full height of its container
-        const iframe = document.getElementById('pdfIframe');
-        iframe.onload = function() {
-            this.style.height = (this.contentWindow.document.body.scrollHeight) + 'px';
-        };
+        // Function to adjust iframe height on load and window resize
+function adjustIframeHeight() {
+    const iframe = document.getElementById('pdfIframe');
+    iframe.style.height = `${window.innerHeight * 0.8}px`; // Set height to 80% of viewport height
+}
+
+// Run the function on page load and resize
+window.addEventListener('load', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+
+
     </script>
 
 </body>
