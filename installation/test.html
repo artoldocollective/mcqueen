@@ -614,7 +614,11 @@ AFRAME.registerComponent('pointer-lock-handler', {
 
     // Function to request pointer lock
     function requestPointerLock() {
-      scene.requestPointerLock();
+      if (scene.requestPointerLock) {
+        scene.requestPointerLock();
+      } else {
+        console.log("Pointer lock not supported");
+      }
     }
 
     // Pointer lock change event handler
@@ -637,9 +641,9 @@ AFRAME.registerComponent('pointer-lock-handler', {
     }
 
     // Handle click on elements with disable-pointer-lock class
-    function onDisablePointerLockClick() {
+    function onDisablePointerLockClick(event) {
       if (document.pointerLockElement === scene) {
-        console.log("Disabling pointer lock due to element click");
+        console.log("Disabling pointer lock due to element click", event.target);
         document.exitPointerLock();  // Manually exit pointer lock
       }
     }
@@ -647,6 +651,7 @@ AFRAME.registerComponent('pointer-lock-handler', {
     // Request fullscreen and pointer lock when clicking the mask
     mask.addEventListener('click', function () {
       scene.sceneEl.requestFullscreen().then(() => {
+        console.log("Entered fullscreen, requesting pointer lock");
         requestPointerLock();  // After fullscreen, request pointer lock
       }).catch(err => {
         console.error("Error trying to enter fullscreen:", err);
@@ -668,10 +673,15 @@ AFRAME.registerComponent('pointer-lock-handler', {
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' || event.keyCode === 27) {
         console.log('ESC pressed');
+        if (document.pointerLockElement === scene) {
+          console.log('Exiting pointer lock due to ESC press');
+          document.exitPointerLock();  // Ensure we exit pointer lock if ESC is pressed
+        }
       }
     });
   }
 });
+
 
 </script>
 
