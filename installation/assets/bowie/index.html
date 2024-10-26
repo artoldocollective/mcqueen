@@ -8,26 +8,43 @@
     <link rel="icon" type="image/png" href="./../../images/mask.png">
     <title>David Bowie</title>
     <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* General reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent;
-            font-family: Arial, sans-serif;
-            color: white;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            height: 100vh; /* Full height for responsive design */
-        }
+/* Main content styles */
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: transparent;
+}
+
+/* Container for main content to keep above the PDF */
+.main-content {
+    flex: 1 0 auto; /* Allows content to take up necessary space */
+    padding: 20px;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    text-align: center;
+}
+
+/* PDF container for responsive design */
+.pdf-container {
+    flex-shrink: 0; /* Prevents shrinking */
+    height: 80vh; /* Keeps PDF iframe at 80% of viewport height */
+    width: 100%;
+    overflow: hidden;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
         /* Container for each player (audio or video) */
         .media-container {
@@ -44,7 +61,15 @@
 
         /* Specific container height adjustment for audio */
         .audio-container {
-            height: 100px;
+           height: 100px;
+    margin: 10px auto; /* Center the audio container */
+    width: 80%; /* Adjust width as needed */
+    max-width: 640px; /* Keeps the audio container within a max width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Background color for contrast */
+    border-radius: 15px;
         }
 
         /* Audio element styles */
@@ -108,25 +133,32 @@
             pointer-events: none;
         }
 
-        .pdf-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+       /* Styles for PDF container */
+.pdf-container {
+    width: 100%;
+    height: 80vh; /* Adjust to fit other content; try 80vh for space above */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto; /* Allows scrolling if PDF content exceeds container size */
+}
 
-        iframe {
-            border: none;
-            width: 100%;
-            height: 100%;
-            display: block; /* Remove loading bars */
-        }
+iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
     </style>
 </head>
 <body>
 
-<h1>David Bowie vs Alexander McQueen</h1>
+<!-- Main Content Section -->
+    <div class="main-content">
+
+    
+
+<h1>David Bowie vs Alexander McQueen</h1></sup>Voice Clone</sup>
 
     <!-- Audio Player -->
     <div class="media-container audio-container" id="audioContainer">
@@ -143,6 +175,10 @@
             </svg>
         </button>
     </div>
+
+<br><br>
+
+<h1>Articles:</h1>
 
 <br><br>
 
@@ -202,16 +238,28 @@
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 
+</div>
+
+
+
+<!-- PDF Container with Responsive Iframe -->
     <div class="pdf-container">
         <iframe id="pdfIframe" src="./../media/bowie.pdf" allowfullscreen></iframe>
     </div>
 
+
     <script>
-        // Ensure the iframe adjusts to the full height of its container
-        const iframe = document.getElementById('pdfIframe');
-        iframe.onload = function() {
-            this.style.height = (this.contentWindow.document.body.scrollHeight) + 'px';
-        };
+        // Function to adjust iframe height on load and window resize
+function adjustIframeHeight() {
+    const iframe = document.getElementById('pdfIframe');
+    iframe.style.height = `${window.innerHeight * 0.8}px`; // Set height to 80% of viewport height
+}
+
+// Run the function on page load and resize
+window.addEventListener('load', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+
+
     </script>
 
 </body>
