@@ -548,39 +548,6 @@ design="dot">
 <!-- HTML Overlay with iframe for Lightbox End -->
 
 
-<!-- Disable Pointer Lock -->
-
-<script>
-  AFRAME.registerComponent('disable-pointer-lock', {
-    init: function () {
-      const el = this.el;
-
-      el.addEventListener('click', function () {
-        // Exit pointer lock when the element is clicked
-        if (document.pointerLockElement) {
-          document.exitPointerLock();
-        }
-
-        // Optional: Disable pointer lock in the look-controls (for further safety)
-        const cameraEl = document.querySelector('[camera]');
-        const lookControls = cameraEl.components['look-controls'];
-        if (lookControls) {
-          lookControls.data.pointerLockEnabled = false;
-          console.log('Pointer Lock Disabled');
-        }
-      });
-    }
-  });
-
-  // Apply the component to all elements that should have pointer lock disabled
-  document.querySelectorAll('[disable-pointer-lock]').forEach(el => {
-    el.setAttribute('disable-pointer-lock', '');
-  });
-</script>
-
-<!-- Disable Pointer Lock End -->
-
-
 <!-- Enable Pointer Lock -->
 
 <script>
@@ -636,52 +603,53 @@ design="dot">
 
 <!-- Enable Pointer End -->
 
+<!-- Disable Pointer Lock -->
+
 <script>
-    document.querySelector('.mask').addEventListener('click', function () {
-      const canvasEl = document.querySelector('a-scene').canvas;
-
-      // Request pointer lock on the canvas (A-Frame scene)
-      if (canvasEl.requestPointerLock) {
-        canvasEl.requestPointerLock();
-      } else if (canvasEl.mozRequestPointerLock) {
-        canvasEl.mozRequestPointerLock();
-      } else if (canvasEl.webkitRequestPointerLock) {
-        canvasEl.webkitRequestPointerLock();
-      } else if (canvasEl.msRequestPointerLock) {
-        canvasEl.msRequestPointerLock();
-      }
-
-      // Handle pointer lock change event
-      document.addEventListener('pointerlockchange', onPointerLockChange, false);
-      document.addEventListener('mozpointerlockchange', onPointerLockChange, false);
-      document.addEventListener('webkitpointerlockchange', onPointerLockChange, false);
-      document.addEventListener('mspointerlockchange', onPointerLockChange, false);
-    });
-
-    // Handle pointer lock state changes
+    AFRAME.registerComponent('disable-pointer-lock', {
+  init: function () {
+    var el = this.el;
+    var scene = document.querySelector('a-scene');
+    var mask = document.querySelector('.mask');
+    
+    // Handle pointer lock changes
     function onPointerLockChange() {
-      const canvasEl = document.querySelector('a-scene').canvas;
-      const cameraEl = document.querySelector('[camera]');
-      const lookControls = cameraEl.components['look-controls'];
-
-      if (document.pointerLockElement === canvasEl || 
-          document.mozPointerLockElement === canvasEl || 
-          document.webkitPointerLockElement === canvasEl || 
-          document.msPointerLockElement === canvasEl) {
-
-        // Enable pointer lock in the A-Frame look-controls component
-        if (lookControls) {
-          lookControls.data.pointerLockEnabled = true;
-          console.log('Pointer Lock Enabled');
-        }
+      if (document.pointerLockElement === scene) {
+        el.components['look-controls'].pause();
+        document.removeEventListener('click', requestPointerLock);
+        mask.style.display = 'none';
       } else {
-        // If pointer lock is disabled, disable the pointer lock state in A-Frame
-        if (lookControls) {
-          lookControls.data.pointerLockEnabled = false;
-          console.log('Pointer Lock Disabled');
-        }
+        el.components['look-controls'].play();
+        mask.style.display = 'block';
       }
     }
+
+    // Request pointer lock when clicking the mask
+    function requestPointerLock() {
+      scene.requestPointerLock();
+    }
+
+    document.addEventListener('pointerlockchange', onPointerLockChange);
+    mask.addEventListener('click', requestPointerLock);
+
+    // Prevent fullscreen exit when ESC is pressed
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' || event.keyCode === 27) {
+        event.preventDefault();  // Prevent fullscreen from exiting
+      }
+    });
+
+    // Re-enable fullscreen and pointer lock if we exit fullscreen
+    document.addEventListener('fullscreenchange', function () {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().then(() => {
+          // Re-enable pointer lock
+          document.body.requestPointerLock();
+        });
+      }
+    });
+  }
+});
 </script>
 
   </body>
