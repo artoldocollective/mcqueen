@@ -314,6 +314,54 @@ design="dot">
 <!-- Stage End -->
 
 
+<!-- Models -->
+
+<a-assets>
+<a-asset-item id="model1" src="./images/modelwalking1.glb"></a-asset-item>
+<a-asset-item id="model2" src="./images/modelwalking2.glb"></a-asset-item>
+<a-asset-item id="model3" src="./images/modelspray.glb"></a-asset-item>
+<a-asset-item id="robot" src="./images/robot.glb"></a-asset-item>
+</a-assets>
+
+<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 50; loop: true; dur: 60000">
+        <a-entity 
+          gltf-model="#model1" 
+          animation-mixer 
+          scale="3 3 3"
+          rotation="0 0 0"  
+          position="-3 1.2 0">
+        </a-entity>
+        <a-entity 
+          gltf-model="#model2" 
+          animation-mixer 
+          scale="3 3 3"
+          rotation="0 0 0"  
+          position="3 1.2 -15">
+        </a-entity>
+</a-entity>
+
+
+<a-entity 
+        gltf-model="#model3" 
+        animation-mixer 
+        scale="2.8 3.6 2.8"
+        rotation="0 0 0"  
+        position="15.30277 3.7 14.2878"
+        animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000"
+        gui-interactable lightbox data-url="assets/spray" disable-pointer-lock enable-pointer-lock>
+</a-entity>
+
+<a-entity 
+        gltf-model="#robot" 
+        animation-mixer 
+        scale="8 8 8"
+        rotation="0 -45 0"  
+        position="12.12169 2.7071 12.90204"
+        >
+</a-entity>
+
+
+<!-- Models End -->
 
 
 <!-- Video player -->
@@ -464,6 +512,42 @@ design="dot">
     <script src="assets/lightbox.js"></script>
 
 
+<!-- Enable Pointerlock with Lightbox closed-->
+
+<script>
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.querySelector('.close-btn'); // Select .close-btn as per your CSS
+    const scene = document.getElementById('scene');
+
+    // Function to close the lightbox and enable pointer lock
+    function closeLightbox() {
+        overlay.style.display = "none"; // Hide the lightbox
+        scene.requestPointerLock(); // Re-enable pointer lock for A-Frame scene
+    }
+
+    // Add event listener to close button to close the lightbox
+    closeButton.addEventListener('click', closeLightbox);
+
+    // Optionally, if the lightbox can be hidden by other means, listen for style change
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === "style" && overlay.style.display === "none") {
+                scene.requestPointerLock(); // Automatically request pointer lock if lightbox is hidden
+            }
+        });
+    });
+
+    // Observe the overlay's style attribute
+    observer.observe(overlay, { attributes: true });
+
+</script>
+
+<!-- Enable Pointerlock with Lightbox closed End-->
+
+
+<!-- HTML Overlay with iframe for Lightbox End -->
+
+
 <!-- Disable Pointer Lock -->
 
 <script>
@@ -472,25 +556,18 @@ design="dot">
       const el = this.el;
 
       el.addEventListener('click', function () {
-        // Attempt to exit pointer lock immediately
+        // Exit pointer lock when the element is clicked
         if (document.pointerLockElement) {
           document.exitPointerLock();
-          console.log('Pointer Lock Disabled immediately');
         }
 
-        // Check after a short delay if pointer lock is still active
-        setTimeout(() => {
-          if (document.pointerLockElement) {
-            // If pointer lock is still active, try disabling it again with 1.5s timeout
-            console.log('Pointer Lock still active, attempting to disable after 1.5-second delay');
-            setTimeout(() => {
-              if (document.pointerLockElement) {
-                document.exitPointerLock();
-                console.log('Pointer Lock Disabled after 1.5-second delay');
-              }
-            }, 1500);
-          }
-        }, 100); // Slight delay to check if the first attempt failed
+        // Optional: Disable pointer lock in the look-controls (for further safety)
+        const cameraEl = document.querySelector('[camera]');
+        const lookControls = cameraEl.components['look-controls'];
+        if (lookControls) {
+          lookControls.data.pointerLockEnabled = false;
+          console.log('Pointer Lock Disabled');
+        }
       });
     }
   });
