@@ -521,8 +521,23 @@ design="dot">
       el.addEventListener('click', function () {
         // Exit pointer lock when the element is clicked
         if (document.pointerLockElement) {
-          document.exitPointerLock();
-          console.log('Pointer Lock Disabled');
+          // Simulate the Escape key press to exit pointer lock
+          const event = new KeyboardEvent('keydown', {
+            key: 'Escape',
+            code: 'Escape',
+            keyCode: 27,
+            charCode: 0,
+            bubbles: true
+          });
+          document.dispatchEvent(event);
+
+          // Optional: Disable pointer lock in the look-controls
+          const cameraEl = document.querySelector('[camera]');
+          const lookControls = cameraEl.components['look-controls'];
+          if (lookControls) {
+            lookControls.data.pointerLockEnabled = false;
+            console.log('Pointer Lock Disabled');
+          }
         }
       });
     }
@@ -544,12 +559,12 @@ design="dot">
       el.addEventListener('click', function () {
         // Request pointer lock on click
         el.sceneEl.requestPointerLock();
-        console.log('Pointer Lock Enabled');
 
         const cameraEl = document.querySelector('[camera]');
         const lookControls = cameraEl.components['look-controls'];
         if (lookControls) {
           lookControls.data.pointerLockEnabled = true;
+          console.log('Pointer Lock Enabled');
         }
       });
     }
@@ -567,7 +582,7 @@ design="dot">
     overlay.style.display = 'none';
     const scene = document.querySelector('a-scene');
 
-    // Request pointer lock only if the user interaction allows it
+    // Request pointer lock again if needed
     scene.requestPointerLock();
     console.log('Pointer Lock Re-enabled');
 
