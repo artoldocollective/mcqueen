@@ -605,52 +605,59 @@ design="dot">
 
 <!-- Disable Pointer Lock -->
 
-<script>
-    AFRAME.registerComponent('disable-pointer-lock', {
+AFRAME.registerComponent('pointer-lock-handler', {
   init: function () {
-    var el = this.el;
-    var scene = document.querySelector('a-scene');
+    var scene = this.el;  // The current scene
     var mask = document.querySelector('.mask');
-    
-    // Handle pointer lock changes
-    function onPointerLockChange() {
-      if (document.pointerLockElement === scene) {
-        el.components['look-controls'].pause();
-        document.removeEventListener('click', requestPointerLock);
-        mask.style.display = 'none';
-      } else {
-        el.components['look-controls'].play();
-        mask.style.display = 'block';
-      }
-    }
 
-    // Request pointer lock when clicking the mask
+    // Function to request pointer lock
     function requestPointerLock() {
       scene.requestPointerLock();
     }
 
-    document.addEventListener('pointerlockchange', onPointerLockChange);
-    mask.addEventListener('click', requestPointerLock);
-
-    // Prevent fullscreen exit when ESC is pressed
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' || event.keyCode === 27) {
-        event.preventDefault();  // Prevent fullscreen from exiting
+    // Pointer lock change event handler
+    function onPointerLockChange() {
+      if (document.pointerLockElement === scene) {
+        console.log("Pointer lock engaged");
+        mask.style.display = 'none';  // Hide the overlay when pointer lock is active
+      } else {
+        console.log("Pointer lock released");
+        mask.style.display = 'block';  // Show the overlay when pointer lock is lost
       }
+    }
+
+    // Fullscreen change event handler
+    function onFullscreenChange() {
+      if (!document.fullscreenElement) {
+        console.log("Exited fullscreen");
+        mask.style.display = 'block';  // Show the overlay if we exit fullscreen
+      }
+    }
+
+    // Request fullscreen and pointer lock when clicking the mask
+    mask.addEventListener('click', function () {
+      scene.sceneEl.requestFullscreen().then(() => {
+        requestPointerLock();  // After fullscreen, request pointer lock
+      }).catch(err => {
+        console.error("Error trying to enter fullscreen:", err);
+      });
     });
 
-    // Re-enable fullscreen and pointer lock if we exit fullscreen
-    document.addEventListener('fullscreenchange', function () {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().then(() => {
-          // Re-enable pointer lock
-          document.body.requestPointerLock();
-        });
+    // Listen for pointer lock changes
+    document.addEventListener('pointerlockchange', onPointerLockChange);
+
+    // Listen for fullscreen changes
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+
+    // Optional: Handle ESC key press to log its behavior (for debugging)
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' || event.keyCode === 27) {
+        console.log('ESC pressed');
       }
     });
   }
 });
-</script>
+
 
   </body>
 </html>
