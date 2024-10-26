@@ -636,5 +636,53 @@ design="dot">
 
 <!-- Enable Pointer End -->
 
+<script>
+    document.querySelector('.mask').addEventListener('click', function () {
+      const canvasEl = document.querySelector('a-scene').canvas;
+
+      // Request pointer lock on the canvas (A-Frame scene)
+      if (canvasEl.requestPointerLock) {
+        canvasEl.requestPointerLock();
+      } else if (canvasEl.mozRequestPointerLock) {
+        canvasEl.mozRequestPointerLock();
+      } else if (canvasEl.webkitRequestPointerLock) {
+        canvasEl.webkitRequestPointerLock();
+      } else if (canvasEl.msRequestPointerLock) {
+        canvasEl.msRequestPointerLock();
+      }
+
+      // Handle pointer lock change event
+      document.addEventListener('pointerlockchange', onPointerLockChange, false);
+      document.addEventListener('mozpointerlockchange', onPointerLockChange, false);
+      document.addEventListener('webkitpointerlockchange', onPointerLockChange, false);
+      document.addEventListener('mspointerlockchange', onPointerLockChange, false);
+    });
+
+    // Handle pointer lock state changes
+    function onPointerLockChange() {
+      const canvasEl = document.querySelector('a-scene').canvas;
+      const cameraEl = document.querySelector('[camera]');
+      const lookControls = cameraEl.components['look-controls'];
+
+      if (document.pointerLockElement === canvasEl || 
+          document.mozPointerLockElement === canvasEl || 
+          document.webkitPointerLockElement === canvasEl || 
+          document.msPointerLockElement === canvasEl) {
+
+        // Enable pointer lock in the A-Frame look-controls component
+        if (lookControls) {
+          lookControls.data.pointerLockEnabled = true;
+          console.log('Pointer Lock Enabled');
+        }
+      } else {
+        // If pointer lock is disabled, disable the pointer lock state in A-Frame
+        if (lookControls) {
+          lookControls.data.pointerLockEnabled = false;
+          console.log('Pointer Lock Disabled');
+        }
+      }
+    }
+</script>
+
   </body>
 </html>
