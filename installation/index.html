@@ -36,11 +36,24 @@
       width: 250px;
       height: 209px;
       position: absolute;
-  
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       }
+
+      @media (max-width: 768px) {
+    .mask {
+        width: 80%; /* Adjust width for smaller screens */
+        max-width: 200px; /* Limit the maximum size on mobile */
+    }
+    }
+
+      @media (max-width: 480px) {
+    .mask {
+        width: 60%; /* Further reduce the size on very small screens */
+        max-width: 150px; /* Ensure it scales appropriately */
+    }
+    }
 
       img {
       -webkit-user-drag: none;
