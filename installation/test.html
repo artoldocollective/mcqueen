@@ -522,13 +522,6 @@ design="dot">
         // Exit pointer lock when the element is clicked
         if (document.pointerLockElement) {
           document.exitPointerLock();
-        }
-
-        // Optional: Disable pointer lock in the look-controls (for further safety)
-        const cameraEl = document.querySelector('[camera]');
-        const lookControls = cameraEl.components['look-controls'];
-        if (lookControls) {
-          lookControls.data.pointerLockEnabled = false;
           console.log('Pointer Lock Disabled');
         }
       });
@@ -549,14 +542,9 @@ design="dot">
       const el = this.el;
 
       el.addEventListener('click', function () {
-        // Check if we can request pointer lock
-        if (!document.pointerLockElement) {
-          el.sceneEl.requestPointerLock().then(() => {
-            console.log('Pointer Lock Enabled');
-          }).catch(err => {
-            console.error('Failed to enable pointer lock:', err);
-          });
-        }
+        // Request pointer lock on click
+        el.sceneEl.requestPointerLock();
+        console.log('Pointer Lock Enabled');
 
         const cameraEl = document.querySelector('[camera]');
         const lookControls = cameraEl.components['look-controls'];
@@ -580,13 +568,8 @@ design="dot">
     const scene = document.querySelector('a-scene');
 
     // Request pointer lock only if the user interaction allows it
-    if (scene && !document.pointerLockElement) {
-      scene.requestPointerLock().then(() => {
-        console.log('Pointer Lock Re-enabled');
-      }).catch(err => {
-        console.error('Failed to re-enable pointer lock:', err);
-      });
-    }
+    scene.requestPointerLock();
+    console.log('Pointer Lock Re-enabled');
 
     const cameraEl = document.querySelector('[camera]');
     const lookControls = cameraEl.components['look-controls'];
@@ -596,16 +579,6 @@ design="dot">
   }
 
   closeButton.addEventListener('click', closeLightbox);
-
-  const observer = new MutationObserver(function (mutationsList) {
-    for (const mutation of mutationsList) {
-      if (mutation.attributeName === 'style' && overlay.style.display === 'none') {
-        closeLightbox();
-      }
-    }
-  });
-
-  observer.observe(overlay, { attributes: true });
 </script>
 <!-- Enable Pointer Lock End -->
 
