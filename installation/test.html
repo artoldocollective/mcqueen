@@ -605,6 +605,8 @@ design="dot">
 
 <!-- Disable Pointer Lock -->
 
+<script>
+
 AFRAME.registerComponent('pointer-lock-handler', {
   init: function () {
     var scene = this.el;  // The current scene
@@ -634,6 +636,14 @@ AFRAME.registerComponent('pointer-lock-handler', {
       }
     }
 
+    // Handle click on elements with disable-pointer-lock class
+    function onDisablePointerLockClick() {
+      if (document.pointerLockElement === scene) {
+        console.log("Disabling pointer lock due to element click");
+        document.exitPointerLock();  // Manually exit pointer lock
+      }
+    }
+
     // Request fullscreen and pointer lock when clicking the mask
     mask.addEventListener('click', function () {
       scene.sceneEl.requestFullscreen().then(() => {
@@ -641,6 +651,11 @@ AFRAME.registerComponent('pointer-lock-handler', {
       }).catch(err => {
         console.error("Error trying to enter fullscreen:", err);
       });
+    });
+
+    // Add click event listener to disable pointer lock on specific elements
+    document.querySelectorAll('[disable-pointer-lock]').forEach(function (element) {
+      element.addEventListener('click', onDisablePointerLockClick);
     });
 
     // Listen for pointer lock changes
@@ -658,6 +673,7 @@ AFRAME.registerComponent('pointer-lock-handler', {
   }
 });
 
+</script>
 
   </body>
 </html>
