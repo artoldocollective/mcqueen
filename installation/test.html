@@ -512,63 +512,62 @@ design="dot">
     <script src="assets/lightbox.js"></script>
 
 
-<!-- Enable Pointerlock with Lightbox closed-->
-
+<!-- Disable Pointer Lock -->
 <script>
-    const overlay = document.getElementById('overlay');
-    const closeButton = document.querySelector('.close-btn'); // Select .close-btn as per your CSS
-    const scene = document.getElementById('scene');
+  AFRAME.registerComponent('disable-pointer-lock', {
+    init: function () {
+      const el = this.el;
 
-    // Function to close the lightbox and enable pointer lock
-    function closeLightbox() {
-        overlay.style.display = "none"; // Hide the lightbox
-        scene.requestPointerLock(); // Re-enable pointer lock for A-Frame scene
+      el.addEventListener('click', function () {
+        // Exit pointer lock when the element is clicked
+        if (document.pointerLockElement) {
+          document.exitPointerLock();
+        }
+
+        // Optional: Disable pointer lock in the look-controls (for further safety)
+        const cameraEl = document.querySelector('[camera]');
+        const lookControls = cameraEl.components['look-controls'];
+        if (lookControls) {
+          lookControls.data.pointerLockEnabled = false;
+          console.log('Pointer Lock Disabled');
+        }
+      });
     }
+  });
 
-    // Add event listener to close button to close the lightbox
-    closeButton.addEventListener('click', closeLightbox);
-
-    // Optionally, if the lightbox can be hidden by other means, listen for style change
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.attributeName === "style" && overlay.style.display === "none") {
-                scene.requestPointerLock(); // Automatically request pointer lock if lightbox is hidden
-            }
-        });
-    });
-
-    // Observe the overlay's style attribute
-    observer.observe(overlay, { attributes: true });
-
+  // Apply the component to all elements that should have pointer lock disabled
+  document.querySelectorAll('[disable-pointer-lock]').forEach(el => {
+    el.setAttribute('disable-pointer-lock', '');
+  });
 </script>
-
-<!-- Enable Pointerlock with Lightbox closed End-->
-
-
-<!-- HTML Overlay with iframe for Lightbox End -->
-
+<!-- Disable Pointer Lock End -->
 
 <!-- Enable Pointer Lock -->
-
 <script>
   AFRAME.registerComponent('enable-pointer-lock', {
     init: function () {
       const el = this.el;
+
       el.addEventListener('click', function () {
+        // Check if we can request pointer lock
         if (!document.pointerLockElement) {
-          el.sceneEl.requestPointerLock();
+          el.sceneEl.requestPointerLock().then(() => {
+            console.log('Pointer Lock Enabled');
+          }).catch(err => {
+            console.error('Failed to enable pointer lock:', err);
+          });
         }
 
         const cameraEl = document.querySelector('[camera]');
         const lookControls = cameraEl.components['look-controls'];
         if (lookControls) {
           lookControls.data.pointerLockEnabled = true;
-          console.log('Pointer Lock Enabled');
         }
       });
     }
   });
 
+  // Apply the component to all elements that should have pointer lock enabled
   document.querySelectorAll('[enable-pointer-lock]').forEach(el => {
     el.setAttribute('enable-pointer-lock', '');
   });
@@ -579,12 +578,20 @@ design="dot">
   function closeLightbox() {
     overlay.style.display = 'none';
     const scene = document.querySelector('a-scene');
-    scene.sceneEl.requestPointerLock();
+
+    // Request pointer lock only if the user interaction allows it
+    if (scene && !document.pointerLockElement) {
+      scene.requestPointerLock().then(() => {
+        console.log('Pointer Lock Re-enabled');
+      }).catch(err => {
+        console.error('Failed to re-enable pointer lock:', err);
+      });
+    }
+
     const cameraEl = document.querySelector('[camera]');
     const lookControls = cameraEl.components['look-controls'];
     if (lookControls) {
       lookControls.data.pointerLockEnabled = true;
-      console.log('Pointer Lock Re-enabled');
     }
   }
 
@@ -600,90 +607,7 @@ design="dot">
 
   observer.observe(overlay, { attributes: true });
 </script>
-
-<!-- Enable Pointer End -->
-
-<!-- Disable Pointer Lock -->
-
-<script>
-
-AFRAME.registerComponent('pointer-lock-handler', {
-  init: function () {
-    var scene = this.el;  // The current scene
-    var mask = document.querySelector('.mask');
-
-    // Function to request pointer lock
-    function requestPointerLock() {
-      if (scene.requestPointerLock) {
-        scene.requestPointerLock();
-      } else {
-        console.log("Pointer lock not supported");
-      }
-    }
-
-    // Pointer lock change event handler
-    function onPointerLockChange() {
-      if (document.pointerLockElement === scene) {
-        console.log("Pointer lock engaged");
-        mask.style.display = 'none';  // Hide the overlay when pointer lock is active
-      } else {
-        console.log("Pointer lock released");
-        mask.style.display = 'block';  // Show the overlay when pointer lock is lost
-      }
-    }
-
-    // Fullscreen change event handler
-    function onFullscreenChange() {
-      if (!document.fullscreenElement) {
-        console.log("Exited fullscreen");
-        mask.style.display = 'block';  // Show the overlay if we exit fullscreen
-      }
-    }
-
-    // Handle click on elements with disable-pointer-lock class
-    function onDisablePointerLockClick(event) {
-      if (document.pointerLockElement === scene) {
-        console.log("Disabling pointer lock due to element click", event.target);
-        document.exitPointerLock();  // Manually exit pointer lock
-      }
-    }
-
-    // Request fullscreen and pointer lock when clicking the mask
-    mask.addEventListener('click', function () {
-      scene.sceneEl.requestFullscreen().then(() => {
-        console.log("Entered fullscreen, requesting pointer lock");
-        requestPointerLock();  // After fullscreen, request pointer lock
-      }).catch(err => {
-        console.error("Error trying to enter fullscreen:", err);
-      });
-    });
-
-    // Add click event listener to disable pointer lock on specific elements
-    document.querySelectorAll('[disable-pointer-lock]').forEach(function (element) {
-      element.addEventListener('click', onDisablePointerLockClick);
-    });
-
-    // Listen for pointer lock changes
-    document.addEventListener('pointerlockchange', onPointerLockChange);
-
-    // Listen for fullscreen changes
-    document.addEventListener('fullscreenchange', onFullscreenChange);
-
-    // Optional: Handle ESC key press to log its behavior (for debugging)
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' || event.keyCode === 27) {
-        console.log('ESC pressed');
-        if (document.pointerLockElement === scene) {
-          console.log('Exiting pointer lock due to ESC press');
-          document.exitPointerLock();  // Ensure we exit pointer lock if ESC is pressed
-        }
-      }
-    });
-  }
-});
-
-
-</script>
+<!-- Enable Pointer Lock End -->
 
   </body>
 </html>
