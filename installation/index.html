@@ -314,6 +314,124 @@ design="dot">
 <!-- Stage End -->
 
 
+<!-- Red Wire Connections -->
+
+<a-entity id="red-wire"></a-entity>
+
+<script>
+  AFRAME.registerComponent('connect-dots', {
+    init: function () {
+      const sceneEl = this.el.sceneEl;
+
+      // Place Alexander McQueen in the center and other entities around
+      const positions = [
+        { name: "Alexander McQueen", pos: "-8 6.0 -8" },
+        { name: "Joel-Peter Witkin", pos: "8 6.0 -8" },
+        { name: "David Bowie", pos: "-12 6.5 -6" },
+        { name: "Kanye West", pos: "12 6.5 -6" },
+        { name: "Isabell Blow", pos: "-12 6.5 -2" },
+        { name: "Sarah Burton", pos: "12 6.5 -2" },
+        { name: "Sean McGirr", pos: "-12 6.5 2" },
+        { name: "Fecal Matter", pos: "12 6.5 2" }
+      ];
+
+      // Connect Alexander McQueen to all other entities and vice versa
+      for (let i = 0; i < positions.length; i++) {
+        for (let j = i + 1; j < positions.length; j++) {
+          const from = positions[i].pos;
+          const to = positions[j].pos;
+
+          // Create the line entity
+          const line = document.createElement('a-entity');
+          line.setAttribute('line', {
+            start: from,
+            end: to,
+            color: 'red',
+            opacity: 0.9,
+            linewidth: 30  // Keep the line thick
+          });
+
+          // Animation for wave effect (moving start and end points slightly)
+          line.setAttribute('animation__start_wave', {
+            property: 'line.start',
+            dir: 'alternate',
+            loop: true,
+            dur: 2000,
+            to: adjustPosition(from, 0.2)  // Add slight wave motion
+          });
+          line.setAttribute('animation__end_wave', {
+            property: 'line.end',
+            dir: 'alternate',
+            loop: true,
+            dur: 2000,
+            to: adjustPosition(to, 0.2)
+          });
+
+          sceneEl.appendChild(line);
+        }
+      }
+
+      // Utility function to adjust a position slightly for wave effect
+      function adjustPosition(position, offset) {
+        const coords = position.split(' ').map(parseFloat);
+        coords[1] += offset;  // Small oscillation in Y-axis (height)
+        return coords.join(' ');
+      }
+    }
+  });
+
+  // Attach this component to the red-wire entity
+  document.querySelector('#red-wire').setAttribute('connect-dots', '');
+</script>
+
+<!-- Red Wire Connections End -->
+
+
+<!-- Ouroboros -->
+
+<a-entity id="ouroboros" draw-spiral></a-entity>
+
+<script> 
+AFRAME.registerComponent('draw-spiral', {
+    init: function () {
+        const sceneEl = this.el.sceneEl;
+
+        // Spiral parameters
+        const spiralTurns = 3; // Number of turns in the spiral
+        const baseRadius = 13; // Base radius of the spiral
+        const spiralDistance = 3; // Radius increment for each turn
+        const linkCount = 100; // Number of torus links to create
+        const linkRadius = 1; // Radius of the torus (chain link)
+        const tubeRadius = 0.2; // Thickness of the torus (chain link)
+
+        // Create the spiral using toruses to mimic chain links
+        for (let i = 0; i < linkCount; i++) {
+            const angle = (i / linkCount) * (Math.PI * 2 * spiralTurns); // Calculate the angle
+            const radius = baseRadius + (i / linkCount) * spiralDistance; // Calculate the radius
+
+            // Calculate the position for each link in the spiral
+            const x = radius * Math.cos(angle);
+            const z = radius * Math.sin(angle);
+            const y = 0.5; // Set height to 1 for 1 unit above the ground
+
+            // Create a torus for each segment of the spiral
+            const torus = document.createElement('a-torus');
+            torus.setAttribute('position', `${x} ${y} ${z}`);
+            torus.setAttribute('radius', linkRadius); // Set the radius of the torus
+            torus.setAttribute('radius-tubular', tubeRadius); // Set the thickness of the torus
+            torus.setAttribute('color', 'gold'); // Set color to gold
+            torus.setAttribute('rotation', '90 0 0'); // Rotate the torus to lay flat on the ground
+
+            // Append the torus to the scene
+            sceneEl.appendChild(torus);
+        }
+    }
+});
+</script>
+
+<!-- Ouroboros End-->
+
+
 <!-- Models -->
 
 <a-assets>
