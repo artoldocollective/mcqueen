@@ -113,6 +113,21 @@
         position: relative;
     }
 
+    /* Adjust accordion header font size on tablet and smaller screens */
+    @media (max-width: 768px) {
+        .accordion-header {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Further reduce the accordion header font size on smartphones */
+    @media (max-width: 480px) {
+        .accordion-header {
+            font-size: 1rem;
+            padding: 10px; /* Optional: reduce padding for a more compact look */
+        }
+    }
+
     /* Arrow styling */
     .accordion-header::after {
         content: '\2936'; /* Unicode for ⤶ */
@@ -172,7 +187,7 @@
         <div class="accordion-item">
           <div class="accordion-header">What techniques did you use?</div>
           <div class="accordion-content">
-            <p>The installation merges various technologies and genres, spanning AI, Virtual Reality, Web VR, Video Art, Audio and Video Editing, Music Composing, Photo Collage, Moving Images Arts, Net Art, Code 	       Art, Scripting, Web Design and even Site Hacking.</p>
+            <p>The installation merges various technologies and genres, spanning AI, Virtual Reality, 3D Modelling, Video Art, Audio and Video Editing, Music Composing, Photo Collage, Moving Images Arts, Net Art, 	       Code Art, Scripting, Web Design and even Site Hacking.</p>
           </div>
         </div>
         <div class="accordion-item">
