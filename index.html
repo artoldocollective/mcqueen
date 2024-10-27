@@ -9,134 +9,145 @@
     <meta property="og:image" content="./installation/images/mask.png" />
     <link rel="icon" type="image/png" href="./installation/images/mask.png" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body, html {
-            font-family: Arial, sans-serif;
-            width: 100%;
-        }
+    body, html {
+        font-family: Arial, sans-serif;
+        width: 100%;
+    }
 
-        /* Centering the container and limiting its width */
-        .container {
-            display: flex;
-            justify-content: center; /* Horizontal centering */
-            flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            text-align: center;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto; /* Horizontally center the container */
-        }
+    /* Centering the container and limiting its width */
+    .container {
+        display: flex;
+        justify-content: center; /* Horizontal centering */
+        flex-direction: column;
+        align-items: center; /* Center content horizontally */
+        text-align: center;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto; /* Horizontally center the container */
+    }
 
-        /* Image styling */
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
+    /* Image styling */
+    img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
 
-        /* Huge font sizes for desktop */
+    /* Huge font sizes for desktop */
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+    }
+
+    /* Responsive font size adjustments */
+    @media (max-width: 768px) {
         h1 {
-            font-size: 4rem;
+            font-size: 2rem;
         }
 
         h2 {
-            font-size: 3rem;
+            font-size: 1.8rem;
         }
 
         h3 {
-            font-size: 2.5rem;
-        }
-
-        /* Responsive font size adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            h3 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Button styling with rounded borders */
-        .button {
-            background-color: black;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px; /* Rounded corners */
-            cursor: pointer;
-            margin: 20px 0;
-            font-size: 1.2rem;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .button:hover {
-            background-color: red;
-        }
-
-        /* Accordion styles */
-        .accordion {
-            width: 100%; /* Full width accordion */
-            max-width: 600px;
-            margin-top: 20px;
-        }
-
-        .accordion-item {
-            border: 1px solid white; /* White border */
-            margin-bottom: 10px;
-            border-radius: 10px; /* Rounded corners */
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            background-color: white;
-            cursor: pointer;
-            padding: 15px;
-            text-align: left;
             font-size: 1.5rem;
-            position: relative;
         }
-
-        /* Arrow styling */
-        .accordion-header::after {
-            content: '\2936'; /* Unicode for ⤶ */
-            font-size: 2.2rem;
-            position: absolute;
-            right: 20px;
-            transition: transform 0.3s ease;
+        
+        /* Accordion title font size adjustment on mobile */
+        .accordion-header {
+            font-size: 1.2rem;
         }
+    }
 
-        /* Rotate the arrow when active */
-        .accordion-header.active::after {
-            transform: rotate(180deg); /* Rotate arrow upwards */
+    /* Button styling with rounded borders */
+    .button {
+        background-color: black;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 25px; /* Rounded corners */
+        cursor: pointer;
+        margin: 20px 0;
+        font-size: 1.2rem;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .button:hover {
+        background-color: red;
+    }
+
+    /* Accordion styles */
+    .accordion {
+        width: 100%; /* Full width accordion */
+        max-width: 600px;
+        margin-top: 20px;
+    }
+
+    .accordion-item {
+        border: 1px solid white; /* White border */
+        margin-bottom: 10px;
+        border-radius: 10px; /* Rounded corners */
+        overflow: hidden;
+    }
+
+    .accordion-header {
+        background-color: white;
+        cursor: pointer;
+        padding: 15px;
+        text-align: left;
+        font-size: 1.5rem;
+        position: relative;
+    }
+
+    /* Arrow styling */
+    .accordion-header::after {
+        content: '\2936'; /* Unicode for ⤶ */
+        font-size: 2.2rem;
+        position: absolute;
+        right: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Rotate the arrow when active */
+    .accordion-header.active::after {
+        transform: rotate(180deg); /* Rotate arrow upwards */
+    }
+
+    .accordion-content {
+        display: none;
+        padding: 15px;
+        background-color: white;
+        font-size: 1rem;
+        text-align: justify; /* Justified text */
+    }
+
+    /* Class for controlling visibility of span based on device type */
+    .hide-on-touchscreen {
+        display: inline; /* Visible by default */
+    }
+    
+    @media (pointer: coarse) {
+        .hide-on-touchscreen {
+            display: none; /* Hide only on touchscreen devices */
         }
+    }
 
-        .accordion-content {
-            display: none;
-            padding: 15px;
-            background-color: white;
-            font-size: 1rem;
-            text-align: justify; /* Justified text */
-        }
+</style>
 
-        @media (pointer: coarse) {
-  	span {
-    	display: none;
-  	  }
-	}
-
-    </style>
   </head>
   <body>
 
@@ -147,7 +158,7 @@
       <h3>Featuring Alexander McQueen, Joel-Peter Witkin, David Bowie, Kanye West, Isabell Blow, Sarah Burton and many more</h3>
       <a href="./installation/" target="_blank" class="button">ENTER</a>
       <p style="color:red;"><strong>Instruction</strong>: The VR installation is approximately 200 MB, so please be patient during the loading process. 
-                                    <br>To activate voices and other surprises, point the mask at the objects for at least 5 seconds. Press [ESC] to exit.
+                                    <br>To activate voices and other surprises, point the mask at the objects for at least 5 seconds. <span class="hide-on-touchscreen">Press [ESC] to exit.</span>
       </p>
                                    
 
