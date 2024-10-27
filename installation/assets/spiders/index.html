@@ -39,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 1.0);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,34 +57,76 @@
             box-sizing: border-box; /* Include padding in width/height calculations */
         }
 
-        .warning-symbol {
-            font-size: 100px;
-            color: red;
-        }
+        /* Base styles for larger screens */
+.warning-symbol {
+    font-size: 100px;
+    color: red;
+}
 
-        .warning-text {
-            font-size: 50px;
-            margin-top: 10px;
-            color: white;
-        }
+.warning-text {
+    font-size: 50px;
+    margin-top: 10px;
+    color: white;
+}
 
-        .warning-details {
-            font-size: 20px;
-            margin-top: 20px;
-            color: white;
-            text-align: justify;
-        }
+.warning-details {
+    font-size: 20px;
+    margin-top: 20px;
+    color: white;
+    text-align: justify;
+}
 
-        button {
-            background-color: white;
-            color: black;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Media query for screens less than 768px wide (tablets and smaller) */
+@media (max-width: 768px) {
+    .warning-symbol {
+        font-size: 70px; /* Decrease size */
+    }
+
+    .warning-text {
+        font-size: 35px; /* Decrease size */
+    }
+
+    .warning-details {
+        font-size: 16px; /* Decrease size */
+    }
+
+    button {
+        padding: 12px 25px; /* Reduce padding */
+        font-size: 16px; /* Decrease size */
+    }
+}
+
+/* Media query for screens less than 480px wide (mobile devices) */
+@media (max-width: 480px) {
+    .warning-symbol {
+        font-size: 50px; /* Further decrease size */
+    }
+
+    .warning-text {
+        font-size: 25px; /* Further decrease size */
+    }
+
+    .warning-details {
+        font-size: 14px; /* Further decrease size */
+    }
+
+    button {
+        padding: 10px 20px; /* Adjust button size */
+        font-size: 14px; /* Decrease size */
+    }
+}
+
     </style>
 </head>
 <body class="overflow-x-hidden">
