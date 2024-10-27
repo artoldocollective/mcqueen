@@ -7,117 +7,137 @@
     <meta name="author" content="ARTOLDO">
     <link rel="icon" type="image/png" href="./../../images/mask.png">
     <title>Kanye West</title>
-   <style>
-        /* General reset */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
-        }
+ <style>
+   /* General reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-        /* Main content styles */
-        body {
-            font-family: Arial, sans-serif;
-            color: white;
-            background-color: transparent;
-        }
+/* Main content styles */
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: transparent;
+}
 
-        /* Container for main content */
-        .main-content {
-            text-align: center;
-        }
+/* Container for main content to keep above the PDF */
+.main-content {
+    flex: 1 0 auto; /* Allows content to take up necessary space */
+    padding: 20px;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    text-align: center; /* Center all content */
+}
 
-        /* Container for each player (audio or video) */
-        .media-container {
-            position: relative;
-            width: 640px;
-            height: 360px; /* Default height for video */
-            background-color: transparent;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px 0; /* Space between players */
-        }
+/* Container for each player (audio or video) */
+.media-container {
+    position: relative;
+    width: 640px; /* Default width */
+    height: 360px; /* Default height for video */
+    background-color: transparent;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto; /* Center the media containers */
+}
 
-        /* Specific container height adjustment for audio */
-        .audio-container {
-            height: 100px;
-            margin: 10px auto; /* Center the audio container */
-            width: 80%; /* Adjust width as needed */
-            max-width: 640px; /* Keeps the audio container within a max width */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: transparent;
-            border-radius: 15px;
-        }
+/* Specific container height adjustment for audio */
+.audio-container {
+    height: 100px;
+    margin: 10px auto; /* Center the audio container */
+    width: 80%; /* Adjust width as needed */
+    max-width: 640px; /* Keeps the audio container within a max width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* Background color for contrast */
+    border-radius: 15px;
+}
 
-        /* Audio element styles */
-        audio {
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-        }
+/* Audio element styles */
+audio {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
 
-        /* Play/Pause button styles */
-        .play-pause-btn {
-            background-color: rgba(255, 0, 0, 0.8);
-            border: none;
-            border-radius: 50px;
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-            opacity: 1;
-            visibility: visible;
-            position: absolute; /* Center button in the container */
-        }
+/* Play/Pause button styles */
+.play-pause-btn {
+    background-color: rgba(255, 0, 0, 0.8);
+    border: none;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+    position: absolute; /* Center button in the container */
+}
 
-        .play-pause-btn:hover {
-            background-color: rgba(0, 0, 0, 0.8); /* Red hover effect */
-        }
+.play-pause-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Red hover effect */
+}
 
-        .play-pause-btn:focus {
-            outline: none;
-        }
+.play-pause-btn:focus {
+    outline: none;
+}
 
-        /* Icon styles */
-        .play-pause-btn svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
-        }
+/* Icon styles */
+.play-pause-btn svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
+}
 
-        /* Fade-out effect for button and icons */
-        .hide-btn {
-            opacity: 0;
-            visibility: hidden;
-        }
+/* Fade-out effect for button and icons */
+.hide-btn {
+    opacity: 0;
+    visibility: hidden;
+}
 
-        /* Fade-in effect for the button and icons on hover */
-        .media-container:hover .play-pause-btn {
-            opacity: 1;
-            visibility: visible;
-        }
+/* Fade-in effect for the button and icons on hover */
+.media-container:hover .play-pause-btn {
+    opacity: 1;
+    visibility: visible;
+}
 
-        /* Smooth transition for fade-in/out */
-        .fade-transition {
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
+/* Smooth transition for fade-in/out */
+.fade-transition {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
 
-        /* Disable right-click */
-        audio {
-            pointer-events: none;
-        }
-    </style>
+/* Disable right-click */
+audio {
+    pointer-events: none;
+}
+
+/* Responsive table styles */
+table {
+    width: 100%; /* Make the table responsive */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+th, td {
+    padding: 8px;
+    text-align: center; /* Center align text in table cells */
+    border: 1px solid white; /* Add border for visibility */
+}
+
+@media (max-width: 768px) {
+    .media-container, .audio-container {
+        width: 100%; /* Full width on smaller screens */
+        height: auto; /* Auto height for flexibility */
+    }
+}
+</style>
 </head>
 <body>
 
@@ -125,6 +145,9 @@
     <div class="main-content">
 
 <h1>Kanye West</h1></sup>Voice Clone</sup>
+
+<br><br><br>
+
 
     <!-- Audio Player -->
     <div class="media-container audio-container" id="audioContainer">
@@ -141,6 +164,15 @@
             </svg>
         </button>
     </div>
+
+<br><br><br>
+
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap; max-width: 500px; margin: auto; padding: 10px;">
+        <img src="./../../images/west1.webp" alt="Image 1" style="border-radius: 15px; width: 100px; max-width: 200px; height: auto; margin: 10px;">
+        <img src="./../../images/west2.webp" alt="Image 2" style="border-radius: 15px; width: 100px; max-width: 200px; height: auto; margin: 10px;">
+        <img src="./../../images/west3.webp" alt="Image 3" style="border-radius: 15px; width: 100px; max-width: 200px; height: auto; margin: 10px;">
+        <img src="./../../images/west4.webp" alt="Image 4" style="border-radius: 15px; width: 100px; max-width: 200px; height: auto; margin: 10px;">
+</div>
 
     <script>
         // Media players array
