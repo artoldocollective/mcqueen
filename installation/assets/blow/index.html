@@ -4,47 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+    <meta name="author" content="ARTOLDO">
     <link rel="icon" type="image/png" href="./../../images/mask.png">
     <title>Isabell Blow</title>
     <style>
         /* General reset */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+        }
 
-/* Main content styles */
-body {
-    font-family: Arial, sans-serif;
-    color: white;
-    background-color: transparent;
-}
+        /* Main content styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: transparent;
+        }
 
-/* Container for main content to keep above the PDF */
-.main-content {
-    flex: 1 0 auto; /* Allows content to take up necessary space */
-    padding: 20px;
-    overflow-y: auto; /* Allows scrolling if content overflows */
-    text-align: center;
-}
-
-/* PDF container for responsive design */
-.pdf-container {
-    flex-shrink: 0; /* Prevents shrinking */
-    height: 80vh; /* Keeps PDF iframe at 80% of viewport height */
-    width: 100%;
-    overflow: hidden;
-}
-
-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+        /* Container for main content */
+        .main-content {
+            text-align: center;
+        }
 
         /* Container for each player (audio or video) */
         .media-container {
@@ -61,15 +46,15 @@ iframe {
 
         /* Specific container height adjustment for audio */
         .audio-container {
-           height: 100px;
-    margin: 10px auto; /* Center the audio container */
-    width: 80%; /* Adjust width as needed */
-    max-width: 640px; /* Keeps the audio container within a max width */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent; /* Background color for contrast */
-    border-radius: 15px;
+            height: 100px;
+            margin: 10px auto; /* Center the audio container */
+            width: 80%; /* Adjust width as needed */
+            max-width: 640px; /* Keeps the audio container within a max width */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            border-radius: 15px;
         }
 
         /* Audio element styles */
@@ -132,15 +117,14 @@ iframe {
         audio {
             pointer-events: none;
         }
-
     </style>
 </head>
 <body>
 
 <!-- Main Content Section -->
-    <div class="main-content">
+<div class="main-content">
 
-<h1>Isabell Blow</h1></sup>Voice Clone</sup>
+    <h1>Isabell Blow</h1><sup>Voice Clone</sup>
 
     <!-- Audio Player -->
     <div class="media-container audio-container" id="audioContainer">
@@ -158,85 +142,63 @@ iframe {
         </button>
     </div>
 
-    <script>
-        // Media players array
-        const mediaPlayers = [
-            { player: document.getElementById('audioPlayer1'), button: document.getElementById('playPauseBtnAudio1'), playIcon: document.getElementById('playIconAudio1'), pauseIcon: document.getElementById('pauseIconAudio1') }
-        ];
+</div>
 
-        // Initialize event listeners
+<script>
+    // Media players array
+    const mediaPlayers = [
+        { player: document.getElementById('audioPlayer1'), button: document.getElementById('playPauseBtnAudio1'), playIcon: document.getElementById('playIconAudio1'), pauseIcon: document.getElementById('pauseIconAudio1') }
+    ];
+
+    // Initialize event listeners
+    mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
+        button.addEventListener('click', () => handlePlayPause(player, button, playIcon, pauseIcon));
+        player.addEventListener('ended', () => handleMediaEnded(player, button, playIcon, pauseIcon));
+    });
+
+    // Function to handle Play/Pause button click
+    function handlePlayPause(currentPlayer, button, playIcon, pauseIcon) {
+        // Pause all players
         mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
-            button.addEventListener('click', () => handlePlayPause(player, button, playIcon, pauseIcon));
-            player.addEventListener('ended', () => handleMediaEnded(player, button, playIcon, pauseIcon));
-        });
-
-        // Function to handle Play/Pause button click
-        function handlePlayPause(currentPlayer, button, playIcon, pauseIcon) {
-            // Pause all players
-            mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
-                if (player !== currentPlayer) {
-                    player.pause();
-                    player.currentTime = 0; // Reset time for other players
-                    button.classList.remove('hide-btn');
-                    playIcon.style.display = 'block';
-                    pauseIcon.style.display = 'none';
-                }
-            });
-
-            // Play or pause the current player
-            if (currentPlayer.paused) {
-                currentPlayer.play();
-                togglePlayPauseIcon(playIcon, pauseIcon, true);
-            } else {
-                currentPlayer.pause();
-                togglePlayPauseIcon(playIcon, pauseIcon, false);
-            }
-        }
-
-        // Function to toggle Play/Pause icon display
-        function togglePlayPauseIcon(playIcon, pauseIcon, isPlaying) {
-            if (isPlaying) {
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
-            } else {
+            if (player !== currentPlayer) {
+                player.pause();
+                player.currentTime = 0; // Reset time for other players
+                button.classList.remove('hide-btn');
                 playIcon.style.display = 'block';
                 pauseIcon.style.display = 'none';
             }
-        }
+        });
 
-        // Function to handle media ended event
-        function handleMediaEnded(player, button, playIcon, pauseIcon) {
+        // Play or pause the current player
+        if (currentPlayer.paused) {
+            currentPlayer.play();
+            togglePlayPauseIcon(playIcon, pauseIcon, true);
+        } else {
+            currentPlayer.pause();
             togglePlayPauseIcon(playIcon, pauseIcon, false);
-            button.classList.remove('hide-btn');
         }
+    }
 
-        // Disable right-click
-        document.addEventListener('contextmenu', event => event.preventDefault());
-    </script>
+    // Function to toggle Play/Pause icon display
+    function togglePlayPauseIcon(playIcon, pauseIcon, isPlaying) {
+        if (isPlaying) {
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        } else {
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    }
 
-</div>
+    // Function to handle media ended event
+    function handleMediaEnded(player, button, playIcon, pauseIcon) {
+        togglePlayPauseIcon(playIcon, pauseIcon, false);
+        button.classList.remove('hide-btn');
+    }
 
-
-
-<!-- PDF Container with Responsive Iframe -->
-    <div class="pdf-container">
-        <iframe id="pdfIframe" src="./../media/blow.pdf" allowfullscreen></iframe>
-    </div>
-
-
-    <script>
-        // Function to adjust iframe height on load and window resize
-function adjustIframeHeight() {
-    const iframe = document.getElementById('pdfIframe');
-    iframe.style.height = `${window.innerHeight * 0.8}px`; // Set height to 80% of viewport height
-}
-
-// Run the function on page load and resize
-window.addEventListener('load', adjustIframeHeight);
-window.addEventListener('resize', adjustIframeHeight);
-
-
-    </script>
+    // Disable right-click
+    document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
 
 </body>
 </html>

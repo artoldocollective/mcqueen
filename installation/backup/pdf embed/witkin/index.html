@@ -4,133 +4,125 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="noindex, nofollow">
-        <meta name="author" content="ARTOLDO">
+        <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
         <link rel="icon" type="image/png" href="./../../images/mask.png">
         <title>Joel-Peter Witkin</title>
-        <style>
-            /* General reset */
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                min-height: 100vh;
-                /* Ensures body takes up the full viewport height */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                /* Centers content horizontally */
-            }
+<style>
+    /* General reset */
+    html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh; /* Ensures body takes up the full viewport height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Centers content horizontally */
+    }
 
-            /* Main content styles */
-            body {
-                font-family: Arial, sans-serif;
-                color: white;
-                background-color: transparent;
-            }
+    /* Main content styles */
+    body {
+        font-family: Arial, sans-serif;
+        color: white;
+        background-color: transparent;
+    }
 
-            /* Heading styles */
-            h2,
-            h3,
-            h4 {
-                text-align: center;
-                /* Centers h2, h3, and h4 */
-                color: white;
-                /* Adjust text color to match the design */
-                margin: 0px 100px;
-                /* Adjust margins for better spacing */
-            }
+    /* Heading styles */
+    h2, h3, h4 {
+        text-align: center; /* Centers h2, h3, and h4 */
+        color: white;       /* Adjust text color to match the design */
+        margin: 0px 100px;     /* Adjust margins for better spacing */
+    }
 
-            /* Container for each player (audio or video) */
-            .media-container {
-                position: relative;
-                width: 90%;
-                height: auto;
-                padding-x: 30px;
-                background-color: transparent;
-                border-radius: 15px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 10px 0;
-                /* Space between players */
-                flex-grow: 1;
-                /* Allows container to grow and prevent cropping */
-            }
+    /* Container for each player (audio or video) */
+    .media-container {
+        position: relative;
+        width: 90%;
+        height: auto;
+        padding-x: 30px;
+        background-color: transparent;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+        /* Space between players */
+        flex-grow: 1; /* Allows container to grow and prevent cropping */
+    }
 
-            /* Specific container height adjustment for audio */
-            .audio-container {
-                height: 100px;
-            }
+    /* Specific container height adjustment for audio */
+    .audio-container {
+        height: 100px;
+    }
 
-            /* Audio and video element styles */
-            audio,
-            video {
-                width: 100%;
-                height: 100%;
-                border-radius: 15px;
-                pointer-events: none;
-                object-fit: cover;
-            }
+    /* Audio and video element styles */
+    audio,
+    video {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        pointer-events: none;
+        object-fit: cover;
+    }
 
-            /* Play/Pause button styles */
-            .play-pause-btn {
-                background-color: rgba(255, 0, 0, 0.8);
-                border: none;
-                border-radius: 50px;
-                width: 60px;
-                height: 60px;
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: all 0.3s ease;
-                opacity: 1;
-                visibility: visible;
-                position: absolute;
-                left: 50%;
-                /* Moves button to the horizontal center */
-                transform: translateX(-50%);
-                /* Centers the button properly */
-            }
+    /* Play/Pause button styles */
+    .play-pause-btn {
+        background-color: rgba(255, 0, 0, 0.8);
+        border: none;
+        border-radius: 50px;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        left: 50%; /* Moves button to the horizontal center */
+        transform: translateX(-50%); /* Centers the button properly */
+    }
 
-            .play-pause-btn:hover {
-                background-color: rgba(0, 0, 0, 0.8);
-            }
+    .play-pause-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 
-            .play-pause-btn:focus {
-                outline: none;
-            }
+    .play-pause-btn:focus {
+        outline: none;
+    }
 
-            /* Icon styles */
-            .play-pause-btn svg {
-                width: 40px;
-                height: 40px;
-                fill: white;
-            }
+    /* Icon styles */
+    .play-pause-btn svg {
+        width: 40px;
+        height: 40px;
+        fill: white;
+    }
 
-            /* Fade-out effect for button and icons */
-            .hide-btn {
-                opacity: 0;
-                visibility: hidden;
-            }
+    /* Fade-out effect for button and icons */
+    .hide-btn {
+        opacity: 0;
+        visibility: hidden;
+    }
 
-            /* Fade-in effect for the button and icons on hover */
-            .media-container:hover .play-pause-btn {
-                opacity: 1;
-                visibility: visible;
-            }
+    /* Fade-in effect for the button and icons on hover */
+    .media-container:hover .play-pause-btn {
+        opacity: 1;
+        visibility: visible;
+    }
 
-            /* Smooth transition for fade-in/out */
-            .fade-transition {
-                transition: opacity 0.5s ease, visibility 0.5s ease;
-            }
-        </style>
+    /* Smooth transition for fade-in/out */
+    .fade-transition {
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+</style>
+
+
     </head>
     <body>
-        <h1>Joel-Peter Witkin</h1>
-        <sup>Voice Clone</sup>
+        <h1>Joel-Peter Witkin</h1><sup>Voice Clone</sup>
+
         <!-- Audio Player -->
+
         <div class="media-container audio-container" id="audioContainer">
             <audio id="audioPlayer1">
                 <source src="./../media/witkin.mp3" type="audio/mpeg">
@@ -145,11 +137,16 @@
                 </svg>
             </button>
         </div>
+
         <br>
         <br>
+
         <h2>Music videos quoting the work of Joel-Peter Witkin</h2>
+
         <br>
+
         <!-- Video Player 1 -->
+
         <div class="media-container" id="videoContainer1">
             <video id="videoPlayer1">
                 <source src="./../media/19940530.mp4" type="video/mp4">
@@ -164,10 +161,14 @@
                 </svg>
             </button>
         </div>
+
         <p>Closer to God | Nine Inch Nails <br> 30 May 1994 <br> Directed by: Mark Romanek </p>
+
         <br>
         <br>
+
         <!-- Video Player 2 -->
+
         <div class="media-container" id="videoContainer2">
             <video id="videoPlayer2">
                 <source src="./../media/19950911.mp4" type="video/mp4">
@@ -182,10 +183,14 @@
                 </svg>
             </button>
         </div>
+
         <p>The Hearts Filthy Lesson | David Bowie <br> 11 September 1995 <br> Directed by: Floria Sigismondi </p>
+
         <br>
         <br>
+
         <!-- Video Player 3 -->
+
         <div class="media-container" id="videoContainer3">
             <video id="videoPlayer3">
                 <source src="./../media/19960908.mp4" type="video/mp4">
@@ -200,10 +205,14 @@
                 </svg>
             </button>
         </div>
+
         <p>Beautiful People | Marilyn Manson <br> 8 September 1996 <br> Directed by: Floria Sigismondi </p>
+
         <br>
         <br>
+
         <!-- Video Player 4 -->
+
         <div class="media-container" id="videoContainer4">
             <video id="videoPlayer4">
                 <source src="./../media/19970127.mp4" type="video/mp4">
@@ -218,10 +227,14 @@
                 </svg>
             </button>
         </div>
+
         <p>Little Wonder | David Bowie <br> 27 January 1997 <br> Directed by: Floria Sigismondi </p>
+
         <br>
         <br>
+
         <!-- Video Player 5 -->
+
         <div class="media-container" id="videoContainer5">
             <video id="videoPlayer5">
                 <source src="./../media/19970414.mp4" type="video/mp4">
@@ -236,10 +249,14 @@
                 </svg>
             </button>
         </div>
+
         <p>Dead Man Walking | David Bowie <br> 14 April 1997 <br> Directed by: Floria Sigismondi </p>
+
         <br>
         <br>
+
         <!-- Video Player 6 -->
+
         <div class="media-container" id="videoContainer6">
             <video id="videoPlayer6">
                 <source src="./../media/19970908.mp4" type="video/mp4">
@@ -254,10 +271,14 @@
                 </svg>
             </button>
         </div>
-        <p>Tourniquet | Marilyn Manson <br> 8 September 1997 <br> Directed by: Floria Sigismondi </p>
+
+        <p>Tourniquet | Marilyn Manson <br> 8 September 1997 <br> Directed by: Floria Sigismondi</p>
+
         <br>
         <br>
+
         <!-- Audio Video Player -->
+
         <script>
             // Media players array
             const mediaPlayers = [{
@@ -350,5 +371,8 @@
             // Disable right-click
             document.addEventListener('contextmenu', event => event.preventDefault());
         </script>
+
+        
+
     </body>
 </html>

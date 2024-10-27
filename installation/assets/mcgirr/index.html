@@ -4,47 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+    <meta name="author" content="ARTOLDO">
     <link rel="icon" type="image/png" href="./../../images/mask.png">
     <title>Seán McGirr</title>
     <style>
         /* General reset */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+        }
 
-/* Main content styles */
-body {
-    font-family: Arial, sans-serif;
-    color: white;
-    background-color: transparent;
-}
+        /* Main content styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: transparent;
+        }
 
-/* Container for main content to keep above the PDF */
-.main-content {
-    flex: 1 0 auto; /* Allows content to take up necessary space */
-    padding: 20px;
-    overflow-y: auto; /* Allows scrolling if content overflows */
-    text-align: center;
-}
-
-/* PDF container for responsive design */
-.pdf-container {
-    flex-shrink: 0; /* Prevents shrinking */
-    height: 80vh; /* Keeps PDF iframe at 80% of viewport height */
-    width: 100%;
-    overflow: hidden;
-}
-
-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+        /* Container for main content */
+        .main-content {
+            text-align: center;
+        }
 
         /* Container for each player (audio or video) */
         .media-container {
@@ -61,15 +46,15 @@ iframe {
 
         /* Specific container height adjustment for audio */
         .audio-container {
-           height: 100px;
-    margin: 10px auto; /* Center the audio container */
-    width: 80%; /* Adjust width as needed */
-    max-width: 640px; /* Keeps the audio container within a max width */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent; /* Background color for contrast */
-    border-radius: 15px;
+            height: 100px;
+            margin: 10px auto; /* Center the audio container */
+            width: 80%; /* Adjust width as needed */
+            max-width: 640px; /* Keeps the audio container within a max width */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            border-radius: 15px;
         }
 
         /* Audio element styles */
@@ -132,32 +117,30 @@ iframe {
         audio {
             pointer-events: none;
         }
-
     </style>
 </head>
 <body>
 
 <!-- Main Content Section -->
     <div class="main-content">
+        <h1>Seán McGirr</h1>
+        <sup>Voice Clone</sup>
 
-    
-
-<h1>Seán McGirr</h1></sup>Voice Clone</sup>
-
-    <!-- Audio Player -->
-    <div class="media-container audio-container" id="audioContainer">
-        <audio id="audioPlayer1">
-            <source src="./../media/mcgirr.mp3" type="audio/mpeg"> <!-- Relative audio source -->
-            Your browser does not support HTML5 audio.
-        </audio>
-        <button id="playPauseBtnAudio1" class="play-pause-btn fade-transition">
-            <svg id="playIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-            </svg>
-            <svg id="pauseIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-            </svg>
-        </button>
+        <!-- Audio Player -->
+        <div class="media-container audio-container" id="audioContainer">
+            <audio id="audioPlayer1">
+                <source src="./../media/mcgirr.mp3" type="audio/mpeg"> <!-- Relative audio source -->
+                Your browser does not support HTML5 audio.
+            </audio>
+            <button id="playPauseBtnAudio1" class="play-pause-btn fade-transition">
+                <svg id="playIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                <svg id="pauseIconAudio1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+            </button>
+        </div>
     </div>
 
     <script>
@@ -214,30 +197,6 @@ iframe {
 
         // Disable right-click
         document.addEventListener('contextmenu', event => event.preventDefault());
-    </script>
-
-</div>
-
-
-
-<!-- PDF Container with Responsive Iframe -->
-    <div class="pdf-container">
-        <iframe id="pdfIframe" src="./../media/mcgirr.pdf" allowfullscreen></iframe>
-    </div>
-
-
-    <script>
-        // Function to adjust iframe height on load and window resize
-function adjustIframeHeight() {
-    const iframe = document.getElementById('pdfIframe');
-    iframe.style.height = `${window.innerHeight * 0.8}px`; // Set height to 80% of viewport height
-}
-
-// Run the function on page load and resize
-window.addEventListener('load', adjustIframeHeight);
-window.addEventListener('resize', adjustIframeHeight);
-
-
     </script>
 
 </body>
