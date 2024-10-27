@@ -17,7 +17,7 @@
         <link href="./Day 2_ Fecal Matter _ SHOWstudio_files/index.css" rel="stylesheet">
         <script src="./Day 2_ Fecal Matter _ SHOWstudio_files/index.js" type="module" crossorigin=""></script>
 
-        <style>
+       <style>
         /* Fullscreen overlay */
         .hide {
             position: fixed;
@@ -28,47 +28,54 @@
             background-color: transparent;
             z-index: 100; /* Bring to front */
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor:default;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            cursor: default;
         }
-        </style>
 
-    <script>
-        // Disable right-click on the entire page
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        }, false);
-    </script>
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+            overflow: auto; /* Allow scrolling */
+        }
 
-    </head>
-    <body class="overflow-x-hidden" inject_video_svd="true">
+        .overlay-content {
+            text-align: center;
+            padding: 20px;
+            max-width: 90%; /* Responsive max width */
+            max-height: 90%; /* Responsive max height */
+            overflow-y: auto; /* Allow vertical scrolling if needed */
+            box-sizing: border-box; /* Include padding in width/height calculations */
+        }
 
-<script>
-  // Create the warning overlay
-  document.body.innerHTML += `
-    <div id="overlay" style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        color: white;
-    ">
-      <div class="overlay-content" style="text-align: center; padding: 20px">
-        <div class="warning-symbol" style="font-size: 100px; color: red;">⚠️</div>
-        <div class="warning-text" style="font-size: 50px; margin-top: 10px; color: white;">Warning</div>
-         <div class="warning-text" style="font-size: 30px; margin-top: 20px; color: red;">Your mind and taste of fashion have been infiltrated.</div>
-        <div class="warning-details" style="font-size: 20px; margin-top: 20px; color: white; text-align:justify;">
-          The content you are attempting to access may contain imagery, themes, or concepts that are highly unsettling and potentially disturbing to individuals. 
-          Viewer discretion is strongly advised, as this material may provoke discomfort or emotional distress.
-        </div>
-        <button id="show-anyway-btn" style="
+        .warning-symbol {
+            font-size: 100px;
+            color: red;
+        }
+
+        .warning-text {
+            font-size: 50px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .warning-details {
+            font-size: 20px;
+            margin-top: 20px;
+            color: white;
+            text-align: justify;
+        }
+
+        button {
             background-color: white;
             color: black;
             border: none;
@@ -77,47 +84,69 @@
             border-radius: 25px;
             cursor: pointer;
             margin-top: 20px;
-        ">Show me anyway</button>
-      </div>
-    </div>
-  `;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
 
-  // Function to hide the overlay when the button is clicked
-  function hideOverlay() {
-    document.getElementById('overlay').style.display = 'none';
-  }
+<script>
+    // Disable right-click on the entire page
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    }, false);
 
-  // Wait for the DOM content to load before attaching the event listener
-  document.addEventListener('DOMContentLoaded', function() {
-    // Attach event listener to the "Show me anyway" button
-    document.getElementById('show-anyway-btn').addEventListener('click', function() {
-      hideOverlay();
+    // Create the warning overlay
+    document.body.innerHTML += `
+        <div id="overlay">
+            <div class="overlay-content">
+                <div class="warning-symbol">⚠️</div>
+                <div class="warning-text">Warning</div>
+                <div class="warning-text" style="font-size: 30px; margin-top: 20px; color: red;">
+                    Your mind and taste of fashion have been infiltrated.
+                </div>
+                <div class="warning-details">
+                    The content you are attempting to access may contain imagery, themes, or concepts that are highly unsettling and potentially disturbing to individuals.
+                    Viewer discretion is strongly advised, as this material may provoke discomfort or emotional distress.
+                </div>
+                <button id="show-anyway-btn">Show me anyway</button>
+            </div>
+        </div>
+    `;
+
+    // Function to hide the overlay when the button is clicked
+    function hideOverlay() {
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    // Wait for the DOM content to load before attaching the event listener
+    document.addEventListener('DOMContentLoaded', function() {
+        // Attach event listener to the "Show me anyway" button
+        document.getElementById('show-anyway-btn').addEventListener('click', function() {
+            hideOverlay();
+        });
+
+        // Set the cursor to default for all links, except the button
+        document.querySelectorAll('a').forEach(link => {
+            link.style.cursor = 'default'; // Set all <a> tags to default cursor
+        });
+
+        // Block all links except the button with event delegation
+        document.addEventListener('click', function(event) {
+            const target = event.target;
+
+            // If the clicked element is a link (a tag) and not the "Show me anyway" button, prevent default behavior
+            if (target.tagName === 'A' && target.id !== 'show-anyway-btn') {
+                event.preventDefault();
+                alert('Links are blocked until you click "Show me anyway"');
+            }
+        });
+
+        // Ensure the "Show me anyway" button has a pointer cursor
+        document.getElementById('show-anyway-btn').style.cursor = 'pointer';
     });
-
-    // Set the cursor to default for all links, except the button
-    document.querySelectorAll('a').forEach(link => {
-      link.style.cursor = 'default'; // Set all <a> tags to default cursor
-    });
-
-    // Block all links except the button with event delegation
-    document.addEventListener('click', function(event) {
-      const target = event.target;
-
-      // If the clicked element is a link (a tag) and not the "Show me anyway" button, prevent default behavior
-      if (target.tagName === 'A' && target.id !== 'show-anyway-btn') {
-        event.preventDefault();
-        alert('Links are blocked until you click "Show me anyway"');
-      }
-    });
-
-    // Ensure the "Show me anyway" button has a pointer cursor
-    document.getElementById('show-anyway-btn').style.cursor = 'pointer';
-  });
 </script>
 
-<div class="hide">
-</div>
-
+<div class="hide"></div>
    <div id="js-content">
             <div>
                 <div class="">
