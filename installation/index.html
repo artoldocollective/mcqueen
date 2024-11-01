@@ -404,7 +404,7 @@ design="dot">
 
 <!-- Ouroboros -->
 
-<a-entity id="ouroboros" draw-spiral position="0 12 0"></a-entity>
+<a-entity id="ouroboros" draw-spiral></a-entity>
 
 <script> 
 AFRAME.registerComponent('draw-spiral', {
@@ -418,16 +418,17 @@ AFRAME.registerComponent('draw-spiral', {
         const linkCount = 100; // Number of torus links to create
         const linkRadius = 1; // Radius of the torus (chain link)
         const tubeRadius = 0.2; // Thickness of the torus (chain link)
+        const heightPerTurn = 4; // Height increment per spiral turn
 
         // Create the spiral using toruses to mimic chain links
         for (let i = 0; i < linkCount; i++) {
             const angle = (i / linkCount) * (Math.PI * 2 * spiralTurns); // Calculate the angle
             const radius = baseRadius + (i / linkCount) * spiralDistance; // Calculate the radius
-
+            
             // Calculate the position for each link in the spiral
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle);
-            const y = 0.5; // Set height to 1 for 1 unit above the ground
+            const y = 12 + (i / linkCount) * (spiralTurns * heightPerTurn); // Adjust height incrementally, starting at y = 14
 
             // Create a torus for each segment of the spiral
             const torus = document.createElement('a-torus');
@@ -436,6 +437,12 @@ AFRAME.registerComponent('draw-spiral', {
             torus.setAttribute('radius-tubular', tubeRadius); // Set the thickness of the torus
             torus.setAttribute('color', '#868D40'); // Set color to gold
             torus.setAttribute('rotation', '90 0 0'); // Rotate the torus to lay flat on the ground
+
+            // Set opacity and transparency
+            torus.setAttribute('material', {
+                opacity: 1.0, // Set opacity level (0 is fully transparent, 1 is fully opaque)
+                transparent: true // Enable transparency
+            });
 
             // Append the torus to the scene
             sceneEl.appendChild(torus);
