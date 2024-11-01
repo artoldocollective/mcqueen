@@ -416,7 +416,7 @@ AFRAME.registerComponent('draw-spiral', {
         const baseRadius = 13; // Base radius of the spiral
         const spiralDistance = 3; // Radius increment for each turn
         const linkCount = 100; // Number of torus links to create
-        const linkRadius = 0.5; // Radius of the torus (chain link)
+        const linkRadius = 1; // Radius of the torus (chain link)
         const tubeRadius = 0.2; // Thickness of the torus (chain link)
         const heightPerTurn = 4; // Height increment per spiral turn
         const zOffset = -5; // Offset for the entire spiral along the Z-axis
@@ -429,14 +429,14 @@ AFRAME.registerComponent('draw-spiral', {
             // Calculate the position for each link in the spiral
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle) + zOffset; // Apply Z-axis offset
-            const y = 12 + (i / linkCount) * (spiralTurns * heightPerTurn);
+            const y = 13 + (i / linkCount) * (spiralTurns * heightPerTurn);
 
             // Create a torus for each segment of the spiral
             const torus = document.createElement('a-torus');
             torus.setAttribute('position', `${x} ${y} ${z}`);
             torus.setAttribute('radius', linkRadius); // Set the radius of the torus
             torus.setAttribute('radius-tubular', tubeRadius); // Set the thickness of the torus
-            torus.setAttribute('color', '#ffd700'); // Set color to gold
+            torus.setAttribute('color', 'yellow'); // Set color to gold
             torus.setAttribute('rotation', '90 0 0'); // Rotate the torus to lay flat on the ground
 
             // Set opacity and transparency
