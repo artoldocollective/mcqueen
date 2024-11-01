@@ -84,6 +84,7 @@
         font-size: 1.2rem;
         display: inline-block;
         text-decoration: none;
+        overflow-x: hidden;
     }
 
     .button:hover {
@@ -165,18 +166,87 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 
-    button:focus,
-    button:active {
-	-moz-outline: 0 !important;
-	-ms-outline:0 !important;
-	-o-outline: 0 !important;
-	-webkit-outline: 0 !important;
+.image-wrapper {
+    position: absolute; /* Position the wrapper absolutely */
+    top: 0; /* Align it to the top of the viewport */
+    left: 0; /* Align it to the left of the viewport */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    pointer-events: none; /* Make the wrapper non-interactive so it doesn’t affect clicks */
+    z-index: 9999; /* Ensure it's above other elements */
+}
+
+.floating-container {
+    position: absolute; /* Position each container within the wrapper */
+}
+
+/* Floating container for the left image */
+.floating-container.left {
+    top: 50%; /* Center vertically */
+    left: -300px; /* Start off-screen to the left */
+    transform: translateY(-50%); /* Adjust for actual center */
+    animation: moveInOutLeft 3s ease-in-out infinite alternate; /* Apply horizontal movement animation */
+}
+
+/* Floating container for the right image */
+.floating-container.right {
+    top: 30%; /* Center vertically at 50% */
+    right: -300px; /* Start off-screen to the right */
+    transform: translateY(-50%); /* Adjust for actual center */
+    animation: moveInOutRight 3s ease-in-out infinite alternate; /* Apply horizontal movement animation */
+}
+
+/* Animation for the left image moving in and out */
+@keyframes moveInOutLeft {
+    0% {
+        transform: translateY(-50%) translateX(0); /* Start position */
     }
+    100% {
+        transform: translateY(-50%) translateX(400px); /* Move right */
+    }
+}
+
+/* Animation for the right image moving in and out */
+@keyframes moveInOutRight {
+    0% {
+        transform: translateY(-50%) translateX(0); /* Start position */
+    }
+    100% {
+        transform: translateY(-50%) translateX(-400px); /* Move left */
+    }
+}
+
+.floating-image {
+    animation: rotate 1s linear infinite alternate; /* Apply rotation animation */
+}
+
+/* Animation for rotation */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg); /* Start rotation */
+    }
+    50% {
+        transform: rotate(30deg); /* Rotate to 30 degrees */
+    }
+    100% {
+        transform: rotate(0deg); /* Return to original position */
+    }
+}
 
 </style>
 
   </head>
   <body>
+
+    <div class="image-wrapper">
+        <div class="floating-container left">
+            <img class="floating-image" src="./installation/images/backstagepass.webp" alt="Backstage Pass" width="300px">
+        </div>
+        <div class="floating-container right">
+            <img class="floating-image" src="./installation/images/backstagepass2.webp" alt="Another Image" width="300px">
+        </div>
+    </div>
 
     <div class="container">
       <img src="./installation/images/mask.webp" alt="Artifashion Intelligence - McQueen feat. Witkin" width="20%" />
@@ -193,7 +263,7 @@
         <div class="accordion-item">
           <div class="accordion-header">Are the voices real?</div>
           <div class="accordion-content">
-            <p>Yes and no. All the voices you hear are AI-generated voice clones, created using advanced technology and audio samples meticulously extracted and refined from publicly available interviews online. The 	       scripts have been thoughtfully crafted and edited by AI, grounded in extensive research and exploration of the questions: What is art? What is fashion?</p>
+            <p>Yes and no. All the voices you hear are AI-generated voice clones, created using advanced technology and audio samples meticulously extracted and refined from publicly available interviews online. The 	       scripts have been thoughtfully crafted and edited by AI, grounded in extensive research and exploration of the questions: Is fashion art?</p>
           </div>
         </div>
         <div class="accordion-item">
@@ -205,7 +275,7 @@
         <div class="accordion-item">
           <div class="accordion-header">How long did it take?</div>
           <div class="accordion-content">
-            <p>From concept to completion, we worked for about a month to create a responsive experience across all major browsers on Smartphone, Tablet, and Desktop. Our show is not only an example of how AI can be 	       integrated into artistically and sociologically driven mixed-media projects, but it also aims to explore the deeper meaning of Fashion versus Art. We hope you enjoy the installation and discover 	       something inspiring. It was a true pleasure to bring personalities like Alexander McQueen and David Bowie back to life, and this project might also be seen as a small step toward a digital legacy for 	       everyone.</p>
+            <p>From concept to completion, we worked for about a month to create a responsive experience across all major browsers on Smartphone, Tablet, and Desktop. Our show is not only an example of how AI can be 	       integrated into artistically and sociologically driven mixed-media projects, but it also aims to explore the deeper meaning of Fashion versus Art, vice versa and return. We hope you enjoy the 		       installation and discover something inspiring. It was a true pleasure to bring personalities like Alexander McQueen and David Bowie back to life, and this project might also be seen as a small step 	       toward a digital legacy for everyone.</p>
           </div>
         </div>
       </div>
@@ -214,8 +284,10 @@
 
     </div>
 
+<!-- Accordion functionality with arrow toggle -->
+
     <script>
-      // Accordion functionality with arrow toggle
+      
       const accordionHeaders = document.querySelectorAll('.accordion-header');
 
       accordionHeaders.forEach(header => {
@@ -237,6 +309,20 @@
         });
       });
     </script>
+
+<!-- Prevent dragging -->
+
+<script>
+document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});
+</script>
+
+<!-- Disable right-click -->
+
+<script>
+document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
 
   </body>
 </html>
