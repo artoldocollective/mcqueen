@@ -418,8 +418,8 @@ AFRAME.registerComponent('draw-spiral', {
         const linkCount = 100; // Number of torus links to create
         const linkRadius = 1; // Radius of the torus (chain link)
         const tubeRadius = 0.2; // Thickness of the torus (chain link)
-        const heightPerTurn = 4; // Height increment per spiral turn
-        const zOffset = -5; // Offset for the entire spiral along the Z-axis
+        const heightPerTurn = 8; // Height increment per spiral turn
+        const zOffset = 3; // Offset for the entire spiral along the Z-axis
 
         // Create the spiral using toruses to mimic chain links
         for (let i = 0; i < linkCount; i++) {
@@ -429,7 +429,7 @@ AFRAME.registerComponent('draw-spiral', {
             // Calculate the position for each link in the spiral
             const x = radius * Math.cos(angle);
             const z = radius * Math.sin(angle) + zOffset; // Apply Z-axis offset
-            const y = 13 + (i / linkCount) * (spiralTurns * heightPerTurn);
+            const y = 10 + (i / linkCount) * (spiralTurns * heightPerTurn);
 
             // Create a torus for each segment of the spiral
             const torus = document.createElement('a-torus');
@@ -441,7 +441,7 @@ AFRAME.registerComponent('draw-spiral', {
 
             // Set opacity and transparency
             torus.setAttribute('material', {
-                opacity: 0.6, // Set opacity level (0 is fully transparent, 1 is fully opaque)
+                opacity: 1.0, // Set opacity level (0 is fully transparent, 1 is fully opaque)
                 transparent: true // Enable transparency
             });
 
