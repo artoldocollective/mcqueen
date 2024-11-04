@@ -318,30 +318,25 @@ th, td {
             });
             // Function to handle Play/Pause button click
             function handlePlayPause(currentPlayer, button, playIcon, pauseIcon) {
-                // Pause all players
-                mediaPlayers.forEach(({
-                    player,
-                    button,
-                    playIcon,
-                    pauseIcon
-                }) => {
-                    if (player !== currentPlayer) {
-                        player.pause();
-                        player.currentTime = 0; // Reset time for other players
-                        button.classList.remove('hide-btn');
-                        playIcon.style.display = 'block';
-                        pauseIcon.style.display = 'none';
-                    }
-                });
-                // Play or pause the current player
-                if (currentPlayer.paused) {
-                    currentPlayer.play();
-                    togglePlayPauseIcon(playIcon, pauseIcon, true);
-                } else {
-                    currentPlayer.pause();
-                    togglePlayPauseIcon(playIcon, pauseIcon, false);
-                }
-            }
+    mediaPlayers.forEach(({ player, button, playIcon, pauseIcon }) => {
+        if (player !== currentPlayer) {
+            player.pause(); // Just pause, do not reset currentTime
+            button.classList.remove('hide-btn');
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    });
+
+    // Play or pause the current player
+    if (currentPlayer.paused) {
+        currentPlayer.play();
+        togglePlayPauseIcon(playIcon, pauseIcon, true);
+    } else {
+        currentPlayer.pause();
+        togglePlayPauseIcon(playIcon, pauseIcon, false);
+    }
+}
+
             // Function to toggle Play/Pause icon display
             function togglePlayPauseIcon(playIcon, pauseIcon, isPlaying) {
                 if (isPlaying) {
