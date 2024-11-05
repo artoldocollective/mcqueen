@@ -22,33 +22,16 @@
     SOFTWARE.
 */
 
-document.querySelectorAll('[enable-pointer-lock]').forEach(el => {
-    el.setAttribute('enable-pointer-lock', '');
-  });
-
-  const overlay = document.getElementById('overlay');
-  const closeButton = document.querySelector('.close-btn');
-
-  function closeLightbox() {
-    overlay.style.display = 'none';
-    const scene = document.querySelector('a-scene');
-    scene.sceneEl.requestPointerLock();
-    const cameraEl = document.querySelector('[camera]');
-    const lookControls = cameraEl.components['look-controls'];
-    if (lookControls) {
-      lookControls.data.pointerLockEnabled = true;
-      console.log('Pointer Lock Re-enabled');
-    }
+// Function to play music
+  function playBackgroundMusic() {
+    const audioElement = document.getElementById('background-music');
+    audioElement.play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
   }
 
-  closeButton.addEventListener('click', closeLightbox);
+  // Play music on user interaction
+  document.addEventListener('click', playBackgroundMusic);
 
-  const observer = new MutationObserver(function (mutationsList) {
-    for (const mutation of mutationsList) {
-      if (mutation.attributeName === 'style' && overlay.style.display === 'none') {
-        closeLightbox();
-      }
-    }
-  });
-
-  observer.observe(overlay, { attributes: true });
+  // Optionally, you can play it right after the scene is loaded
+  document.querySelector('a-scene').addEventListener('loaded', playBackgroundMusic);

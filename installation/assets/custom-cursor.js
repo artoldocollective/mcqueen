@@ -22,33 +22,30 @@
     SOFTWARE.
 */
 
-document.querySelectorAll('[enable-pointer-lock]').forEach(el => {
-    el.setAttribute('enable-pointer-lock', '');
-  });
+// Custom Image cursor
 
-  const overlay = document.getElementById('overlay');
-  const closeButton = document.querySelector('.close-btn');
+document.querySelector('.mask').addEventListener('click', function () {
+      const canvasEl = document.querySelector('a-scene').canvas;
 
-  function closeLightbox() {
-    overlay.style.display = 'none';
-    const scene = document.querySelector('a-scene');
-    scene.sceneEl.requestPointerLock();
-    const cameraEl = document.querySelector('[camera]');
-    const lookControls = cameraEl.components['look-controls'];
-    if (lookControls) {
-      lookControls.data.pointerLockEnabled = true;
-      console.log('Pointer Lock Re-enabled');
-    }
-  }
-
-  closeButton.addEventListener('click', closeLightbox);
-
-  const observer = new MutationObserver(function (mutationsList) {
-    for (const mutation of mutationsList) {
-      if (mutation.attributeName === 'style' && overlay.style.display === 'none') {
-        closeLightbox();
+      // Request pointer lock on the canvas (A-Frame scene)
+      if (canvasEl.requestPointerLock) {
+        canvasEl.requestPointerLock();
+      } else if (canvasEl.mozRequestPointerLock) {
+        canvasEl.mozRequestPointerLock();
       }
-    }
-  });
 
-  observer.observe(overlay, { attributes: true });
+      // Enable pointer lock in the A-Frame look-controls component
+      const cameraEl = document.querySelector('[camera]');
+      const lookControls = cameraEl.components['look-controls'];
+      if (lookControls) {
+        lookControls.data.pointerLockEnabled = true;
+        console.log('Pointer Lock Enabled');
+      }
+    });
+
+
+// Prevent Image dragging
+
+document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});

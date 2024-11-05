@@ -22,23 +22,30 @@
     SOFTWARE.
 */
 
-AFRAME.registerComponent('disable-pointer-lock', {
+ AFRAME.registerComponent('disable-pointer-lock', {
     init: function () {
       const el = this.el;
 
       el.addEventListener('click', function () {
-        // Exit pointer lock when the element is clicked
+        // Attempt to exit pointer lock immediately
         if (document.pointerLockElement) {
           document.exitPointerLock();
+          console.log('Pointer Lock Disabled immediately');
         }
 
-        // Optional: Disable pointer lock in the look-controls (for further safety)
-        const cameraEl = document.querySelector('[camera]');
-        const lookControls = cameraEl.components['look-controls'];
-        if (lookControls) {
-          lookControls.data.pointerLockEnabled = false;
-          console.log('Pointer Lock Disabled');
-        }
+        // Check after a short delay if pointer lock is still active
+        setTimeout(() => {
+          if (document.pointerLockElement) {
+            // If pointer lock is still active, try disabling it again with 1.5s timeout
+            console.log('Pointer Lock still active, attempting to disable after 1.5-second delay');
+            setTimeout(() => {
+              if (document.pointerLockElement) {
+                document.exitPointerLock();
+                console.log('Pointer Lock Disabled after 1.5-second delay');
+              }
+            }, 1500);
+          }
+        }, 100); // Slight delay to check if the first attempt failed
       });
     }
   });

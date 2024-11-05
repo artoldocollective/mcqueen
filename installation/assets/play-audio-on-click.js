@@ -22,28 +22,20 @@
     SOFTWARE.
 */
 
-AFRAME.registerComponent('disable-pointer-lock', {
+AFRAME.registerComponent('play-audio-on-click', {
+    schema: {
+      src: { type: 'string' },  // Audio source URL
+      volume: { type: 'number', default: 1.0 }  // Default volume
+    },
     init: function () {
       const el = this.el;
+      const data = this.data;
+      const audio = new Audio(data.src); // Create an audio instance
+      audio.volume = data.volume; // Set the volume from the schema
 
       el.addEventListener('click', function () {
-        // Exit pointer lock when the element is clicked
-        if (document.pointerLockElement) {
-          document.exitPointerLock();
-        }
-
-        // Optional: Disable pointer lock in the look-controls (for further safety)
-        const cameraEl = document.querySelector('[camera]');
-        const lookControls = cameraEl.components['look-controls'];
-        if (lookControls) {
-          lookControls.data.pointerLockEnabled = false;
-          console.log('Pointer Lock Disabled');
-        }
+        audio.currentTime = 0; // Reset audio to the start
+        audio.play();          // Play audio
       });
     }
-  });
-
-  // Apply the component to all elements that should have pointer lock disabled
-  document.querySelectorAll('[disable-pointer-lock]').forEach(el => {
-    el.setAttribute('disable-pointer-lock', '');
   });
