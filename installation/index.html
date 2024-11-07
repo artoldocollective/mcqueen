@@ -374,13 +374,12 @@ AFRAME.registerComponent('draw-spiral', {
         const spiralTurns = 3; // Number of turns in the spiral
         const baseRadius = 13; // Base radius of the spiral
         const spiralDistance = 3; // Radius increment for each turn
-        const linkCount = 100; // Number of torus links to create
-        const linkRadius = 1; // Radius of the torus (chain link)
-        const tubeRadius = 0.2; // Thickness of the torus (chain link)
+        const linkCount = 100; // Number of octahedron links to create
+        const linkSize = 1; // Size of the octahedron (chain link)
         const heightPerTurn = 8; // Height increment per spiral turn
         const zOffset = 3; // Offset for the entire spiral along the Z-axis
 
-        // Create the spiral using toruses to mimic chain links
+        // Create the spiral using octahedrons to mimic chain links
         for (let i = 0; i < linkCount; i++) {
             const angle = (i / linkCount) * (Math.PI * 2 * spiralTurns); // Calculate the angle
             const radius = baseRadius + (i / linkCount) * spiralDistance; // Calculate the radius
@@ -390,22 +389,20 @@ AFRAME.registerComponent('draw-spiral', {
             const z = radius * Math.sin(angle) + zOffset; // Apply Z-axis offset
             const y = 10 + (i / linkCount) * (spiralTurns * heightPerTurn);
 
-            // Create a torus for each segment of the spiral
-            const torus = document.createElement('a-torus');
-            torus.setAttribute('position', `${x} ${y} ${z}`);
-            torus.setAttribute('radius', linkRadius); // Set the radius of the torus
-            torus.setAttribute('radius-tubular', tubeRadius); // Set the thickness of the torus
-            torus.setAttribute('color', '#C4B454'); // Set color to gold
-            torus.setAttribute('rotation', '90 0 0'); // Rotate the torus to lay flat on the ground
+            // Create an octahedron for each segment of the spiral
+            const octahedron = document.createElement('a-octahedron');
+            octahedron.setAttribute('position', `${x} ${y} ${z}`);
+            octahedron.setAttribute('radius', linkSize); // Set the size of the octahedron
+            octahedron.setAttribute('color', '#C4B454'); // Set color to gold
 
             // Set opacity and transparency
-            torus.setAttribute('material', {
+            octahedron.setAttribute('material', {
                 opacity: 1.0, // Set opacity level (0 is fully transparent, 1 is fully opaque)
                 transparent: true // Enable transparency
             });
 
-            // Append the torus to the scene
-            sceneEl.appendChild(torus);
+            // Append the octahedron to the scene
+            sceneEl.appendChild(octahedron);
         }
     }
 });
