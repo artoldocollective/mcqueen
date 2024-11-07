@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>McQueen "Afterlife" collection by ARTOLDO</title>
+    <title>McQueen "Afterlife" collection by ARTOLDO AI</title>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -153,6 +153,28 @@ document.querySelectorAll('img').forEach((img) => {
 <!-- Models End -->
 
 </a-scene>
+
+<!-- Prevent dragging -->
+
+<script>
+document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});
+</script>
+
+<!-- Disable right-click -->
+
+<script>
+  // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+
+  // Disable text selection using JavaScript (extra layer of protection)
+  document.addEventListener('selectstart', function(event) {
+    event.preventDefault();
+  });
+</script>
 
 </body>
 </html>

@@ -234,6 +234,11 @@
     }
 }
 
+user-select: none;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+
 </style>
 
   </head>
@@ -321,7 +326,15 @@ document.querySelectorAll('img').forEach((img) => {
 <!-- Disable right-click -->
 
 <script>
-document.addEventListener('contextmenu', event => event.preventDefault());
+  // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+
+  // Disable text selection using JavaScript (extra layer of protection)
+  document.addEventListener('selectstart', function(event) {
+    event.preventDefault();
+  });
 </script>
 
   </body>

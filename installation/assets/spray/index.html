@@ -44,14 +44,13 @@
             z-index: 2; /* Bring headings above video */
             margin: 5px 0; /* Margin for spacing */
         }
-    </style>
 
-    <script>
-        // Disable right-click on the entire page
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        }, false);
-    </script>
+user-select: none;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+
+    </style>
 </head>
 <body>
     <!-- Container for text and video -->
@@ -65,5 +64,28 @@
             <source src="../media/spray.mp4" type="video/mp4">
         </video>
     </div>
+
+<!-- Prevent dragging -->
+
+<script>
+document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});
+</script>
+
+<!-- Disable right-click -->
+
+<script>
+  // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+
+  // Disable text selection using JavaScript (extra layer of protection)
+  document.addEventListener('selectstart', function(event) {
+    event.preventDefault();
+  });
+</script>
+
 </body>
 </html>

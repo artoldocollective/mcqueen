@@ -137,6 +137,12 @@ th, td {
         height: auto; /* Auto height for flexibility */
     }
 }
+
+user-select: none;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+
 </style>
 </head>
 <body>
@@ -226,9 +232,28 @@ th, td {
         togglePlayPauseIcon(playIcon, pauseIcon, false);
         button.classList.remove('hide-btn');
     }
+</script>
 
-    // Disable right-click
-    document.addEventListener('contextmenu', event => event.preventDefault());
+<!-- Prevent dragging -->
+
+<script>
+document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});
+</script>
+
+<!-- Disable right-click -->
+
+<script>
+  // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+
+  // Disable text selection using JavaScript (extra layer of protection)
+  document.addEventListener('selectstart', function(event) {
+    event.preventDefault();
+  });
 </script>
 
 </body>
