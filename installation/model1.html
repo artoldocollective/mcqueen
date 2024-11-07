@@ -1,120 +1,99 @@
 <html>
-  <head>
-    <title>Loading...</title>
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
-    <meta property="og:image" content="./images/mask.png" />
-    <link rel="icon" type="image/png" href="./images/mask.png" />
-    <script src="assets/engine.js"></script>
-    <script src="assets/extras.js"></script>
-    <script src="assets/loader1.js"></script>
-    <script src="assets/loader2.js"></script>
+    <head>
+        <title>Loading...</title>
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+        <meta property="og:image" content="./images/mask.png" />
+        <link rel="icon" type="image/png" href="./images/mask.png" />
+        <script src="assets/engine.js"></script>
+        <script src="assets/extras.js"></script>
+        <style>
+            .a-dialog-allow-button {
+                background-color: white;
+            }
 
-    <style>
-      .a-dialog-allow-button {
-       background-color: white;
-	}
+            .a-dialog-deny-button {
+                background-color: white;
+            }
 
-      .a-dialog-deny-button {
-       background-color: white;
-        }
+            .a-dialog-ok-button {
+                background-color: white;
+            }
 
-      .a-dialog-ok-button {
-       background-color: white;
-        }
+            .mask {
+                z-index: 99;
+                width: 250px;
+                height: 209px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
 
-      .mask {
-      z-index: 99;
-      width: 250px;
-      height: 209px;
-      position: absolute;
-  
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      }
+            img {
+                -webkit-user-drag: none;
+                user-drag: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
 
-      img {
-      -webkit-user-drag: none;
-      user-drag: none;         
-      -webkit-user-select: none;
-      -moz-user-select: none;    
-      -ms-user-select: none;    
-      user-select: none;        
-      }
+            /* Fullscreen overlay */
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: transparent;
+                z-index: 1000;
+                /* Bring to front */
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-      .no-js #loader { display: none;  }
-      .js #loader { display: block; position: absolute; left: 100px; top: 0; }
-      .se-pre-con {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url(./images/spinner.svg) center no-repeat #000;
-     }
+            /* Left and right arrows */
+            .arrow {
+                color: red;
+                font-size: 50px;
+                cursor: pointer;
+                padding: 20px;
+                user-select: none;
+                /* Prevent text selection */
+            }
 
-        /* Fullscreen overlay */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            z-index: 1000; /* Bring to front */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+            /* Close (X) button */
+            .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 30px;
+                color: black;
+                cursor: pointer;
+            }
 
-        /* Left and right arrows */
-        .arrow {
-            color: red;
-            font-size: 50px;
-            cursor: pointer;
-            padding: 20px;
-            user-select: none; /* Prevent text selection */
-        }
+            .close-btn:hover,
+            .arrow:hover {
+                color: white;
+            }
 
-        /* Close (X) button */
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 30px;
-            color: black;
-            cursor: pointer;
-        }
+            /* Make the body background transparent */
+            body {
+                background-color: transparent !important;
+            }
 
-        .close-btn:hover,
-        .arrow:hover {
-            color: white;
-        }
-  
-    </style>
-  </head>
-
-<script>
-// Wait for window load
-	$(window).load(function() {
-		// Animate loader off screen
-		$(".se-pre-con").fadeOut("slow");;
-	});
-</script>
-
-<script>
-document.querySelectorAll('img').forEach((img) => {
-    img.addEventListener('dragstart', (e) => e.preventDefault());
-});
-</script>
+            /* Make the A-Frame loading screen background transparent */
+            .a-loading-screen {
+                background-color: transparent !important;
+            }
+        </style>
+    </head>
 
 <body>
-
-<div class="se-pre-con"></div>
 
  <!-- Overlay -->
 
@@ -126,7 +105,7 @@ document.querySelectorAll('img').forEach((img) => {
         <div class="arrow" id="rightArrow" onclick="window.location.href='model2.html'">&#10095;</div> <!-- Right Arrow HTML Code -->
     </div>
 
-<a-scene loading-screen="dotsColor: red; backgroundColor: black" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
+<a-scene loading-screen="dotsColor: red; backgroundColor: transparent" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" antialias="true">
 
 <!-- Add ambient light -->
 
