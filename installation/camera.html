@@ -1,0 +1,532 @@
+<html>
+  <head>
+    <title>The Virtual Journey of the Mask</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="author" content="ARTOLDO - Sara Ferro & Chris Weil">
+    <meta property="og:image" content="./images/mask.png" />
+    <link rel="icon" type="image/png" href="./images/mask.png" />
+    <script src="assets/engine.js"></script>
+    <script src="assets/extras.js"></script>
+    <script src="assets/rain.js"></script>
+    <script src="assets/loader1.js"></script>
+    <script src="assets/loader2.js"></script>
+    <script src="assets/gui.js"></script>
+    <script src="assets/lock-pitch.js"></script>
+    <script src="assets/play-music.js"></script>
+    <script src="assets/play-audio-on-click.js"></script>
+    <script src="assets/camera-controls.js"></script>
+ 
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/custom-cursor.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lightbox.css" />
+
+    <style>
+      .a-dialog-allow-button {
+       background-color: white;
+	}
+
+      .a-dialog-deny-button {
+       background-color: white;
+        }
+
+      .a-dialog-ok-button {
+       background-color: white;
+        }
+
+      .no-js #loader { display: none;  }
+      .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+      .se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(./images/spinner.svg) center no-repeat #000;
+     }
+
+     user-select: none;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+  
+    </style>
+
+
+<script>
+
+// Wait for window load
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
+
+
+  </head>
+
+<body>
+
+<!-- Loader -->
+
+<div class="se-pre-con"></div>
+
+<!-- Loader End -->
+
+
+<!-- Mask -->
+
+<img src="images/mask.webp" class="mask" draggable="false" style="cursor:pointer;"/>
+
+<!-- Mask -->
+
+
+<a-scene rain="width: 100; count: 10000;" loading-screen="dotsColor: white; backgroundColor: white" vr-mode-ui="enabled: false" 
+device-orientation-permission-ui="enabled: false" antialias="true" cursor="rayOrigin: mouse">
+
+
+<!-- World -->
+
+<a-sky color="#000"></a-sky>
+
+<a-cylinder material="src:images/cylinder1.webp; side: double;" open-ended="true" scale="80 50 80" opacity="0.6;" position="0 22.7 0" rotation="0 0 0" animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 20000"></a-cylinder>
+
+<a-cylinder material="src:images/cylinder2.webp; side: double;" open-ended="true" scale="80 50 80" opacity="0.3;" position="0 22.7 0" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 20000"></a-cylinder>
+
+<a-plane id="red carpet 1" width="12" height="17" color="red" position="11 0.1 -7" rotation="-90 90 0"></a-plane>
+
+<a-plane id="red carpet 2" width="12" height="17" color="red" position="-11 0.1 -7" rotation="-90 90 0"></a-plane>
+
+<a-plane id="red carpet 3" width="14" height="17" color="red" position="11 0.1 10" rotation="-90 90 0"></a-plane>
+
+<a-plane id="red carpet 4" width="14" height="17" color="red" position="-11 0.1 10" rotation="-90 90 0"></a-plane>
+
+<a-image src="./images/shirts.webp" position="0 13.5 -15" width="14" height="7" rotation="25 0 0" animation="property:rotation; to: 0 0 0; easing: easeOutQuad; dir: alternate; loop: true; dur: 4000;">
+</a-image>
+
+<!-- World End -->
+
+
+<!-- Camera -->
+
+<a-entity id="rig" position="0 5 0" look-controls="pointerLockEnabled:true;" lock-pitch animation="property: position; to: 0 3 0; easing: linear; dur: 1000">
+
+<a-entity id="camera" camera position="0 1.6 0" cursor-visible="true">
+
+<a-gui-cursor id="cursor"
+raycaster="objects: [gui-interactable]"
+fuse="true" fuse-timeout="3000"
+color="black"
+hover-color="black"
+active-color="black"
+design="dot">
+</a-gui-cursor>
+
+</a-entity>
+
+</a-entity>
+
+<!-- Camera End -->
+
+
+<!-- Music -->
+
+<audio id="background-music" src="assets/media/music.mp3" loop preload="auto"></audio>
+
+<!-- Music End -->
+
+
+<!-- Stage -->
+
+<a-entity text="value: The Virtual Journey of the Mask; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 8.8 -13.5" scale="14 14 14"></a-entity> 
+
+<a-assets>
+  <video id="video1" src="assets/media/mcqueen.mp4" autoplay muted loop></video>
+  <video id="video2" src="assets/media/witkin.mp4"  autoplay muted loop></video>
+  <video id="video3" src="assets/media/blow.mp4"    autoplay muted loop></video>
+  <video id="video4" src="assets/media/bowie.mp4"   autoplay muted loop></video>
+  <video id="video5" src="assets/media/burton.mp4"  autoplay muted loop></video>
+  <video id="video6" src="assets/media/west.mp4"    autoplay muted loop></video>
+  <video id="video7" src="assets/media/mcgirr.mp4"  autoplay muted loop></video>
+  <video id="video8" src="assets/media/gaga.mp4"    autoplay muted loop></video>
+  <video id="video9" src="assets/media/matter.mp4"  autoplay muted loop></video>
+</a-assets>
+
+<a-entity text="value: Alexander McQueen; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-8 8 -8" scale="6 6 6" rotation="0 60 0">
+</a-entity> 
+<a-video src="#video1" opacity="0.9" width="3.168" height="4" position="-8 4.5 -8" rotation="0 60 0"
+             gui-interactable
+             lightbox 
+             data-url="assets/mcqueen/"
+	     disable-pointer-lock
+             enable-pointer-lock
+             stop-music
+	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+<a-entity text="value: Joel-Peter Witkin; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="8 8 -8" scale="6 6 6" rotation="0 -60 0">
+</a-entity> 
+<a-video src="#video2" opacity="0.9" width="3.168" height="4" position=" 8 4.5 -8" rotation="0 -60 0"
+             gui-interactable 
+             lightbox 
+             data-url="assets/witkin/"
+             disable-pointer-lock
+             enable-pointer-lock
+             stop-music
+             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+<a-entity text="value: Isabella Blow; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 8 -6" scale="6 6 6" rotation="0 90 0">
+</a-entity> 
+<a-video src="#video3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -6" rotation="0  90 0"
+             gui-interactable 
+             lightbox 
+             data-url="assets/blow/"
+             disable-pointer-lock
+             enable-pointer-lock
+             stop-music
+             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+<a-entity text="value: David Bowie; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 8 -6" scale="6 6 6" rotation="0 -90 0">
+</a-entity> 
+<a-video src="#video4" opacity="0.9" width="3.168" height="4" position=" 12 4.5 -6" rotation="0 -90 0"
+             gui-interactable 
+             lightbox 
+             data-url="assets/bowie/"
+             disable-pointer-lock
+             enable-pointer-lock
+             stop-music
+             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+<a-entity text="value: Sarah Burton; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 8 -2" scale="6 6 6" rotation="0 90 0">
+</a-entity> 
+<a-video src="#video5" play-audio-on-click="src: assets/media/burton.mp3" opacity="0.9" width="3.168" height="4" position="-12 4.5 -2" rotation="0  90 0" 
+             gui-interactable
+             lightbox 
+             data-url="assets/butterfly/"
+	     disable-pointer-lock
+             enable-pointer-lock
+	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+<a-entity text="value: Kanye West; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 8 -2" scale="6 6 6" rotation="0 -90 0">
+</a-entity> 
+<a-video src="#video6" opacity="0.9" width="3.168" height="4" position="12 4.5 -2" rotation="0 -90 0" 
+             gui-interactable 
+             lightbox 
+             data-url="assets/west/"
+             disable-pointer-lock
+             enable-pointer-lock
+             stop-music
+	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+<a-entity text="value: Sean McGirr; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="-12 8 2" scale="6 6 6" rotation="0 90 0">
+</a-entity> 
+<a-video src="#video7" opacity="0.9" width="3.168" height="4" position="-12 4.5 2" rotation="0  90 0" 
+             gui-interactable
+             lightbox 
+             data-url="assets/mcgirr/"
+             disable-pointer-lock
+             enable-pointer-lock
+             stop-music
+	     animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+<a-entity text="value: Lady Gaga; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="12 8 2" scale="6 6 6" rotation="0 -90 0">
+</a-entity> 
+<a-video  src="#video8" opacity="0.9" width="3.168" height="4" position="12 4.5 2" rotation="0 -90 0"
+             gui-interactable 
+             lightbox 
+             data-url="assets/gaga/"
+             disable-pointer-lock
+             enable-pointer-lock
+             stop-music
+             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+
+<a-entity position="0 0 30" rotation="0 0 0" animation="property:position; to: 0 0 2; easing: easeOutQuad; dir: alternate; loop: true; dur: 10000;">
+
+<a-entity text="value: Fecal Matter; color:#ffffff; shader: msdf; font: assets/fonts/cinzeldecorative/CinzelDecorative-Bold.json; align:center;" position="0 7 10" scale="6 6 6" rotation="0 180 0">
+</a-entity> 
+<a-video play-audio-on-click="src: assets/media/matter.mp3; volume: 0.7" src="#video9" opacity="0.9" width="3.168" height="4" position="0 4.5 10" rotation="0 180 0"
+             gui-interactable 
+             lightbox 
+             data-url="assets/spiders/"
+             disable-pointer-lock
+             enable-pointer-lock
+             animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200";
+             animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200";>
+</a-video>
+
+</a-entity>
+
+
+<a-plane 
+        gui-interactable 
+        id="models" 
+        lightbox 
+        data-url="models.html"
+        disable-pointer-lock
+        enable-pointer-lock
+        width="11.52" 
+        height="6.48" 
+        position="-10 4 9" 
+        material="src:images/models1.webp; transparent: true" 
+        rotation="0 160 0" 
+        animation__mouseenter="property: scale; to: 1.1 1.1 1.1; startEvents: mouseenter; dur: 200"
+        animation__mouseleave="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 200">
+</a-plane>
+
+<!-- Stage End -->
+
+
+<!-- Red Wire Connections -->
+
+<a-entity id="red-wire"></a-entity>
+
+<script>
+  AFRAME.registerComponent('connect-dots', {
+    init: function () {
+      const sceneEl = this.el.sceneEl;
+
+      // Place Alexander McQueen in the center and other entities around
+      const positions = [
+        { name: "Alexander McQueen", pos: "-8 6.0 -8" },
+        { name: "Joel-Peter Witkin", pos: "8 6.0 -8" },
+        { name: "Isabella Blow", pos: "-12 6.5 -6" },
+        { name: "David Bowie", pos: "12 6.5 -6" },
+        { name: "Sarah Burton", pos: "-12 6.5 -2" },
+        { name: "Kanye West", pos: "12 6.5 -2" },
+        { name: "Sean McGirr", pos: "-12 6.5 2" },
+        { name: "Lady Gaga", pos: "12 6.5 2" }
+      ];
+
+      // Connect Alexander McQueen to all other entities and vice versa
+      for (let i = 0; i < positions.length; i++) {
+        for (let j = i + 1; j < positions.length; j++) {
+          const from = positions[i].pos;
+          const to = positions[j].pos;
+
+          // Create the line entity
+          const line = document.createElement('a-entity');
+          line.setAttribute('line', {
+            start: from,
+            end: to,
+            color: 'red',
+            opacity: 0.9,
+            linewidth: 30  // Keep the line thick
+          });
+
+          // Animation for wave effect (moving start and end points slightly)
+          line.setAttribute('animation__start_wave', {
+            property: 'line.start',
+            dir: 'alternate',
+            loop: true,
+            dur: 2000,
+            to: adjustPosition(from, 0.2)  // Add slight wave motion
+          });
+          line.setAttribute('animation__end_wave', {
+            property: 'line.end',
+            dir: 'alternate',
+            loop: true,
+            dur: 2000,
+            to: adjustPosition(to, 0.2)
+          });
+
+          sceneEl.appendChild(line);
+        }
+      }
+
+      // Utility function to adjust a position slightly for wave effect
+      function adjustPosition(position, offset) {
+        const coords = position.split(' ').map(parseFloat);
+        coords[1] += offset;  // Small oscillation in Y-axis (height)
+        return coords.join(' ');
+      }
+    }
+  });
+
+  // Attach this component to the red-wire entity
+  document.querySelector('#red-wire').setAttribute('connect-dots', '');
+</script>
+
+<!-- Red Wire Connections End -->
+
+
+<!-- Golden Chain -->
+
+<a-entity id="ouroboros" draw-spiral></a-entity>
+
+<script> 
+AFRAME.registerComponent('draw-spiral', {
+    init: function () {
+        const sceneEl = this.el.sceneEl;
+
+        // Spiral parameters
+        const spiralTurns = 3; // Number of turns in the spiral
+        const baseRadius = 13; // Base radius of the spiral
+        const spiralDistance = 3; // Radius increment for each turn
+        const linkCount = 100; // Number of octahedron links to create
+        const linkSize = 1; // Size of the octahedron (chain link)
+        const heightPerTurn = 8; // Height increment per spiral turn
+        const zOffset = 3; // Offset for the entire spiral along the Z-axis
+
+        // Create the spiral using octahedrons to mimic chain links
+        for (let i = 0; i < linkCount; i++) {
+            const angle = (i / linkCount) * (Math.PI * 2 * spiralTurns); // Calculate the angle
+            const radius = baseRadius + (i / linkCount) * spiralDistance; // Calculate the radius
+            
+            // Calculate the position for each link in the spiral
+            const x = radius * Math.cos(angle);
+            const z = radius * Math.sin(angle) + zOffset; // Apply Z-axis offset
+            const y = 10 + (i / linkCount) * (spiralTurns * heightPerTurn);
+
+            // Create an octahedron for each segment of the spiral
+            const octahedron = document.createElement('a-octahedron');
+            octahedron.setAttribute('position', `${x} ${y} ${z}`);
+            octahedron.setAttribute('radius', linkSize); // Set the size of the octahedron
+            octahedron.setAttribute('color', '#C4B454'); // Set color to gold
+
+            // Set opacity and transparency
+            octahedron.setAttribute('material', {
+                opacity: 0.7, // Set opacity level (0 is fully transparent, 1 is fully opaque)
+                transparent: true // Enable transparency
+            });
+
+            // Append the octahedron to the scene
+            sceneEl.appendChild(octahedron);
+        }
+    }
+});
+
+</script>
+
+<!-- Golden Chain End-->
+
+
+<!-- Models -->
+
+<a-assets>
+<a-asset-item id="model1" src="./images/modelwalking1.glb"></a-asset-item>
+<a-asset-item id="model2" src="./images/modelwalking2.glb"></a-asset-item>
+<a-asset-item id="model3" src="./images/modelspray.glb"></a-asset-item>
+<a-asset-item id="robot" src="./images/robot.glb"></a-asset-item>
+</a-assets>
+
+<a-entity position="0 -1 -30" animation="property:position; to: 0 -1 40; loop: true; dur: 30000">
+        <a-entity 
+          gltf-model="#model1" 
+          animation-mixer 
+          scale="3 3 3"
+          rotation="0 0 0"  
+          position="-3 1.2 0">
+        </a-entity>
+        <a-entity 
+          gltf-model="#model2" 
+          animation-mixer 
+          scale="3 3 3"
+          rotation="0 0 0"  
+          position="3 1.2 -15">
+        </a-entity>
+</a-entity>
+
+
+<a-entity 
+        gltf-model="#model3" 
+        animation-mixer 
+        scale="2.8 3.6 2.8"
+        rotation="0 0 0"  
+        position="15.30277 3.7 14.2878"
+        animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000"
+        gui-interactable lightbox data-url="assets/spray" disable-pointer-lock enable-pointer-lock>
+</a-entity>
+
+<a-entity 
+        gltf-model="#robot" 
+        animation-mixer 
+        scale="8 8 8"
+        rotation="0 -45 0"  
+        position="12.12169 2.7071 12.90204"
+        >
+</a-entity>
+
+<!-- Models End -->
+
+
+<!-- Video player -->
+
+<a-assets>
+  <video id="video-src" src="assets/media/intro.mp4" autoplay muted loop></video>
+</a-assets>
+
+<a-video id="video-screen" src="#video-src" position="0 4.5 -14" width="12" height="9" opacity="0.9"></a-video>
+
+<!-- Video player End -->
+
+
+</a-scene>
+
+
+<!-- Video autoplay -->
+
+<script src="assets/video.js"></script>
+
+<!-- Video autoplay End -->
+
+
+<!-- Custom cursor -->
+
+<script src="assets/custom-cursor.js"></script>
+
+<!-- Custom cursor End -->
+
+
+<!-- HTML Overlay with iframe for Lightbox -->
+
+    <div id="overlay">
+      <span class="close-btn" onclick="closeOverlay()">&times;</span>
+      <div class="iframe-container">
+        <iframe id="lightbox-iframe" src="" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <script src="assets/lightbox.js"></script>
+    <script src="assets/disable-pointerlock.js"></script>
+    <script src="assets/enable-pointerlock.js"></script>
+    <script src="assets/stop-music.js"></script>
+
+<!-- HTML Overlay with iframe for Lightbox End -->
+
+
+<!-- Disable right-click -->
+
+<script>
+  // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+
+  // Disable text selection using JavaScript (extra layer of protection)
+  document.addEventListener('selectstart', function(event) {
+    event.preventDefault();
+  });
+</script>
+
+<!-- Disable right-click End -->
+
+  </body>
+</html>
