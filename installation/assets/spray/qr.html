@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="ARTOLDO">
+    <link rel="icon" type="image/png" href="./../../images/mask.png">
+    <title>Shalom Harlow - Spring Show 1999</title>
+    <style>
+        /* General reset */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            background-color: black; /* Background color for body */
+            font-family: Arial, sans-serif;
+            color: white; /* Text color */
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        /* Container for text and video */
+        .container {
+            display: flex;
+            flex-direction: column; /* Stack text and video vertically */
+            align-items: center; /* Center children horizontally */
+            position: relative; /* Positioning context for children */
+        }
+
+        #background-video {
+            width: 50vw; /* Video width */
+            height: 50vh; /* Video height */
+            object-fit: cover; /* Cover the area */
+            border-radius: 15px; /* Rounded corners for the video */
+            z-index: 1; /* Ensure video is behind text */
+        }
+
+        /* Styling the heading */
+        h1, h3, sup {
+            text-align: center; /* Center text */
+            z-index: 2; /* Bring headings above video */
+            margin: 5px 0; /* Margin for spacing */
+        }
+
+user-select: none;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+
+    </style>
+</head>
+<body>
+    <!-- Container for text and video -->
+    <div class="container">
+        <!-- Heading -->
+         <h1>Shalom Harlow</h1>
+         <h3>Spring Show 1999</h3>
+         <br><br>
+        <!-- Video -->
+        <video autoplay loop muted playsinline id="background-video">
+            <source src="../media/spray.mp4" type="video/mp4">
+        </video>
+    </div>
+
+<!-- Prevent dragging -->
+
+<script>
+document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});
+</script>
+
+<!-- Disable right-click -->
+
+<script>
+  // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+
+  // Disable text selection using JavaScript (extra layer of protection)
+  document.addEventListener('selectstart', function(event) {
+    event.preventDefault();
+  });
+</script>
+
+</body>
+</html>
