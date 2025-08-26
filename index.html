@@ -263,25 +263,37 @@ user-select: none;
       <a href="./installation/" target="_blank" class="button">Play Now</a>
       <a href="https://artoldo.com/mcqueen/installation/assets/media/artifashion-intellighenzia.pdf" target="_blank" class="button">Read Paper</a>
 
-<a href="https://youtu.be/No_439hKn6Y" class="button"
-   onclick="openPopup(this.href); return false;">
+<a href="https://youtu.be/No_439hKn6Y"
+   onclick="openLightbox(event, this.href)"
+   class="button">
    Watch Trailer
 </a>
 
-<script>
-  function openPopup(url) {
-    // set size
-    const width = 800;
-    const height = 450;
-    // calculate center position
-    const left = (screen.width / 2) - (width / 2);
-    const top = (screen.height / 2) - (height / 2);
+<div id="lightbox"
+     onclick="closeLightbox(event)"
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000;">
+  
+  <span class="close-btn"
+        onclick="closeLightbox(event)"
+        style="position:absolute; top:15px; right:25px; font-size:30px; color:#fff; cursor:pointer;">&times;</span>
+  
+  <iframe id="videoFrame"
+          allowfullscreen
+          style="width:50%; height:70%; border:none; border-radius: 25px; box-shadow:0 0 20px #000;"></iframe>
+</div>
 
-    window.open(
-      url,
-      "youtubePopup",
-      `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=no`
-    );
+<script>
+  function openLightbox(e, url) {
+    e.preventDefault();
+    const videoId = url.split("youtu.be/")[1]; 
+    document.getElementById("videoFrame").src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+    document.getElementById("lightbox").style.display = "flex";
+  }
+  function closeLightbox(e) {
+    if (e.target.id === "lightbox" || e.target.className === "close-btn" || e.target.tagName === "SPAN") {
+      document.getElementById("videoFrame").src = "";
+      document.getElementById("lightbox").style.display = "none";
+    }
   }
 </script>
                            
